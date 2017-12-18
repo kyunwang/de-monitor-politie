@@ -1,0 +1,73 @@
+main {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+main > header {
+    height: 30vh;
+    width: 100vw;
+}
+
+main > section {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+main > footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 20vh;
+    width: 100vw;
+}
+
+main > footer form {
+    margin: auto;
+    width: 90vmin;
+    height: 3rem;
+    display: flex;
+}
+
+main > footer form > span {
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+main > footer form > span input {
+    display: none;
+}
+
+main > footer form > span label {
+    margin: auto;
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+main > footer form > span input:checked + label {
+    border: 1px solid orange;
+}
+
+main > footer > #go-to-videos-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(50vw - 45vmin);
+}
+
+main > footer > #go-to-videos-wrapper button {
+    display: block;
+    margin: auto;
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+}
