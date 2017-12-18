@@ -1,0 +1,12 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "browser-sync start --server --files \"*.html, style/*.css, scripts/*.js\""
+  },
+  "author": "",
+  "license": "ISC"
+}
