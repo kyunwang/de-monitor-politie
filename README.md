@@ -1,14 +1,23 @@
 # de-monitor-politie
+
 Name needs to be decided
 
-
 ## Running
-We use `SCSS` and `browser-sync`
 
-For now install `browser-sync` globally using `npm`: `npm install -g browser-sync`
+We are using gulp for:
 
-Run in the website map:
-- browser-sync start --server --files "*.html, style/*.css, scripts/*.js"
+* Compiling our scss
+* Running our hot-reloading local server with browser-sync
 
-Go to the css map and run to compile `scss`
-- sass --watch master.scss:master.css
+  _Wink wink_
+
+To run the enter `npm start` in the root and you are ready to go!
+
+## Contributers
+
+* [IIYAMA12][conlink2]
+* [kyunwang][conlink1]
+* Seida
+
+[conlink1]: https://github.com/kyunwang
+[conlink2]: https://github.com/IIYAMA12
