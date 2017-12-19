@@ -8,5 +8,10 @@
     "compile": "browser-sync start --server --files \"*.html, style/*.css, scripts/*.js\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.19.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
 }
