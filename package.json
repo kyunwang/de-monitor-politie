@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "browser-sync start --server --files \"*.html, style/*.css, scripts/*.js\""
+    "start": "gulp"
   },
   "author": "",
   "license": "ISC",
