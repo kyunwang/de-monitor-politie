@@ -44,3 +44,75 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; }
+  body main #article-container {
+    position: relative;
+    top: 0;
+    left: 0; }
+    body main #article-container > article {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0; }
+      body main #article-container > article:nth-child(1) {
+        left: 0vw; }
+      body main #article-container > article:nth-child(2) {
+        left: 100vw; }
+      body main #article-container > article:nth-child(3) {
+        left: 200vw; }
+      body main #article-container > article:nth-child(4) {
+        left: 300vw; }
+      body main #article-container > article:nth-child(5) {
+        left: 400vw; }
+      body main #article-container > article:nth-child(6) {
+        left: 500vw; }
+      body main #article-container > article:nth-child(7) {
+        left: 600vw; }
+      body main #article-container > article:nth-child(8) {
+        left: 700vw; }
+      body main #article-container > article:nth-child(9) {
+        left: 800vw; }
+      body main #article-container > article:nth-child(10) {
+        left: 900vw; }
+      body main #article-container > article:nth-child(11) {
+        left: 1000vw; }
+      body main #article-container > article:nth-child(12) {
+        left: 1100vw; }
+      body main #article-container > article:nth-child(13) {
+        left: 1200vw; }
+      body main #article-container > article:nth-child(14) {
+        left: 1300vw; }
+      body main #article-container > article:nth-child(15) {
+        left: 1400vw; }
+      body main #article-container > article:nth-child(16) {
+        left: 1500vw; }
+      body main #article-container > article:nth-child(17) {
+        left: 1600vw; }
+      body main #article-container > article:nth-child(18) {
+        left: 1700vw; }
+      body main #article-container > article:nth-child(19) {
+        left: 1800vw; }
+      body main #article-container > article:nth-child(20) {
+        left: 1900vw; }
+      body main #article-container > article:nth-child(21) {
+        left: 2000vw; }
+      body main #article-container > article:nth-child(22) {
+        left: 2100vw; }
+      body main #article-container > article:nth-child(23) {
+        left: 2200vw; }
+      body main #article-container > article:nth-child(24) {
+        left: 2300vw; }
+      body main #article-container > article:nth-child(25) {
+        left: 2400vw; }
+      body main #article-container > article:nth-child(26) {
+        left: 2500vw; }
+      body main #article-container > article:nth-child(27) {
+        left: 2600vw; }
+      body main #article-container > article:nth-child(28) {
+        left: 2700vw; }
+      body main #article-container > article:nth-child(29) {
+        left: 2800vw; }
