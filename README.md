@@ -17,7 +17,6 @@ To run the enter `npm start` in the root and you are ready to go!
 
 * [IIYAMA12][conlink2]
 * [kyunwang][conlink1]
-* Seida
 
 [conlink1]: https://github.com/kyunwang
 [conlink2]: https://github.com/IIYAMA12
