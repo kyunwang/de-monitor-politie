@@ -1,2 +1,4 @@
 node_modules
 style/.sass-cache
+
+*.css
