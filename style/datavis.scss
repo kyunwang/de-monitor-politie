@@ -1,0 +1,10 @@
+#bubble-con {
+	h2 {
+		@media (max-width: $bp-small) {
+			color: green;
+		}
+		@media (max-width: $bp-large) {
+color: red;
+		}
+	}
+}
