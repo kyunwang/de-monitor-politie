@@ -45,6 +45,34 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: relative-bold;
+  src: url(https://demonitor.kro-ncrv.nl/fonts/Relative-Bold.otf); }
+
+@font-face {
+  font-family: relative-medium;
+  src: url(https://demonitor.kro-ncrv.nl/fonts/Relative-Medium.otf); }
+
+@font-face {
+  font-family: relative-book;
+  src: url(https://demonitor.kro-ncrv.nl/fonts/Relative-Book.otf); }
+
+@font-face {
+  font-family: tissa-pro;
+  src: url(https://demonitor.kro-ncrv.nl/fonts/TissaProRegular.otf); }
+
+@font-face {
+  font-family: tissa-pro-i;
+  src: url(https://demonitor.kro-ncrv.nl/fonts/TissaProRegularItalic.otf); }
+
+@font-face {
+  font-family: tissa-pro-bold;
+  src: url(https://demonitor.kro-ncrv.nl/fonts/TissaProBold.otf); }
+
+svg {
+  width: 100%;
+  height: 100%; }
+
 body {
   width: 100vw;
   height: 100vh;
