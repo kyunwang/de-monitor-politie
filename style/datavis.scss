@@ -1,44 +1,64 @@
 h2,
 p {
-	font-family: "tisa-pro", serif;
+  font-family: "tisa-pro", serif;
+  font-weight: 100;
 }
 
 #bubble-con {
-	span {
-		cursor: pointer;
-	}
+  color: $main-black;
+
+  img {
+    height: 1.3em;
+    max-height: 26px;
+    margin: 0.5em 0;
+  }
+
+  span {
+    cursor: pointer;
+  } // & :not(first-child) {
+  // 	font-size: 1.1em;
+  // }
+  section {
+    margin: 0 $margin-small;
+  }
 }
 
 #bubble-chart {
-	// width: 300px;
-	// height: 300px;
-	text {
-		font-family: 'relative-book'
-	}
+  //   width: 300px;
+  padding: $margin-small 0;
+  height: 300px;
+  text {
+    font-family: "relative-book";
+    font-size: 1em;
+    font-weight: 100;
+  }
 }
 
 circle {
-	fill: #333;
-	opacity: 0.3;
-	stroke: white;
+  fill: #333;
+  opacity: 0.3;
+  stroke: white;
 }
 
 h2 {
-	@media (max-width: $bp-small) {
-		color: green;
-	}
+  @media (max-width: $bp-small) {
+    font-size: 1.6em;
+  }
 
-	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		color: red;
-	}
+  @media (min-width: $bp-small) and (max-width: $bp-med) {
+  }
 }
 
 p {
-	@media (max-width: $bp-small) {
-		font-size: 0.8em;
-	}
+  @media (max-width: $bp-small) {
+    font-size: 0.9em;
+  }
 
-	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		font-size: 1.1em;
-	}
+  @media (min-width: $bp-small) and (max-width: $bp-med) {
+    font-size: 1.1em;
+  }
+}
+
+.button__link {
+  color: $main-blue;
 }
