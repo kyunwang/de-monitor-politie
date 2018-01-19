@@ -80,12 +80,14 @@ body {
   body main #article-container {
     position: relative;
     top: 0;
-    left: 0; }
+    left: 0;
+    transition: left 1s; }
     body main #article-container > article {
       position: absolute;
       width: 100vw;
       height: 100vh;
-      top: 0; }
+      top: 0;
+      overflow: hidden; }
       body main #article-container > article:nth-child(1) {
         left: 0vw; }
       body main #article-container > article:nth-child(2) {
@@ -144,7 +146,46 @@ body {
         left: 2700vw; }
       body main #article-container > article:nth-child(29) {
         left: 2800vw; }
+      body main #article-container > article h2 {
+        font-size: 1.5em;
+        font-family: "relative-bold";
+        margin-bottom: 1.5625rem; }
+      body main #article-container > article button {
+        border-radius: 5px;
+        align-items: center;
+        min-width: 66px;
+        height: 50px;
+        padding: 0 20px 2px;
+        outline: none;
+        line-height: 1;
+        background: #1ac5e3;
+        color: white;
+        cursor: pointer;
+        border: 1px solid transparent;
+        -webkit-transition: all .4s ease;
+        transition: all .4s ease;
+        margin-top: 1.5625rem;
+        font-family: "relative-medium";
+        font-size: 1em;
+        font-weight: 100; }
+      body main #article-container > article p {
+        color: #485253;
+        margin-bottom: 1em; }
+        body main #article-container > article p:last-of-type {
+          margin-bottom: 0; }
+      body main #article-container > article > svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none; }
       body main #article-container > article section.overlay svg {
         height: 100vh;
-        transform: translate(0px, 0px) scale(12);
+        transform: translate(0px, 0px) scale(13);
         transition: transform 1s; }
+      body main #article-container > article section:not(.overlay) {
+        border-radius: 5px;
+        background-color: #f0f1f1;
+        padding: 25px 50px;
+        max-width: 30em; }
+        body main #article-container > article section:not(.overlay) .button--go-to-next-article:hover {
+          opacity: .8; }
