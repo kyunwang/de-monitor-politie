@@ -23,9 +23,13 @@ var articleIndex = 0;
 
 
 function goToNextArticle () {
+    articleContainer.classList.add("animation-active");
     articleIndex++;
     if (articles[articleIndex] != undefined) {
         articleContainer.style.left = (-100 * articleIndex) + "vw";
+        setTimeout(function (){
+            articleContainer.classList.remove("animation-active");
+        }, 1000);
         return articles[articleIndex];
     } else {
         articleIndex--;
@@ -34,9 +38,13 @@ function goToNextArticle () {
 }
 
 function goToPreviousArticle () {
+    articleContainer.classList.add("animation-active");
     articleIndex--;
     if (articles[articleIndex] != undefined) {
         articleContainer.style.left = (-100 * articleIndex) + "vw";
+        setTimeout(function (){
+            articleContainer.classList.remove("animation-active");
+        }, 1000);
         return  articles[articleIndex];
     } else {
         articleIndex++;
