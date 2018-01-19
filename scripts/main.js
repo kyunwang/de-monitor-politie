@@ -1,4 +1,3 @@
-
 var mainElement = document.getElementsByTagName("main")[0];
 
 var articleContainer = document.getElementById("article-container");
@@ -21,6 +20,7 @@ for (let index = 0; index < articles.length; index++) {
 // 
 
 var articleIndex = 0;
+
 
 function goToNextArticle () {
     articleIndex++;
@@ -101,3 +101,6 @@ for (let index = 0; index < buttonsToNextArticle.length; index++) {
 
 // switch between articles //
 /////////////////////////////
+
+
+
