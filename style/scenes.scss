@@ -1,0 +1,34 @@
+// Scene 1
+#politievlogger-intro {
+	@media (max-width: $bp-small) {
+		// transform: translate(0, -200px);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+
+
+	section {
+		position: absolute;
+		bottom: 0;
+	}
+
+	svg {
+		@media (max-width: $bp-small) {
+			transform: translate(0, -220px);
+		}
+
+		@media (min-width: $bp-small) and (max-width: $bp-med) {
+			transform: translate(0, -220px);
+		}
+	}
+}
+
+#police-intro {
+	@media (max-width: $bp-small) {
+		transform: translate(400px, 200px) scale(0.4);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(400px, 200px) scale(0.5);
+	}
+}
