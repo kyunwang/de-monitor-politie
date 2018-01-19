@@ -32,7 +32,6 @@ async function getData(vlogData) {
   data = vlogData;
   // data = await vlogData.slice(0, 40);
   console.log("The Data", data);
-
   await createBubble();
 }
 
@@ -89,17 +88,9 @@ async function createBubble() {
 
   bubbleNodes
     .append("text")
-    .attr("dy", d => 4)
-    .attr("dx", getX)
-    // .attr("dx", function(d) {
-    //   return d.x;
-    // })
-    .text(function(d) {
-      console.log(d);
-
-      // return d.children === undefined ? d.data.name : "";
-      return d.children === undefined ? d.data.key : "";
-    });
+    .attr("dy", d => getY(d) + 5)
+    .attr("dx", d => getX(d) - 20) // trying to center the labels
+    .text(d => (d.children === undefined ? d.data.key : ""));
 
   function getX(d) {
     return d.x;
