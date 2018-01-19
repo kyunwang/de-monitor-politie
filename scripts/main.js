@@ -111,4 +111,17 @@ for (let index = 0; index < buttonsToNextArticle.length; index++) {
 /////////////////////////////
 
 
+function buttonExpanderFunction (e) {
+    var source = e.target;
+    var parent = source.parentElement;
+    if (parent.classList.contains("wrapper")) {
+        parent.classList.remove("wrapper--not-expand")
+    }
+    source.removeEventListener("click", buttonExpanderFunction);
+}
 
+var buttonExpanders = document.getElementsByClassName("button--expander");
+for (let index = 0; index < buttonExpanders.length; index++) {
+    const buttonExpander = buttonExpanders[index];
+    buttonExpander.addEventListener("click", buttonExpanderFunction);
+}

@@ -63,6 +63,7 @@ body {
                             background-color: rgb(240, 241, 241);
                             padding: 25px 50px;
                             max-width: 30em;
+                            margin: 1em;
                             .button--go-to-next-article {
                                 &:hover {
                                     opacity: .8;
@@ -75,29 +76,75 @@ body {
 
                 // for data visualisatie
                 &.data-vis {
-                    h2 {
-                        font-size: 2em;
-                        font-family: "tisa-pro";
-                        margin-bottom: $margin-article-text-elements;
-                    }
-                    .wrapper {
-                        position: relative;
-                        p {
+
+
+
+                    section {
+                        box-sizing: border-box;
+
+                        @media (min-width: $bp-small)  { // and (max-width: $bp-med)
                             max-width: 30em;
+                            margin: auto;
+
                         }
-                        .hide-text-gradient {
-                            max-width: 30em;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            height: 100%;
-                            width: 100%;
-                            pointer-events: none;
-                            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+8,1+58 */
-                            background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 8%, rgba(255,255,255,1) 58%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-                            background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 58%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 58%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+                    
+                        h2 {
+                            font-size: 2em;
+                            font-family: "tisa-pro";
+                            margin-bottom: $margin-article-text-elements;
+                        }
+
+
+                        .wrapper {
+                            position: relative;
+                            overflow-y: hidden;
+                            @media (max-width: $bp-small) {
+                                &.wrapper--not-expand {
+                                    height: 4.3em;
+
+                                    .button--expander, .hide-text-gradient {
+                                        position: absolute;
+                                    }
+
+                                    .button--expander {
+                                        bottom: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        border: none;
+                                        background: none;
+                                        cursor: pointer;
+                                        color: $main-blue;
+                                    }
+
+
+                                    .hide-text-gradient {
+                                        top: 0;
+                                        left: 0;
+                                        height: 100%;
+                                        width: 100%;
+                                        pointer-events: none;
+                                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+8,1+77 */
+                                        background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 8%, rgba(255,255,255,1) 77%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+                                        background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                                        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+                                    }
+                                }
+                            }
+                            &:not(.wrapper--not-expand) {
+                                .hide-text-gradient, .button--expander {
+                                    display: none;
+                                    visibility: hidden;
+                                }
+                            }
+                            @media (min-width: $bp-small) {
+                                .hide-text-gradient, .button--expander {
+                                    display: none;
+                                    visibility: hidden;
+                                }
+
+                            }
+
                         }
                     }
                 }
