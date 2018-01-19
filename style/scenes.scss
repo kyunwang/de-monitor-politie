@@ -1,16 +1,18 @@
+#politievlogger-intro,
+#melding {
+	@media (max-width: $bp-med) {
+		section {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
 // Scene 1
 #politievlogger-intro {
-	@media (max-width: $bp-small) {
-		// transform: translate(0, -200px);
-	}
+	@media (max-width: $bp-small) {}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {}
-
-
-	section {
-		position: absolute;
-		bottom: 0;
-	}
 
 	svg {
 		@media (max-width: $bp-small) {
@@ -25,10 +27,47 @@
 
 #police-intro {
 	@media (max-width: $bp-small) {
-		transform: translate(400px, 200px) scale(0.4);
+		transform: translate(380px, 180px) scale(0.4);
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		transform: translate(400px, 200px) scale(0.5);
+		transform: translate(380px, 200px) scale(0.5);
 	}
 }
+
+
+// Scene 2
+#melding {
+	svg {
+		@media (max-width: $bp-small) {
+			transform: translate(0, -50px);
+		}
+
+		@media (min-width: $bp-small) and (max-width: $bp-med) {
+			transform: translate(0, -150px);
+		}
+	}
+}
+
+
+#police-chef {
+	@media (max-width: $bp-small) {
+		transform: translate(250px, 170px) scale(0.5);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(250px, 170px) scale(0.6);
+	}
+}
+
+#police-sitting {
+	@media (max-width: $bp-small) {
+		transform: translate(300px, 100px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(300px, 120px) scale(0.7);
+	}
+}
+
+

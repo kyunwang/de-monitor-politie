@@ -9,12 +9,12 @@ var articles = articleContainer.querySelectorAll("article");
 
 var articlesById = {};
 for (let index = 0; index < articles.length; index++) {
-    const article = articles[index];
-    
-    var id = article.id;
-    if (id != undefined) {
-        articlesById[id] = article;
-    }
+	const article = articles[index];
+
+	var id = article.id;
+	if (id != undefined) {
+		articlesById[id] = article;
+	}
 }
 
 // 
@@ -22,70 +22,72 @@ for (let index = 0; index < articles.length; index++) {
 var articleIndex = 0;
 
 
-function goToNextArticle () {
-    articleContainer.classList.add("animation-active");
-    articleIndex++;
-    if (articles[articleIndex] != undefined) {
-        articleContainer.style.left = (-100 * articleIndex) + "vw";
-        setTimeout(function (){
-            articleContainer.classList.remove("animation-active");
-        }, 1000);
-        return articles[articleIndex];
-    } else {
-        articleIndex--;
-    }
-    return false;
+function goToNextArticle() {
+	articleContainer.classList.add("animation-active");
+	articleIndex++;
+	if (articles[articleIndex] != undefined) {
+		articleContainer.style.left = (-100 * articleIndex) + "vw";
+		setTimeout(function () {
+			articleContainer.classList.remove("animation-active");
+		}, 1000);
+		return articles[articleIndex];
+	} else {
+		articleIndex--;
+	}
+	return false;
 }
 
-function goToPreviousArticle () {
-    articleContainer.classList.add("animation-active");
-    articleIndex--;
-    if (articles[articleIndex] != undefined) {
-        articleContainer.style.left = (-100 * articleIndex) + "vw";
-        setTimeout(function (){
-            articleContainer.classList.remove("animation-active");
-        }, 1000);
-        return  articles[articleIndex];
-    } else {
-        articleIndex++;
-    }
-    return false;
+function goToPreviousArticle() {
+	articleContainer.classList.add("animation-active");
+	articleIndex--;
+	if (articles[articleIndex] != undefined) {
+		articleContainer.style.left = (-100 * articleIndex) + "vw";
+		setTimeout(function () {
+			articleContainer.classList.remove("animation-active");
+		}, 1000);
+		return articles[articleIndex];
+	} else {
+		articleIndex++;
+	}
+	return false;
 }
 
 
 
 
-function setFocusPoint (article, x, y) {
-    if (article != undefined) {
-        var overlayElement = article.querySelector(".overlay");
-        if (overlayElement) {
-            var focusPoint_svg = overlayElement.querySelector("svg");
-            if (x == undefined) {
-                x = 0;
-            }
-            if (y == undefined) {
-                y = 0;
-            }
-            focusPoint_svg.style.transform = "translate(" + x + "px, " + y + "px) scale(2)";
-            return true;
-        }
-    }
-    return false;
+function setFocusPoint(article, x, y) {
+	if (article != undefined) {
+		var overlayElement = article.querySelector(".overlay");
+		if (overlayElement) {
+			var focusPoint_svg = overlayElement.querySelector("svg");
+			if (x == undefined) {
+				x = 0;
+			}
+			if (y == undefined) {
+				y = 0;
+			}
+			focusPoint_svg.style.transform = "translate(" + x + "px, " + y + "px) scale(2)";
+			return true;
+		}
+	}
+	return false;
 }
 
 /////////////////
 //  test stuff //
 
 
+// goToNextArticle();
+// goToNextArticle();
+// goToNextArticle();
 setTimeout(function () {
-    // goToNextArticle ();
-    // goToNextArticle ();
-    // goToNextArticle ();
-    // goToNextArticle ();
+	// goToNextArticle ();
+	// goToNextArticle ();
+	// goToNextArticle ();
 }, 300);
 
 setTimeout(function () {
-    setFocusPoint(articles[4], 100, 100);
+	setFocusPoint(articles[4], 100, 100);
 }, 1500);
 
 
@@ -102,8 +104,8 @@ var buttonsToNextArticle = document.getElementsByClassName("button--go-to-next-a
 
 
 for (let index = 0; index < buttonsToNextArticle.length; index++) {
-    const button = buttonsToNextArticle[index];
-    button.addEventListener("click", goToNextArticle);
+	const button = buttonsToNextArticle[index];
+	button.addEventListener("click", goToNextArticle);
 }
 
 
