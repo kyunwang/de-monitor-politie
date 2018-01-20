@@ -5,7 +5,8 @@
 #house,
 #house-num,
 #open-door,
-#throw-beer {
+#throw-beer,
+#route-3 {
 	svg {
 		margin-top: 1em;
 	}
@@ -241,5 +242,120 @@
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
 		transform: translate(0px, 100px) scale(1);
+	}
+}
+
+/*=================
+=== Scene 9 license-plate
+=================*/
+
+#car-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(320px, 0) scale(.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(270px, 0) scale(.7);
+	}
+}
+
+#car-people {
+	@media (max-width: $bp-small) {
+		transform: translate(-20px, 120px) scale(.7);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(-200px, 120px) scale(.9);
+	}
+}
+
+/*=================
+=== Scene 10 neighbour / detained
+=================*/
+
+#neighbour-scene {
+	@media (max-width: $bp-small) {
+		// transform: translate(-20px, 120px) scale(.7);
+		transform: translate(100px, 0) scale(.8);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(200px, 0) scale(.9);
+	}
+}
+
+#neighbour-group {
+	@media (max-width: $bp-small) {
+		// transform: translate(-20px, 120px) scale(.7);
+		transform: translate(200px, 100px) scale(.8);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(150px, 50px) scale(.9);
+	}
+}
+
+#neighbour-people {
+	@media (max-width: $bp-small) {
+		// transform: translate(-20px, 120px) scale(.7);
+		transform: translate(340px, 0px) scale(.7);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(270px, 0) scale(.8);
+	}
+}
+
+/*=================
+=== Scene 11 - Going back
+=================*/
+
+#back-clouds {}
+
+#back-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(320px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(200px, 100px) scale(0.7);
+	}
+}
+
+#back-car {
+	@media (max-width: $bp-small) {
+		transform: translate(160px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(160px, 100px) scale(0.7);
+	}
+}
+
+/*=================
+=== Scene 12 police desk
+=================*/
+
+#desk-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(360px, 50px) scale(.5);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(300px, 50px) scale(.6);
+	}
+}
+
+/*=================
+=== Scene 13 uploading
+=================*/
+
+#upload-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(340px, 50px) scale(.5);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(260px, 50px) scale(.6);
 	}
 }
