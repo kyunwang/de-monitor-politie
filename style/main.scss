@@ -8,6 +8,14 @@ svg {
     visibility: hidden;
 }
 
+//	For test purposes only button
+.button--test {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
 
 body {
     width: 100vw;
