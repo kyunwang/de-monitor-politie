@@ -8,12 +8,15 @@ var articles = articleContainer.querySelectorAll("article");
 // 
 
 var articlesById = {};
+var indexByArticleId = {};
+
 for (let index = 0; index < articles.length; index++) {
 	const article = articles[index];
 
 	var id = article.id;
 	if (id != undefined) {
-		articlesById[id] = article;
+        articlesById[id] = article;
+        indexByArticleId[id] = index;
 	}
 }
 
@@ -37,6 +40,24 @@ function goToNextArticle() {
 	return false;
 }
 
+
+function goToArticleById (id) {
+    var index = indexByArticleId[id];
+    if (index != undefined) {
+        articleIndex = index;
+        if (articles[articleIndex] != undefined) {
+            articleContainer.style.left = (-100 * articleIndex) + "vw";
+            setTimeout(function () {
+                articleContainer.classList.remove("animation-active");
+            }, 1000);
+            return articles[articleIndex];
+        } else {
+            articleIndex--;
+        }
+        return false;
+    }
+}
+
 function goToPreviousArticle() {
 	articleContainer.classList.add("animation-active");
 	articleIndex--;
@@ -57,16 +78,33 @@ function goToPreviousArticle() {
 
 function setFocusPoint(article, x, y) {
 	if (article != undefined) {
-		var overlayElement = article.querySelector(".overlay");
+		// var overlayElement = article.querySelector(".overlay");
+		// if (overlayElement) {
+		// 	var focusPoint_svg = overlayElement.querySelector("svg");
+		// 	if (x == undefined) {
+		// 		x = 0;
+		// 	}
+		// 	if (y == undefined) {
+		// 		y = 0;
+		// 	}
+		// 	focusPoint_svg.style.transform = "translate(" + x + "px, " + y + "px) scale(2)";
+		// 	return true;
+        // }
+       
+        
+        var overlayElement = article.querySelector(".overlay");
 		if (overlayElement) {
-			var focusPoint_svg = overlayElement.querySelector("svg");
-			if (x == undefined) {
-				x = 0;
+
+			var overlayEffect = overlayElement.querySelector(".overlay-effect");
+			if (x != undefined) {
+				overlayEffect.style.left = x + "vw";
 			}
-			if (y == undefined) {
-				y = 0;
-			}
-			focusPoint_svg.style.transform = "translate(" + x + "px, " + y + "px) scale(2)";
+			if (y != undefined) {
+				overlayEffect.style.top = y + "vw";
+            }
+            
+            overlayEffect.classList.add("overlay-effect--focus");
+            
 			return true;
 		}
 	}
@@ -81,13 +119,11 @@ for (let index = 0; index < 10; index++) {
 }
 
 setTimeout(function () {
-	// goToNextArticle ();
-	// goToNextArticle ();
-	// goToNextArticle ();
+    goToArticleById("route-2");
 }, 300);
 
 setTimeout(function () {
-	setFocusPoint(articles[4], 100, 100);
+	setFocusPoint(articlesById["route-2"]);
 }, 1500);
 
 
