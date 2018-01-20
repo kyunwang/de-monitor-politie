@@ -1,16 +1,30 @@
-// Scene 1
-#politievlogger-intro {
-	@media (max-width: $bp-small) {
-		// transform: translate(0, -200px);
+#politievlogger-intro,
+#melding,
+#route-1,
+#route-2,
+#house,
+#house-num,
+#open-door,
+#throw-beer {
+	svg {
+		margin-top: 1em;
 	}
+	@media (max-width: $bp-med) {
+		section {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+/*=================
+=== Scene 1
+=================*/
+
+#politievlogger-intro {
+	@media (max-width: $bp-small) {}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {}
-
-
-	section {
-		position: absolute;
-		bottom: 0;
-	}
 
 	svg {
 		@media (max-width: $bp-small) {
@@ -25,10 +39,207 @@
 
 #police-intro {
 	@media (max-width: $bp-small) {
-		transform: translate(400px, 200px) scale(0.4);
+		transform: translate(380px, 180px) scale(0.4);
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		transform: translate(400px, 200px) scale(0.5);
+		transform: translate(380px, 200px) scale(0.5);
+	}
+}
+
+
+
+
+/*=================
+=== Scene 2
+=================*/
+
+#melding {
+	svg {
+		@media (max-width: $bp-small) {
+			transform: translate(0, -100px);
+		}
+
+		@media (min-width: $bp-small) and (max-width: $bp-med) {
+			transform: translate(0, -150px);
+		}
+	}
+}
+
+#police-chef {
+	@media (max-width: $bp-small) {
+		transform: translate(250px, 170px) scale(0.5);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(250px, 170px) scale(0.6);
+	}
+}
+
+#police-sitting {
+	@media (max-width: $bp-small) {
+		transform: translate(300px, 80px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(300px, 120px) scale(0.7);
+	}
+}
+
+/*=================
+=== Scene 3 route 1
+=================*/
+
+#depart-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(320px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(200px, 100px) scale(0.7);
+	}
+}
+
+#depart-car {
+	@media (max-width: $bp-small) {
+		transform: translate(160px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(160px, 100px) scale(0.7);
+	}
+}
+
+#depart-clouds {
+	@media (max-width: $bp-small) {
+		// transform: translate(100px, 50px) scale(0.7);		
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		// transform: translate(100px, 100px) scale(0.9);
+	}
+}
+
+
+/*=================
+=== Scene 4 route 2
+=================*/
+
+#hilversum-clouds {}
+
+#hilversum-car {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(50px, 100px) scale(0.7);
+	}
+}
+
+#hilversum-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(200px, 100px) scale(0.7);
+	}
+}
+
+#hilversum-board {
+	@media (max-width: $bp-small) {
+		// transform: translate(974px, 512px); this i the default
+		transform: translate(800px, 512px);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(550px, 512px);
+	}
+}
+
+/*=================
+=== Scene 5 location/housse
+=================*/
+
+#house-clouds {}
+
+#house-car {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(50px, 100px) scale(0.7);
+	}
+}
+
+#house-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(80px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(70px, 100px) scale(0.7);
+	}
+}
+
+/*=================
+=== Scene 6 housenumber
+=================*/
+
+#house-num {
+	svg {
+		// transform: translate() scale(.6)
+		// transform: scale(.6)
+	}
+}
+
+#house-num-scene {
+	// transform: scale(.7);
+	@media (max-width: $bp-small) {
+		transform: translate(200px, 50px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(150px, 70px) scale(0.7);
+	}
+}
+
+/*=================
+=== Scene 7 open-door
+=================*/
+
+#open-door-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(240px, 50px) scale(0.5);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(180px, 70px) scale(0.6);
+	}
+}
+
+/*=================
+=== Scene 8 throw-beer
+=================*/
+
+#throw-subject-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(-100px, 50px) scale(1);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(0px, 70px) scale(1);
+	}
+}
+
+#throw-police {
+	@media (max-width: $bp-small) {
+		transform: translate(80px, 100px) scale(.9);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(0px, 100px) scale(1);
 	}
 }
