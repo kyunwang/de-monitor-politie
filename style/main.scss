@@ -1,181 +1,187 @@
 svg {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 body {
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
-	main {
-		#article-container {
-			position: relative;
-			top: 0;
-			left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    main {
+        #article-container {
+            position: relative;
+            top: 0;
+            left: 0;
 
-			&.animation-active {
-				transition: left 1s;
-			}
+            &.animation-active {
+                transition: left 1s;
+            }
+        
+            > article {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                overflow: hidden;
+                @for $i from 1 to 30 {
+                    &:nth-child(#{$i}) {
+                        left: 100vw * ($i - 1);
+                    }
+                }
 
-			>article {
-				position: absolute;
-				width: 100vw;
-				height: 100vh;
-				top: 0;
-				overflow: hidden;
-				@for $i from 1 to 30 {
-					&:nth-child(#{$i}) {
-						left: 100vw * ($i - 1);
-					}
-				} // default propertisch
-				h2 {
-					font-size: 1.5em;
-					font-family: "relative-bold";
-					margin-bottom: $margin-article-text-elements;
-				} // not for data visualisatie
-				&:not(.data-vis) {
-					// default propertisch
-					h2 {
-						font-size: 1.5em;
-						font-family: "relative-bold";
-						margin-bottom: $margin-article-text-elements;
-					} // background svg
-					>svg {
-						position: absolute;
-						top: 0;
-						left: 0;
-						pointer-events: none;
-					}
 
-					section {
-						// overlay section (blue overlay)
-						&.overlay {
-							svg {
-								height: 100vh;
-								transform: translate(0px, 0px) scale(13);
-								transition: transform 1s;
-							}
-						} // text content section
-						&:not(.overlay) {
-							border-radius: 5px;
-							background-color: rgb(240, 241, 241);
-							padding: 25px 50px;
-							max-width: 30em;
-							margin: 1em;
-							.button--go-to-next-article {
-								&:hover {
-									opacity: .8;
-								}
-							}
-						}
-					}
-				} // for data visualisatie
-				&.data-vis {
-					h2 {
-						font-size: 2em;
-						font-family: "tisa-pro";
-						margin-bottom: $margin-article-text-elements;
-					}
-					p {
-						max-width: 30em;
-					}
-				}
+                // not for data visualisatie
+                &:not(.data-vis) {
+                // default propertisch
+                    h2 {
+                        font-size: 1.5em;
+                        font-family: "relative-bold";
+                        margin-bottom: $margin-article-text-elements;
+                    }
+                    
+                    // background svg
+                    > svg { 
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        pointer-events: none;
+                    }
 
-				section {
-					// overlay section (blue overlay)
-					&.overlay {
-						svg {
-							height: 100vh;
-							transform: translate(0px, 0px) scale(13);
-							transition: transform 1s;
-						}
-					} // text content section
-					&:not(.overlay) {
-						border-radius: 5px;
-						background-color: rgb(240, 241, 241);
-						padding: 25px 50px;
-						max-width: 30em;
-						.button--go-to-next-article {
-							&:hover {
-								opacity: .8;
-							}
-						}
-					}
-				}
-			} // for data visualisatie
-			&.data-vis {
-				h2 {
-					font-size: 2em;
-					font-family: "tisa-pro";
-					margin-bottom: $margin-article-text-elements;
-				}
-				.wrapper {
-					position: relative;
-					p {
-						max-width: 30em;
-					}
-					.hide-text-gradient {
-						max-width: 30em;
-						position: absolute;
-						top: 0;
-						left: 0;
-						height: 100%;
-						width: 100%;
-						pointer-events: none;
-						/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+8,1+58 */
-						background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 8%, rgba(255, 255, 255, 1) 58%, rgba(255, 255, 255, 1) 100%);
-						/* FF3.6-15 */
-						background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 8%, rgba(255, 255, 255, 1) 58%, rgba(255, 255, 255, 1) 100%);
-						/* Chrome10-25,Safari5.1-6 */
-						background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 8%, rgba(255, 255, 255, 1) 58%, rgba(255, 255, 255, 1) 100%);
-						/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
-						/* IE6-9 */
-					}
-				}
-			}
+                    section {
+                        // overlay section (blue overlay)
+                        &.overlay {
+                            svg {
+                                height: 100vh;
+                                transform: translate(0px, 0px) scale(13);
+                                transition: transform 1s;
+                            }
+                        }
+    
+                        // text content section
+                        &:not(.overlay) {
+                            border-radius: 5px;
+                            background-color: rgb(240, 241, 241);
+                            padding: 25px 50px;
+                            max-width: 30em;
+                            margin: 1em;
+                            .button--go-to-next-article {
+                                &:hover {
+                                    opacity: .8;
+                                }
+                            }
+                        }
+                    }
 
-			button {
-				&.button--default {
-					// settings van de kro
-					border-radius: 5px;
-					align-items: center;
-					min-width: 66px;
-					height: 50px;
-					padding: 0 20px 2px;
-					outline: none;
-					line-height: 1;
-					background: $main-blue;
-					color: white;
-					cursor: pointer;
-					border: 1px solid transparent;
-					-webkit-transition: all .4s ease;
-					transition: all .4s ease;
-					margin-top: $margin-article-text-elements;
-					font-family: "relative-medium";
-					font-size: 1em;
-					font-weight: 100;
-				}
-			}
+                }
 
-			p {
-				color: $main-black;
-				margin-bottom: $margin-paragraph-elements;
-				line-height: 1.4em;
-				&:last-of-type {
-					margin-bottom: 0;
-				}
-			}
-		}
-	}
+                // for data visualisatie
+                &.data-vis {
+
+
+
+                    section {
+                        box-sizing: border-box;
+
+                        @media (min-width: $bp-small)  { // and (max-width: $bp-med)
+                            max-width: 30em;
+                            margin: auto;
+
+                        }
+                    
+                        h2 {
+                            font-size: 2em;
+                            font-family: "tisa-pro";
+                            margin-bottom: $margin-article-text-elements;
+                        }
+
+
+                        .wrapper {
+                            position: relative;
+                            overflow-y: hidden;
+                            @media (max-width: $bp-small) {
+                                &.wrapper--not-expand {
+                                    height: 4.3em;
+
+                                    .button--expander, .hide-text-gradient {
+                                        position: absolute;
+                                    }
+
+                                    .button--expander {
+                                        bottom: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        border: none;
+                                        background: none;
+                                        cursor: pointer;
+                                        color: $main-blue;
+                                    }
+
+
+                                    .hide-text-gradient {
+                                        top: 0;
+                                        left: 0;
+                                        height: 100%;
+                                        width: 100%;
+                                        pointer-events: none;
+                                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+8,1+77 */
+                                        background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 8%, rgba(255,255,255,1) 77%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+                                        background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                                        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+                                    }
+                                }
+                            }
+                            &:not(.wrapper--not-expand) {
+                                .hide-text-gradient, .button--expander {
+                                    display: none;
+                                    visibility: hidden;
+                                }
+                            }
+                            @media (min-width: $bp-small) {
+                                .hide-text-gradient, .button--expander {
+                                    display: none;
+                                    visibility: hidden;
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                button {
+                    &.button--default {
+                        // settings van de kro
+                        border-radius: 5px;
+                        align-items: center;
+                        min-width: 66px;
+                        height: 50px;
+                        padding: 0 20px 2px;
+                        outline: none;
+                        line-height: 1;
+                        background: $main-blue;
+                        color: white;
+                        cursor: pointer;
+                        border: 1px solid transparent;
+                        -webkit-transition: all .4s ease;
+                        transition: all .4s ease;
+                        margin-top: $margin-article-text-elements;
+                        font-family: "relative-medium";
+                        font-size: 1em;
+                        font-weight: 100;
+                    }
+                }
+
+                p {
+                    color: $main-black;
+                    margin-bottom: $margin-paragraph-elements;
+                    line-height: 1.4em;
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
-
-p {
-	color: $main-black;
-	margin-bottom: $margin-paragraph-elements;
-	line-height: 1.4em;
-	&:last-of-type {
-		margin-bottom: 0;
-	}
-}
