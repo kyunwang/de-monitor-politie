@@ -8,7 +8,9 @@
 	}
 }
 
-// Scene 1
+/*=================
+=== Scene 1
+=================*/
 #politievlogger-intro {
 	@media (max-width: $bp-small) {}
 
@@ -36,7 +38,9 @@
 }
 
 
-// Scene 2
+/*=================
+=== Scene 2
+=================*/
 #melding {
 	svg {
 		@media (max-width: $bp-small) {
@@ -69,7 +73,11 @@
 	}
 }
 
-// Scene 3 route 1
+
+/*=================
+=== Scene 3 route 1
+=================*/
+
 #route-1 {
 	svg {
 		margin-top: 1em;
@@ -81,43 +89,118 @@
 	}
 }
 
-#depart-scene,
-#depart-car,
-#depart-clouds {
-	@media (max-width: $bp-small) {
-		// transform: translate(300px, 120px) scale(0.7);
-		// transform: scale(0.7);
-	}
-
-	@media (min-width: $bp-small) and (max-width: $bp-med) {}
-}
-
 #depart-scene {
 	@media (max-width: $bp-small) {
-		transform: translate(320px, 200px) scale(0.6);
+		transform: translate(320px, 150px) scale(0.6);
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		transform: translate(200px, 150px) scale(0.7);		
+		transform: translate(200px, 100px) scale(0.7);		
 	}
 }
 
 #depart-car {
 	@media (max-width: $bp-small) {
-		transform: translate(160px, 200px) scale(0.6);
+		transform: translate(160px, 150px) scale(0.6);
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		transform: translate(160px, 150px) scale(0.7);		
+		transform: translate(160px, 100px) scale(0.7);		
 	}
 }
 
 #depart-clouds {
 	@media (max-width: $bp-small) {
-		transform: translate(100px, 50px) scale(0.7);		
+		// transform: translate(100px, 50px) scale(0.7);		
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		transform: translate(100px, 100px) scale(0.9);
+		// transform: translate(100px, 100px) scale(0.9);
+	}
+}
+
+/*=================
+=== Scene 4 route 2
+=================*/
+#route-2 {
+	svg {
+		margin-top: 1em;
+		@media (max-width: $bp-small) {
+		}
+	
+		@media (min-width: $bp-small) and (max-width: $bp-med) {
+		}
+	}
+}
+
+#hilversum-clouds {
+
+}
+
+#hilversum-car {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(50px, 100px) scale(0.7);		
+	}
+}
+
+#hilversum-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(200px, 100px) scale(0.7);		
+	}
+}
+
+#hilversum-board {
+	@media (max-width: $bp-small) {
+		// transform: translate(974px, 512px); this i the default
+		transform: translate(800px, 512px);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(550px, 512px);	
+	}
+}
+
+/*=================
+=== Scene 5 location/housse
+=================*/
+
+#location {
+	svg {
+		margin-top: 1em;
+		@media (max-width: $bp-small) {
+		}
+	
+		@media (min-width: $bp-small) and (max-width: $bp-med) {
+		}
+	}
+}
+
+#house-clouds {}
+
+#house-car {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(50px, 100px) scale(0.7);		
+	}
+}
+
+#house-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(80px, 150px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(70px, 100px) scale(0.7);		
 	}
 }
