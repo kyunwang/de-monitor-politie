@@ -119,11 +119,28 @@ function buttonExpanderFunction (e) {
     if (parent.classList.contains("wrapper")) {
         parent.classList.remove("wrapper--not-expand")
     }
-    source.removeEventListener("click", buttonExpanderFunction);
+    // source.removeEventListener("click", buttonExpanderFunction);
 }
 
 var buttonExpanders = document.getElementsByClassName("button--expander");
 for (let index = 0; index < buttonExpanders.length; index++) {
     const buttonExpander = buttonExpanders[index];
     buttonExpander.addEventListener("click", buttonExpanderFunction);
+}
+
+
+function buttonDeExpanderFunction (e) {
+    var source = e.target;
+    var parent = source.parentElement;
+    
+    if (parent.classList.contains("wrapper")) {
+        parent.classList.add("wrapper--not-expand")
+    }
+}
+
+
+var buttonDeExpanders = document.getElementsByClassName("button--de-expander");
+for (let index = 0; index < buttonDeExpanders.length; index++) {
+    const buttonDeExpander = buttonDeExpanders[index];
+    buttonDeExpander.addEventListener("click", buttonDeExpanderFunction);
 }
