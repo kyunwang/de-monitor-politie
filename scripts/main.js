@@ -49,7 +49,10 @@ function goToArticleById (id) {
             articleContainer.style.left = (-100 * articleIndex) + "vw";
             setTimeout(function () {
                 articleContainer.classList.remove("animation-active");
+                setFocusPoint(articles[articleIndex]);
             }, 1000);
+
+            
             return articles[articleIndex];
         } else {
             articleIndex--;
@@ -122,9 +125,6 @@ setTimeout(function () {
     goToArticleById("route-2");
 }, 300);
 
-setTimeout(function () {
-	setFocusPoint(articlesById["route-2"]);
-}, 1500);
 
 
 //  test stuff //
