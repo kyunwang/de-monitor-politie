@@ -76,9 +76,9 @@ function setFocusPoint(article, x, y) {
 /////////////////
 //  test stuff //
 
-// for (let index = 0; index < 1; index++) {
-// 	goToNextArticle();
-// }
+for (let index = 0; index < 16; index++) {
+	goToNextArticle();
+}
 
 setTimeout(function () {
 	// goToNextArticle ();

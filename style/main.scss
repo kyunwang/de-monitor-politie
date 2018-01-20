@@ -16,6 +16,11 @@ svg {
 	z-index: 100;
 }
 
+// To remove 'required' elements from screen e.g. radiobuttons
+.outside {
+    // position: absolute;
+    // top: -99999px;
+}
 
 body {
     width: 100vw;
@@ -209,7 +214,7 @@ body {
                         outline: none;
                         line-height: 1;
                         background: $main-blue;
-                        color: white;
+                        color: $main-white;
                         cursor: pointer;
                         border: 1px solid transparent;
                         -webkit-transition: all .4s ease;
@@ -219,6 +224,18 @@ body {
                         font-size: 1em;
                         font-weight: 100;
                     }
+
+                    &.button--disabled {
+                        background: $main-gray;
+                    }
+
+                    &.button__select {
+                        background: $light-gray;
+                        color: $main-black;
+                    }
+                    &.button__select--selected {}
+
+
                 }
 
                 p {
@@ -232,5 +249,12 @@ body {
             }
         }
     }
+}
+
+
+
+.choose-title {
+    display: flex;
+    flex-direction: column;
 }
 
