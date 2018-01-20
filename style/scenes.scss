@@ -243,3 +243,28 @@
 		transform: translate(0px, 100px) scale(1);
 	}
 }
+
+/*=================
+=== Scene 9 license-plate
+=================*/
+
+#car-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(320px, 0) scale(.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(270px, 0) scale(.7);
+	}
+}
+
+#car-people {
+	@media (max-width: $bp-small) {
+		transform: translate(-20px, 120px) scale(.7);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(-200px, 120px) scale(.9);
+	}
+}
+
