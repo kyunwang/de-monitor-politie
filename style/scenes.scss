@@ -336,16 +336,15 @@
 === Scene 12 police desk
 =================*/
 
-#desk-police_scene {
-	
-}
+#desk-scene {
+	@media (max-width: $bp-small) {
+		// transform: translate(974px, 512px); this i the default
+		transform: translate(360px, 50px) scale(.5);
+	}
 
-#desk-police {
-
-}
-
-#desk-police-stripe {
-
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(300px, 50px) scale(.6);
+	}
 }
 
 /*=================
