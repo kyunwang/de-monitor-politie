@@ -40,7 +40,7 @@
 #melding {
 	svg {
 		@media (max-width: $bp-small) {
-			transform: translate(0, -50px);
+			transform: translate(0, -100px);
 		}
 
 		@media (min-width: $bp-small) and (max-width: $bp-med) {
@@ -48,7 +48,6 @@
 		}
 	}
 }
-
 
 #police-chef {
 	@media (max-width: $bp-small) {
@@ -62,7 +61,7 @@
 
 #police-sitting {
 	@media (max-width: $bp-small) {
-		transform: translate(300px, 100px) scale(0.6);
+		transform: translate(300px, 80px) scale(0.6);
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
@@ -70,4 +69,55 @@
 	}
 }
 
+// Scene 3 route 1
+#route-1 {
+	svg {
+		margin-top: 1em;
+		@media (max-width: $bp-small) {
+		}
+	
+		@media (min-width: $bp-small) and (max-width: $bp-med) {
+		}
+	}
+}
 
+#depart-scene,
+#depart-car,
+#depart-clouds {
+	@media (max-width: $bp-small) {
+		// transform: translate(300px, 120px) scale(0.7);
+		// transform: scale(0.7);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+}
+
+#depart-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(320px, 200px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(200px, 150px) scale(0.7);		
+	}
+}
+
+#depart-car {
+	@media (max-width: $bp-small) {
+		transform: translate(160px, 200px) scale(0.6);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(160px, 150px) scale(0.7);		
+	}
+}
+
+#depart-clouds {
+	@media (max-width: $bp-small) {
+		transform: translate(100px, 50px) scale(0.7);		
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(100px, 100px) scale(0.9);
+	}
+}
