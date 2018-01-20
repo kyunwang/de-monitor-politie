@@ -3,6 +3,12 @@ svg {
     height: 100%;
 }
 
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+
 body {
     width: 100vw;
     height: 100vh;
@@ -98,8 +104,41 @@ body {
                         .wrapper {
                             position: relative;
                             overflow-y: hidden;
+
+                            // mobile
                             @media (max-width: $bp-small) {
+                                &:not(.wrapper--not-expand) {
+
+                                    // disable the gradient and the expander button
+                                    .hide-text-gradient, .button--expander {
+                                        display: none;
+                                        visibility: hidden;
+                                    }
+
+                                    // enable the de-expander button
+                                    .button--de-expander {
+                                        background: rgba(0,0,0,0) url("../assets/icons/readLessArrow.svg") no-repeat; 
+                                        background-position: center center;
+                                        background-size: 1em;                                        
+                                        height: 2rem;
+                                        bottom: 0;
+                                        left: 0;
+                                        width: 100%;  
+
+                                        border: none;
+                                        border-bottom: 1px solid $main-black;
+                                        cursor: pointer;
+                                    }
+                                }
                                 &.wrapper--not-expand {
+
+                                    // disable the de-expander button
+                                    .button--de-expander {
+                                        display: none;
+                                        visibility: hidden;                                   
+                                    }
+
+                                    // enable the gradient and the expander button
                                     height: 4.3em;
 
                                     .button--expander, .hide-text-gradient {
@@ -107,14 +146,20 @@ body {
                                     }
 
                                     .button--expander {
+                                        background: rgba(0,0,0,0) url("../assets/icons/readMoreArrow.svg") no-repeat; 
+                                        background-position: center bottom;
+                                        background-size: 1em;
+
+                                        height: 2rem;
                                         bottom: 0;
                                         left: 0;
                                         width: 100%;
                                         border: none;
-                                        background: none;
+                                        
                                         cursor: pointer;
                                         color: $main-blue;
                                     }
+
 
 
                                     .hide-text-gradient {
@@ -131,14 +176,10 @@ body {
                                     }
                                 }
                             }
-                            &:not(.wrapper--not-expand) {
-                                .hide-text-gradient, .button--expander {
-                                    display: none;
-                                    visibility: hidden;
-                                }
-                            }
+
+                            // bigger than mobile
                             @media (min-width: $bp-small) {
-                                .hide-text-gradient, .button--expander {
+                                .hide-text-gradient, .button--expander, .button--de-expander {
                                     display: none;
                                     visibility: hidden;
                                 }
