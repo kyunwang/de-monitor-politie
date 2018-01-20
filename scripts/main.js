@@ -76,9 +76,9 @@ function setFocusPoint(article, x, y) {
 /////////////////
 //  test stuff //
 
-for (let index = 0; index < 10; index++) {
-	// goToNextArticle();	
-}
+// for (let index = 0; index < 1; index++) {
+// 	goToNextArticle();
+// }
 
 setTimeout(function () {
 	// goToNextArticle ();
@@ -113,34 +113,34 @@ for (let index = 0; index < buttonsToNextArticle.length; index++) {
 /////////////////////////////
 
 
-function buttonExpanderFunction (e) {
-    var source = e.target;
-    var parent = source.parentElement;
-    if (parent.classList.contains("wrapper")) {
-        parent.classList.remove("wrapper--not-expand")
-    }
-    // source.removeEventListener("click", buttonExpanderFunction);
+function buttonExpanderFunction(e) {
+	var source = e.target;
+	var parent = source.parentElement;
+	if (parent.classList.contains("wrapper")) {
+		parent.classList.remove("wrapper--not-expand")
+	}
+	// source.removeEventListener("click", buttonExpanderFunction);
 }
 
 var buttonExpanders = document.getElementsByClassName("button--expander");
 for (let index = 0; index < buttonExpanders.length; index++) {
-    const buttonExpander = buttonExpanders[index];
-    buttonExpander.addEventListener("click", buttonExpanderFunction);
+	const buttonExpander = buttonExpanders[index];
+	buttonExpander.addEventListener("click", buttonExpanderFunction);
 }
 
 
-function buttonDeExpanderFunction (e) {
-    var source = e.target;
-    var parent = source.parentElement;
-    
-    if (parent.classList.contains("wrapper")) {
-        parent.classList.add("wrapper--not-expand")
-    }
+function buttonDeExpanderFunction(e) {
+	var source = e.target;
+	var parent = source.parentElement;
+
+	if (parent.classList.contains("wrapper")) {
+		parent.classList.add("wrapper--not-expand")
+	}
 }
 
 
 var buttonDeExpanders = document.getElementsByClassName("button--de-expander");
 for (let index = 0; index < buttonDeExpanders.length; index++) {
-    const buttonDeExpander = buttonDeExpanders[index];
-    buttonDeExpander.addEventListener("click", buttonDeExpanderFunction);
+	const buttonDeExpander = buttonDeExpanders[index];
+	buttonDeExpander.addEventListener("click", buttonDeExpanderFunction);
 }

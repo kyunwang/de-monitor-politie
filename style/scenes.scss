@@ -338,7 +338,6 @@
 
 #desk-scene {
 	@media (max-width: $bp-small) {
-		// transform: translate(974px, 512px); this i the default
 		transform: translate(360px, 50px) scale(.5);
 	}
 
@@ -350,3 +349,13 @@
 /*=================
 === Scene 13 uploading
 =================*/
+
+#upload-scene {
+	@media (max-width: $bp-small) {
+		transform: translate(340px, 50px) scale(.5);
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		transform: translate(260px, 50px) scale(.6);
+	}
+}
