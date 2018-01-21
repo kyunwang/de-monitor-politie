@@ -16,7 +16,7 @@ for (let index = 0; index < articles.length; index++) {
 
 	var id = article.id;
 	if (id != undefined) {
-        articlesById[id] = article;
+		articlesById[id] = article;
         indexByArticleId[id] = index;
 	}
 }
@@ -150,6 +150,8 @@ for (let index = 0; index < buttonsToNextArticle.length; index++) {
 // switch between articles //
 /////////////////////////////
 
+/////////////////////////////
+// show more and less text //
 
 function buttonExpanderFunction(e) {
 	var source = e.target;
@@ -183,3 +185,75 @@ for (let index = 0; index < buttonDeExpanders.length; index++) {
 	const buttonDeExpander = buttonDeExpanders[index];
 	buttonDeExpander.addEventListener("click", buttonDeExpanderFunction);
 }
+
+// show more and less text //
+/////////////////////////////
+
+
+/////////////
+// overlay //
+
+
+var items = []; // order of the items.
+var itemsById = {}; // item by id.
+
+var recognizableButtons = document.getElementsByClassName("recognizable");
+var unrecognizableButtons = document.getElementsByClassName("unrecognizable");
+
+
+
+function fillOverlay () {
+	var currentArticle = articles[articleIndex];
+	var overlayEffect = currentArticle.getElementsByClassName("overlay-effect")[0];
+	if (overlayEffect != undefined) {
+		overlayEffect.classList.add("overlay-effect--fill");
+	}
+}
+
+function makeRecognizable () {
+	var currentArticle = articles[articleIndex];
+	var id = currentArticle.id;
+	
+	fillOverlay ();
+
+	var newItem = { // propertisch
+		unrecognizable : false
+	};
+	items[items.length] = newItem;
+	itemsById[id] = newItem;
+
+	setTimeout(goToNextArticle, 1500);
+
+	console.log("items", items);
+}
+
+function makeUnrecognizable () {
+	var currentArticle = articles[articleIndex];
+	var id = currentArticle.id;
+	
+	fillOverlay ();
+
+	var newItem = { // propertisch
+		unrecognizable : true
+	};
+	items[items.length] = newItem;
+	itemsById[id] = newItem;
+
+	setTimeout(goToNextArticle, 1500);
+
+	console.log("items", items);
+}
+
+
+for (let index = 0; index < recognizableButtons.length; index++) {
+	const recognizableButton = recognizableButtons[index];
+	recognizableButton.addEventListener("click", makeRecognizable);
+}
+
+for (let index = 0; index < unrecognizableButtons.length; index++) {
+	const unrecognizableButton = unrecognizableButtons[index];
+	unrecognizableButton.addEventListener("click", makeUnrecognizable);
+}
+
+// overlay //
+/////////////
