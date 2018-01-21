@@ -122,7 +122,7 @@ body {
 	
 						// text content section
 						&:not(.overlay) {
-							border-radius: 5px;
+							border-radius: $border-radius;
 							background-color: rgb(240, 241, 241);
 							padding: 25px 50px;
 							max-width: 30em;
@@ -139,16 +139,12 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
-
-
-
 					section {
 						box-sizing: border-box;
 
-						@media (min-width: $bp-small)  { // and (max-width: $bp-med)
+						@media (min-width: $bp-small) and (max-width: $bp-med)  { // and (max-width: $bp-med)
 							max-width: 30em;
 							margin: auto;
-
 						}
 					
 						h2 {
@@ -156,7 +152,6 @@ body {
 							font-family: "tisa-pro";
 							margin-bottom: $margin-article-text-elements;
 						}
-
 
 						.wrapper {
 							position: relative;
@@ -246,6 +241,7 @@ body {
 						}
 					}
 				}
+
 
 
 
