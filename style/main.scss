@@ -1,278 +1,349 @@
 svg {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .hidden {
-    display: none;
-    visibility: hidden;
+	display: none;
+	visibility: hidden;
 }
 
+//	For test purposes only button
+.button--test {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+// To remove 'required' elements from screen e.g. radiobuttons
+.outside {
+	// position: absolute;
+	// top: -99999px;
+}
 
 body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    main {
-        #article-container {
-            position: relative;
-            top: 0;
-            left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	main {
+		#article-container {
+			position: relative;
+			top: 0;
+			left: 0;
 
-            &.animation-active {
-                transition: left 1s;
-            }
-        
-            > article {
-                position: absolute;
-                width: 100vw;
-                height: 100vh;
-                top: 0;
-                overflow: hidden;
-                @for $i from 1 to 30 {
-                    &:nth-child(#{$i}) {
-                        left: 100vw * ($i - 1);
-                    }
-                }
-
-
-                // not for data visualisatie
-                &:not(.data-vis) {
-                // default propertisch
-                    h2 {
-                        font-size: 1.5em;
-                        font-family: "relative-bold";
-                        margin-bottom: $margin-article-text-elements;
-                    }
-                    
-                    // background svg
-                    > svg { 
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        pointer-events: none;
-                    }
-
-                    section {
-                        // overlay section (blue overlay)
-                        &.overlay {
-                            svg {
-                                height: 100vh;
-                                transform: translate(0px, 0px) scale(13);
-                                transition: transform 1s;
-                            }
-                        }
-    
-                        // text content section
-                        &:not(.overlay) {
-                            border-radius: 5px;
-                            background-color: rgb(240, 241, 241);
-                            padding: 25px 50px;
-                            max-width: 30em;
-                            margin: 1em;
-                            .button--go-to-next-article {
-                                &:hover {
-                                    opacity: .8;
-                                }
-                            }
-                        }
-                    }
-
-                }
-
-                // for data visualisatie
-                &.data-vis {
+			&.animation-active {
+				transition: left 1s;
+			}
+		
+			> article {
+				box-sizing: border-box;                
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				overflow: hidden;
+				@for $i from 1 to 30 {
+					&:nth-child(#{$i}) {
+						left: 100vw * ($i - 1);
+					}
+				}
 
 
+				// not for data visualisatie
+				&:not(.data-vis) {
+				// default propertisch
+					h2 {
+						font-size: 1.5em;
+						font-family: "relative-bold";
+						margin-bottom: $margin-article-text-elements;
+					}
+					
+					// background svg
+					> svg { 
+						position: absolute;
+						top: 0;
+						left: 0;
+						pointer-events: none;
+					}
 
-                    section {
-                        box-sizing: border-box;
+					section {
+						// overlay section (blue overlay)
+						&.overlay {
+							svg {
+								height: 100vh;
+								transform: translate(0px, 0px) scale(13);
+								transition: transform 1s;
+							}
+						}
+	
+						// text content section
+						&:not(.overlay) {
+							border-radius: 5px;
+							background-color: rgb(240, 241, 241);
+							padding: 25px 50px;
+							max-width: 30em;
+							margin: 1em;
+							.button--go-to-next-article {
+								&:hover {
+									opacity: .8;
+								}
+							}
+						}
+					}
 
-                        @media (min-width: $bp-small)  { // and (max-width: $bp-med)
-                            max-width: 30em;
-                            margin: auto;
+				}
 
-                        }
-                    
-                        h2 {
-                            font-size: 2em;
-                            font-family: "tisa-pro";
-                            margin-bottom: $margin-article-text-elements;
-                        }
-
-
-                        .wrapper {
-                            position: relative;
-                            overflow-y: hidden;
-
-                            // mobile
-                            @media (max-width: $bp-small) {
-                                &:not(.wrapper--not-expand) {
-
-                                    // disable the gradient and the expander button
-                                    .hide-text-gradient, .button--expander {
-                                        display: none;
-                                        visibility: hidden;
-                                    }
-
-                                    // enable the de-expander button
-                                    .button--de-expander {
-                                        background: rgba(0,0,0,0) url("../assets/icons/readLessArrow.svg") no-repeat; 
-                                        background-position: center center;
-                                        background-size: 1em;                                        
-                                        height: 2rem;
-                                        bottom: 0;
-                                        left: 0;
-                                        width: 100%;  
-
-                                        border: none;
-                                        border-bottom: 1px solid $main-black;
-                                        cursor: pointer;
-                                    }
-                                }
-                                &.wrapper--not-expand {
-
-                                    // disable the de-expander button
-                                    .button--de-expander {
-                                        display: none;
-                                        visibility: hidden;                                   
-                                    }
-
-                                    // enable the gradient and the expander button
-                                    height: 4.3em;
-
-                                    .button--expander, .hide-text-gradient {
-                                        position: absolute;
-                                    }
-
-                                    .button--expander {
-                                        background: rgba(0,0,0,0) url("../assets/icons/readMoreArrow.svg") no-repeat; 
-                                        background-position: center bottom;
-                                        background-size: 1em;
-
-                                        height: 2rem;
-                                        bottom: 0;
-                                        left: 0;
-                                        width: 100%;
-                                        border: none;
-                                        
-                                        cursor: pointer;
-                                        color: $main-blue;
-                                    }
+				// for data visualisatie
+				&.data-vis {
 
 
 
-                                    .hide-text-gradient {
-                                        top: 0;
-                                        left: 0;
-                                        height: 100%;
-                                        width: 100%;
-                                        pointer-events: none;
-                                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+8,1+77 */
-                                        background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 8%, rgba(255,255,255,1) 77%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-                                        background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-                                        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-                                    }
-                                }
-                            }
+					section {
+						box-sizing: border-box;
 
-                            // bigger than mobile
-                            @media (min-width: $bp-small) {
-                                .hide-text-gradient, .button--expander, .button--de-expander {
-                                    display: none;
-                                    visibility: hidden;
-                                }
+						@media (min-width: $bp-small)  { // and (max-width: $bp-med)
+							max-width: 30em;
+							margin: auto;
 
-                            }
+						}
+					
+						h2 {
+							font-size: 2em;
+							font-family: "tisa-pro";
+							margin-bottom: $margin-article-text-elements;
+						}
 
-                        }
-                    }
-                }
 
-                button {
-                    &.button--default {
-                        // settings van de kro
-                        border-radius: 5px;
-                        align-items: center;
-                        min-width: 66px;
-                        height: 50px;
-                        padding: 0 20px 2px;
-                        outline: none;
-                        line-height: 1;
-                        background: $main-blue;
-                        color: white;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        -webkit-transition: all .4s ease;
-                        transition: all .4s ease;
-                        margin-top: $margin-article-text-elements;
-                        font-family: "relative-medium";
-                        font-size: 1em;
-                        font-weight: 100;
-                    }
-                }
+						.wrapper {
+							position: relative;
+							overflow-y: hidden;
 
-                p {
-                    color: $main-black;
-                    margin-bottom: $margin-paragraph-elements;
-                    line-height: 1.4em;
-                    &:last-of-type {
-                        margin-bottom: 0;
-                    }
-                }
-            }
-        }
-    }
+							// mobile
+							@media (max-width: $bp-small) {
+								&:not(.wrapper--not-expand) {
+
+									// disable the gradient and the expander button
+									.hide-text-gradient, .button--expander {
+										display: none;
+										visibility: hidden;
+									}
+
+									// enable the de-expander button
+									.button--de-expander {
+										background: rgba(0,0,0,0) url("../assets/icons/readLessArrow.svg") no-repeat; 
+										background-position: center center;
+										background-size: 1em;                                        
+										height: 2rem;
+										bottom: 0;
+										left: 0;
+										width: 100%;  
+
+										border: none;
+										border-bottom: 1px solid $main-black;
+										cursor: pointer;
+									}
+								}
+								&.wrapper--not-expand {
+
+									// disable the de-expander button
+									.button--de-expander {
+										display: none;
+										visibility: hidden;                                   
+									}
+
+									// enable the gradient and the expander button
+									height: 4.3em;
+
+									.button--expander, .hide-text-gradient {
+										position: absolute;
+									}
+
+									.button--expander {
+										background: rgba(0,0,0,0) url("../assets/icons/readMoreArrow.svg") no-repeat; 
+										background-position: center bottom;
+										background-size: 1em;
+
+										height: 2rem;
+										bottom: 0;
+										left: 0;
+										width: 100%;
+										border: none;
+										
+										cursor: pointer;
+										color: $main-blue;
+									}
+
+
+
+									.hide-text-gradient {
+										top: 0;
+										left: 0;
+										height: 100%;
+										width: 100%;
+										pointer-events: none;
+									/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+8,1+77 */
+										background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 8%, rgba(255,255,255,1) 77%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+										background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+										background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+										filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+									}
+								}
+							}
+
+							// bigger than mobile
+							@media (min-width: $bp-small) {
+								.hide-text-gradient, .button--expander, .button--de-expander {
+									display: none;
+									visibility: hidden;
+								}
+
+							}
+
+						}
+					}
+				}
+
+				button,input {
+					&.button--default {
+						// settings van de kro
+						border-radius: 5px;
+						align-items: center;
+						min-width: 66px;
+						height: 50px;
+						padding: 0 20px 2px;
+						outline: none;
+						line-height: 1;
+						background: $main-blue;
+						color: $main-white;
+						cursor: pointer;
+						border: 1px solid transparent;
+						-webkit-transition: all .4s ease;
+						transition: all .4s ease;
+						margin-top: $margin-article-text-elements;
+						font-family: "relative-medium";
+						font-size: 1em;
+						font-weight: 100;
+
+						@media (min-width: $bp-med) {
+							// width: auto;
+						}
+					}
+					
+					&:disabled {
+						background: $main-gray;
+					}
+
+					&.button__select {
+						background: $light-gray;
+						color: $main-black;
+					}
+					&.button__select--selected {
+						background: $main-orange;
+						color: $main-white;
+					}
+				}
+
+				p {
+					color: $main-black;
+					margin-bottom: $margin-paragraph-elements;
+					line-height: 1.4em;
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
 }
 
 article {
-    $overlay-effect-size: 200vmax;
-    position: relative;
-    .overlay {
-        height: 100%;
-        width: 100%;
-    }
-    .overlay-effect {
+	$overlay-effect-size: 200vmax;
+	position: relative;
+	.overlay {
+		height: 100%;
+		width: 100%;
+	}
+	.overlay-effect {
 
-        transition: left 0.5s, right 0.5s, height 0.5s, width 0.5s;
+		transition: left 0.5s, right 0.5s, height 0.5s, width 0.5s;
 
-        height: $overlay-effect-size;
-        width: $overlay-effect-size;
-        border: 200vmax solid $main-blue;
-        border-radius: 50%;
-        pointer-events: none;
-        position: absolute;
-        left: -250vmax;
-        top: -250vmax;
-        &.overlay-effect--focus {
-            @media (max-width: $bp-small) {
-                height: 60vmin;
-                width: 60vmin;
-            }
-            @media (min-width: $bp-small) {
-                height: 40vh;
-                width: 40vh;
-            }
-        }
-        &.overlay-effect--fill {
-            height: 0;
-            width: 0;
-        }
-    }
+		height: $overlay-effect-size;
+		width: $overlay-effect-size;
+		border: 200vmax solid $main-blue;
+		border-radius: 50%;
+		pointer-events: none;
+		position: absolute;
+		left: -250vmax;
+		top: -250vmax;
+		&.overlay-effect--focus {
+			@media (max-width: $bp-small) {
+				height: 60vmin;
+				width: 60vmin;
+			}
+			@media (min-width: $bp-small) {
+				height: 40vh;
+				width: 40vh;
+			}
+		}
+		&.overlay-effect--fill {
+			height: 0;
+			width: 0;
+		}
+	}
 
-    &#route-2 {
-        .overlay-effect {
-            &.overlay-effect--focus {
-                @media (max-width: $bp-small) {
-                    left: calc(-200vmax + 50vw - 30vmin);
-                    top: calc(-200vmax + 90vh - 60vmin);
-                }
-                @media (min-width: $bp-small) {
-                    left: calc(-200vmax + 50vw + 55vh);
-                    top: calc(-200vmax + 100vh - 40vh);
-                }
-            } 
-        }
-    }
+	&#route-2 {
+		.overlay-effect {
+			&.overlay-effect--focus {
+				@media (max-width: $bp-small) {
+					left: calc(-200vmax + 50vw - 30vmin);
+					top: calc(-200vmax + 90vh - 60vmin);
+				}
+				@media (min-width: $bp-small) {
+					left: calc(-200vmax + 50vw + 55vh);
+					top: calc(-200vmax + 100vh - 40vh);
+				}
+			} 
+		}
+	}
 }
+
+.title__choose {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: $bp-large) {
+		padding: 2em;
+	}
+
+	&>div {
+		display: flex;
+		flex-direction: column;
+		max-width: 45em;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	input {
+		@media (min-width: $bp-med) {
+			width: auto;
+		   align-self: center;
+	   }
+	}
+	
+	.title__info {
+		margin-top: .5em;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease-out;
+	}
+
+	.title__info--open {
+		max-height: 5em; // A high value to show the content again
+	}
+}
+
