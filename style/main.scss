@@ -24,18 +24,18 @@ svg {
 
 
 
-button {
+button,input {
     &.button--default {
         // settings van de kro
         border-radius: 5px;
         align-items: center;
         min-width: 66px;
-        height: $default-button-height;
+        height: 50px;
         padding: 0 20px 2px;
         outline: none;
         line-height: 1;
         background: $main-blue;
-        color: white;
+        color: $main-white;
         cursor: pointer;
         border: 1px solid transparent;
         -webkit-transition: all .4s ease;
@@ -44,6 +44,23 @@ button {
         font-family: "relative-medium";
         font-size: 1em;
         font-weight: 100;
+
+        @media (min-width: $bp-med) {
+            // width: auto;
+        }
+    }
+    
+    &:disabled {
+        background: $main-gray;
+    }
+
+    &.button__select {
+        background: $light-gray;
+        color: $main-black;
+    }
+    &.button__select--selected {
+        background: $main-orange;
+        color: $main-white;
     }
 }
 
@@ -230,45 +247,7 @@ body {
 					}
 				}
 
-				button,input {
-					&.button--default {
-						// settings van de kro
-						border-radius: 5px;
-						align-items: center;
-						min-width: 66px;
-						height: 50px;
-						padding: 0 20px 2px;
-						outline: none;
-						line-height: 1;
-						background: $main-blue;
-						color: $main-white;
-						cursor: pointer;
-						border: 1px solid transparent;
-						-webkit-transition: all .4s ease;
-						transition: all .4s ease;
-						margin-top: $margin-article-text-elements;
-						font-family: "relative-medium";
-						font-size: 1em;
-						font-weight: 100;
 
-						@media (min-width: $bp-med) {
-							// width: auto;
-						}
-					}
-					
-					&:disabled {
-						background: $main-gray;
-					}
-
-					&.button__select {
-						background: $light-gray;
-						color: $main-black;
-					}
-					&.button__select--selected {
-						background: $main-orange;
-						color: $main-white;
-					}
-				}
 
 				p {
 					color: $main-black;
@@ -286,6 +265,7 @@ body {
 
 /////////////
 // overlay //
+
 
 article {
     $overlay-effect-size: 200vmax;
@@ -317,7 +297,7 @@ article {
                 bottom: calc(-2rem - #{$default-button-height});
             }
             
-            button {
+            button.button--default {
                 background-color: #ffa101;
                 display: block;
                 margin: 0;
