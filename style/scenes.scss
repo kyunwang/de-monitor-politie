@@ -23,9 +23,10 @@
 =================*/
 
 #politievlogger-intro {
-	@media (max-width: $bp-small) {}
-	@media (min-width: $bp-small) and (max-width: $bp-med) {}
-	@media (min-width: $bp-med) and (max-width: $bp-large) {}
+	// @media (max-width: $bp-small) {}
+	// @media (min-width: $bp-small) and (max-width: $bp-med) {}
+	// @media (min-width: $bp-med) and (max-width: $bp-large) {}
+	// @media (min-width: $bp-large) {}
 
 	svg {
 		@media (max-width: $bp-small) {
