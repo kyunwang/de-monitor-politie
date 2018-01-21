@@ -37,6 +37,7 @@ body {
             }
         
             > article {
+                box-sizing: border-box;                
                 position: absolute;
                 width: 100vw;
                 height: 100vh;
@@ -203,7 +204,7 @@ body {
                     }
                 }
 
-                button {
+                button,input {
                     &.button--default {
                         // settings van de kro
                         border-radius: 5px;
@@ -233,7 +234,9 @@ body {
                         background: $light-gray;
                         color: $main-black;
                     }
-                    &.button__select--selected {}
+                    &.button__select--selected {
+                        background: $main-orange;
+                    }
 
 
                 }
@@ -251,7 +254,6 @@ body {
     }
 }
 
-<<<<<<< HEAD
 article {
     $overlay-effect-size: 200vmax;
     position: relative;
@@ -302,12 +304,29 @@ article {
         }
     }
 }
-=======
 
-
-.choose-title {
+.title__choose {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
+    h2 {
+        text-align: center;
+    }
+
+    .title__info {
+        margin-top: .5em;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    .title__info--open {
+        max-height: 100em; // A high value to show the content again
+    }
+
+    @media (max-width: $bp-med) {
+        padding: 2em;
+    }
 }
 
->>>>>>> select_title
