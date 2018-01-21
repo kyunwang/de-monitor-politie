@@ -234,3 +234,53 @@ body {
     }
 }
 
+article {
+    $overlay-effect-size: 200vmax;
+    position: relative;
+    .overlay {
+        height: 100%;
+        width: 100%;
+    }
+    .overlay-effect {
+
+        transition: left 0.5s, right 0.5s, height 0.5s, width 0.5s;
+
+        height: $overlay-effect-size;
+        width: $overlay-effect-size;
+        border: 200vmax solid $main-blue;
+        border-radius: 50%;
+        pointer-events: none;
+        position: absolute;
+        left: -250vmax;
+        top: -250vmax;
+        &.overlay-effect--focus {
+            @media (max-width: $bp-small) {
+                height: 60vmin;
+                width: 60vmin;
+            }
+            @media (min-width: $bp-small) {
+                height: 40vh;
+                width: 40vh;
+            }
+        }
+        &.overlay-effect--fill {
+            height: 0;
+            width: 0;
+        }
+    }
+
+    &#route-2 {
+        .overlay-effect {
+            &.overlay-effect--focus {
+                @media (max-width: $bp-small) {
+                    left: calc(-200vmax + 50vw - 30vmin);
+                    top: calc(-200vmax + 90vh - 60vmin);
+                }
+                @media (min-width: $bp-small) {
+                    left: calc(-200vmax + 50vw + 55vh);
+                    top: calc(-200vmax + 100vh - 40vh);
+                }
+            } 
+        }
+    }
+}
