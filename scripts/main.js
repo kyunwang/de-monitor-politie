@@ -32,6 +32,7 @@ function goToNextArticle() {
 		articleContainer.style.left = (-100 * articleIndex) + "vw";
 		setTimeout(function () {
 			articleContainer.classList.remove("animation-active");
+			setFocusPoint(articles[articleIndex]);
 		}, 1000);
 		return articles[articleIndex];
 	} else {
@@ -122,7 +123,7 @@ function setFocusPoint(article, x, y) {
 // }
 
 setTimeout(function () {
-    goToArticleById("route-2");
+    // goToArticleById("license-plate");
 }, 300);
 
 

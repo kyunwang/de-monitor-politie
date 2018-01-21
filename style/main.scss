@@ -9,6 +9,32 @@ svg {
 }
 
 
+
+
+button {
+    &.button--default {
+        // settings van de kro
+        border-radius: 5px;
+        align-items: center;
+        min-width: 66px;
+        height: $default-button-height;
+        padding: 0 20px 2px;
+        outline: none;
+        line-height: 1;
+        background: $main-blue;
+        color: white;
+        cursor: pointer;
+        border: 1px solid transparent;
+        -webkit-transition: all .4s ease;
+        transition: all .4s ease;
+        margin-top: $margin-article-text-elements;
+        font-family: "relative-medium";
+        font-size: 1em;
+        font-weight: 100;
+    }
+}
+
+
 body {
     width: 100vw;
     height: 100vh;
@@ -190,28 +216,7 @@ body {
                     }
                 }
 
-                button {
-                    &.button--default {
-                        // settings van de kro
-                        border-radius: 5px;
-                        align-items: center;
-                        min-width: 66px;
-                        height: 50px;
-                        padding: 0 20px 2px;
-                        outline: none;
-                        line-height: 1;
-                        background: $main-blue;
-                        color: white;
-                        cursor: pointer;
-                        border: 1px solid transparent;
-                        -webkit-transition: all .4s ease;
-                        transition: all .4s ease;
-                        margin-top: $margin-article-text-elements;
-                        font-family: "relative-medium";
-                        font-size: 1em;
-                        font-weight: 100;
-                    }
-                }
+
 
                 p {
                     color: $main-black;
@@ -226,12 +231,54 @@ body {
     }
 }
 
+
+/////////////
+// overlay //
+
 article {
     $overlay-effect-size: 200vmax;
     position: relative;
     .overlay {
         height: 100%;
         width: 100%;
+        span {
+            position: absolute;
+            display: flex;
+
+            width: 120%;
+            left: -10%;
+            // @media (max-width: $bp-small) {
+            //     width: 60vmin;
+            // }
+            // @media (min-width: $bp-small) and (max-width: $bp-med) {
+            //     width: 50vmin;
+            // }
+
+            // @media (min-width: $bp-med) {
+            //     width: 40vh;
+            // }
+
+            &.on-top {
+                top: calc(-2rem - #{$default-button-height});
+            }
+            &:not(.on-top) {
+                bottom: calc(-2rem - #{$default-button-height});
+            }
+            
+            button {
+                background-color: #ffa101;
+                display: block;
+                margin: 0;
+                text-align: center;
+                font-size: 80%;
+                &:not(:last-of-type) {
+                    margin-right: 1em;
+                    
+                }
+                flex-grow: 1;
+                padding: 0;
+            }
+        }
     }
     .overlay-effect {
 
@@ -241,7 +288,7 @@ article {
         width: $overlay-effect-size;
         border: 200vmax solid $main-blue;
         border-radius: 50%;
-        pointer-events: none;
+        // pointer-events: none;
         position: absolute;
         left: -250vmax;
         top: -250vmax;
@@ -250,7 +297,12 @@ article {
                 height: 60vmin;
                 width: 60vmin;
             }
-            @media (min-width: $bp-small) {
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                height: 50vmin;
+                width: 50vmin;
+            }
+
+            @media (min-width: $bp-med) {
                 height: 40vh;
                 width: 40vh;
             }
@@ -268,11 +320,95 @@ article {
                     left: calc(-200vmax + 50vw - 30vmin);
                     top: calc(-200vmax + 90vh - 60vmin);
                 }
-                @media (min-width: $bp-small) {
-                    left: calc(-200vmax + 50vw + 55vh);
-                    top: calc(-200vmax + 100vh - 40vh);
+
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    left: calc(-200vmax + 50vw - 25vmin);
+                    top: calc(-200vmax + 90vh - 50vmin);
+                }
+                @media (min-width: $bp-med) {
+                    left: calc(-200vmax + 100vw - 42vh);
+                    top: calc(-200vmax + 100vh - 44vh);
                 }
             } 
         }
     }
+    &#house {
+        .overlay-effect {
+            &.overlay-effect--focus {
+                @media (max-width: $bp-small) {
+                    left: calc(-200vmax + 60vw - 30vmin);
+                    top: calc(-200vmax + 55vh - 30vmin);
+                }
+
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    left: calc(-200vmax + 70vw - 25vmin);
+                    top: calc(-200vmax + 80vh - 50vmin);
+                }
+                @media (min-width: $bp-med) {
+                    left: calc(-200vmax + 100vw - 50vh);
+                    top: calc(-200vmax + 80vh - 40vh);
+                }                
+            }
+        }       
+    }
+    &#house-num {
+        .overlay-effect {
+            &.overlay-effect--focus {
+                @media (max-width: $bp-small) {
+                    left: calc(-200vmax + 48vw - 30vmin);
+                    top: calc(-200vmax + 18vh - 30vmin);
+                }
+
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    left: calc(-200vmax + 52vw - 25vmin);
+                    top: calc(-200vmax + 50vh - 50vmin);
+                }
+                @media (min-width: $bp-med) {
+                    left: calc(-200vmax + 58vw - 20vh);
+                    top: calc(-200vmax + 20vh - 20vh);
+                }                
+            }
+        }       
+    }
+    &#open-door {
+        .overlay-effect {
+            &.overlay-effect--focus {
+                @media (max-width: $bp-small) {
+                    left: calc(-200vmax + 63vw - 30vmin);
+                    top: calc(-200vmax + 24vh - 30vmin);
+                }
+
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    left: calc(-200vmax + 70vw - 25vmin);
+                    top: calc(-200vmax + 50vh - 50vmin);
+                }
+                @media (min-width: $bp-med) {
+                    left: calc(-200vmax + 85vw - 20vh);
+                    top: calc(-200vmax + 20vh - 20vh);
+                }                
+            }
+        }  
+    }
+    &#license-plate {
+        .overlay-effect {
+            &.overlay-effect--focus {
+                @media (max-width: $bp-small) {
+                    left: calc(-200vmax + 50vw - 30vmin);
+                    top: calc(-200vmax + 38vh - 30vmin);
+                }
+
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    left: calc(-200vmax + 51vw - 25vmin);
+                    top: calc(-200vmax + 40vh - 25vmin);
+                }
+                @media (min-width: $bp-med) {
+                    left: calc(-200vmax + 43vw - 20vh);
+                    top: calc(-200vmax + 60vh - 20vh);
+                }                
+            }
+        }  
+    }
 }
+
+// overlay //
+/////////////
