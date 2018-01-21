@@ -225,8 +225,8 @@ body {
                         font-size: 1em;
                         font-weight: 100;
                     }
-
-                    &.button--disabled {
+                    
+                    &:disabled {
                         background: $main-gray;
                     }
 
@@ -236,6 +236,7 @@ body {
                     }
                     &.button__select--selected {
                         background: $main-orange;
+                        color: $main-white;
                     }
 
 
@@ -318,11 +319,11 @@ article {
         margin-top: .5em;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.2s ease-out;
+        transition: max-height 0.3s ease-out;
     }
 
     .title__info--open {
-        max-height: 100em; // A high value to show the content again
+        max-height: 5em; // A high value to show the content again
     }
 
     @media (max-width: $bp-med) {
