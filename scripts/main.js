@@ -1,3 +1,4 @@
+//@ts-check
 var mainElement = document.getElementsByTagName("main")[0];
 
 var articleContainer = document.getElementById("article-container");
@@ -118,9 +119,9 @@ function setFocusPoint(article, x, y) {
 /////////////////
 //  test stuff //
 
-// for (let index = 0; index < 1; index++) {
-// 	goToNextArticle();
-// }
+for (let index = 0; index < 16; index++) {
+	// goToNextArticle();
+}
 
 setTimeout(function () {
     // goToArticleById("license-plate");
@@ -167,6 +168,7 @@ for (let index = 0; index < buttonExpanders.length; index++) {
 
 
 function buttonDeExpanderFunction(e) {
+	
 	var source = e.target;
 	var parent = source.parentElement;
 
