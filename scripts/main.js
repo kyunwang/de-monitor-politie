@@ -33,6 +33,7 @@ function goToNextArticle() {
 		articleContainer.style.left = (-100 * articleIndex) + "vw";
 		setTimeout(function () {
 			articleContainer.classList.remove("animation-active");
+			setFocusPoint(articles[articleIndex]);
 		}, 1000);
 		return articles[articleIndex];
 	} else {
@@ -123,7 +124,7 @@ for (let index = 0; index < 16; index++) {
 }
 
 setTimeout(function () {
-    // goToArticleById("bubble-con");
+    // goToArticleById("license-plate");
 }, 300);
 
 
