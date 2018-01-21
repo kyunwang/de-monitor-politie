@@ -123,7 +123,7 @@ for (let index = 0; index < 16; index++) {
 }
 
 setTimeout(function () {
-    goToArticleById("route-2");
+    // goToArticleById("bubble-con");
 }, 300);
 
 
