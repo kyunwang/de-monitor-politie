@@ -1,3 +1,42 @@
+h2,
+p,
+li {
+	font-family: "tisa-pro", serif;
+	font-weight: 100;
+}
+
+h3 {
+	font-family: "relative-bold";
+}
+
+h2 {
+	@media (max-width: $bp-small) {
+		font-size: 1.6em;
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+}
+
+h3 {
+	@media (max-width: $bp-small) {
+		font-size: 1.2em;
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+}
+
+
+p {
+	@media (max-width: $bp-small) {
+		font-size: 0.9em;
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		font-size: 1.1em;
+	}
+}
+
+
 svg {
 	width: 100%;
 	height: 100%;
@@ -47,12 +86,20 @@ button,input {
 
         @media (min-width: $bp-med) {
             // width: auto;
+		  }
+		  
+        @media (max-width: $bp-med) {
+            width: 100%;
         }
     }
     
     &:disabled {
         background: $main-gray;
-    }
+	 }
+	 
+	 &.button--full-width {
+		 width: 100%;
+	 }
 
     &.button__select {
         background: $light-gray;
@@ -144,15 +191,35 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
+
 					&>div {
-						width: 100%;
+						@media (max-width: $bp-med) {
+							width: 100%;
+							margin: $margin-small 0;
+						}
+
+						@media (min-width: $bp-med) {
+							display: flex;
+							// flex-direction: column;
+							justify-content: space-between;
+							// width: 100%;
+							flex: 1 1 100%;
+							margin: $margin-small;
+							margin-top: $margin-large;
+							// margin: $margin-small auto;
+						}
 					}
+
 					section {
 						box-sizing: border-box;
 
-						@media (min-width: $bp-small) and (max-width: $bp-med)  { // and (max-width: $bp-med)
+						@media (max-width: $bp-small) {
 							max-width: 30em;
-							margin: auto;
+							margin: $margin-small;
+						}
+
+						@media (min-width: $bp-small) and (max-width: $bp-med)  { // and (max-width: $bp-med)
+							margin: 0 $margin-small;
 						}
 					
 						h2 {
