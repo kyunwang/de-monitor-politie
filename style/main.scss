@@ -198,13 +198,6 @@ body {
 
 					section {
 						// overlay section (blue overlay)
-						&.overlay {
-							svg {
-								height: 100vh;
-								transform: translate(0px, 0px) scale(13);
-								transition: transform 1s;
-							}
-						}
 	
 						// text content section
 						&:not(.overlay) {
@@ -360,10 +353,17 @@ body {
 		}
     }
     footer {
+        
+
         position: absolute;
         bottom: 0;
         left: 0;
         @media (max-width: $bp-small) {
+            &.disabled {
+                visibility: hidden;
+                display: none;
+            }
+
             width: 100%;
             // height: 100%;
             #item-menu {
@@ -426,15 +426,27 @@ body {
             }
         }
 
+        @media (min-width: $bp-small) {
+            #item-menu {
+                transition: transform 1s;
+            }
+            &.disabled #item-menu {
+                transform: translate(0, 30vw);
+            }
+            #item-menu__form fieldset > div span {
+                margin-right: 1em;
+            }
+        }
+
         #item-menu__form {
             position: absolute;
-            bottom: 3rem;
+            bottom: 5vmin;
             left: 5vmin;
             fieldset {
                 legend {
                     color: white;
                     font-family: "relative-medium";
-                    
+                    margin-bottom: 2.5vmin;
                 }
                 > div {
                     display: flex;
@@ -484,7 +496,7 @@ body {
                             background-size: cover;
                         }
 
-                        input[value="open-door"] + label {
+                        input[value="throw-beer"] + label {
                             background: rgba(0,0,0,0) url("../assets/items/verdachte.png") no-repeat; 
                             background-position: center center;
                             background-size: cover;
@@ -509,7 +521,7 @@ body {
                         }
 
                         input[value="neighbor"] + label {
-                            background: rgba(0,0,0,0) url("../assets/items/huis.png") no-repeat; 
+                            background: rgba(0,0,0,0) url("../assets/items/buurtbewoner.png") no-repeat; 
                             background-position: center center;
                             background-size: cover;
                         }
@@ -568,6 +580,36 @@ article {
     .overlay {
         height: 100%;
         width: 100%;
+        
+        article {
+            position: absolute;
+            z-index: 10;
+            p {
+                
+                background-color: white;
+                padding: 1em;
+
+            }
+
+            @media (max-width: $bp-small) {
+                width: calc(100vw - 10vmin);
+                margin-left: 5vmin;
+            }
+
+            @media (min-width: $bp-small) {
+
+            }
+
+            img {
+                position: absolute;
+                bottom: -1em;
+                height: 1em;
+                pointer-events: none;
+            }
+        }
+
+    }
+    .overlay-effect {
         span {
             position: absolute;
             display: flex;
@@ -593,7 +635,12 @@ article {
             }
             
             button.button--default {
+
                 background-color: #ffa101;
+                &:disabled {
+                  background-color: $main-gray; 
+                  color: white;
+                }
                 display: block;
                 margin: 0;
                 text-align: center;
@@ -606,9 +653,6 @@ article {
                 padding: 0;
             }
         }
-    }
-    .overlay-effect {
-
         transition: left 0.5s, right 0.5s, height 0.5s, width 0.5s, transform 0.5s;
 
         height: $overlay-effect-size;
@@ -668,7 +712,7 @@ article {
                     top: calc(-200vmax + 90vh - 50vmin);
                 }
                 @media (min-width: $bp-med) {
-                    left: calc(-200vmax + 100vw - 42vh);
+                    left: calc(-200vmax + 100vw - 70vh);
                     top: calc(-200vmax + 100vh - 44vh);
                 }
             } 
@@ -712,7 +756,7 @@ article {
             }
         }       
     }
-    &#open-door {
+    &#throw-beer {
         .overlay-effect {
             &.overlay-effect--focus {
                 @media (max-width: $bp-small) {
@@ -746,6 +790,25 @@ article {
                 @media (min-width: $bp-med) {
                     left: calc(-200vmax + 43vw - 20vh);
                     top: calc(-200vmax + 60vh - 20vh);
+                }                
+            }
+        }  
+    }
+    &#neighbor {
+        .overlay-effect {
+            &.overlay-effect--focus {
+                @media (max-width: $bp-small) {
+                    left: calc(-200vmax + 40vw - 30vmin);
+                    top: calc(-200vmax + 32vh - 30vmin);
+                }
+
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    left: calc(-200vmax + 40vw - 25vmin);
+                    top: calc(-200vmax + 40vh - 25vmin);
+                }
+                @media (min-width: $bp-med) {
+                    left: calc(-200vmax + 35vw - 20vh);
+                    top: calc(-200vmax + 37vh - 20vh);
                 }                
             }
         }  
