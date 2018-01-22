@@ -36,6 +36,11 @@ p {
 	}
 }
 
+b {
+	font-family: "relative-bold";
+	font-weight: 700;
+}
+
 
 svg {
 	width: 100%;
@@ -146,6 +151,14 @@ body {
 					}
 				}
 			}
+
+			&>#blur-info {
+				&>.text-field {
+					@media (max-width: $bp-small) {
+						padding: 1em;
+					}
+				}
+			}
 		
 			> article {
 				box-sizing: border-box;                
@@ -210,7 +223,7 @@ body {
 
 						&.text-field {
 							@media (max-width: $bp-med) {
-								margin: $margin-small;
+								margin: calc(#{$margin-small} / 2);
 							}
 							@media (min-width: $bp-med) {
 								// margin: $margin-small;
@@ -786,4 +799,23 @@ article {
 	.title__info--open {
 		max-height: 5em; // A high value to show the content again
 	}
+}
+
+.card__blur {
+	display: flex;
+	margin-bottom: 2em;
+	// &:not(:first-of-type) {
+	// 	margin-top: $margin-small;
+	// }
+
+	img {
+		width: 5em;
+		height: 5em;
+		margin-right: $margin-small;
+	}
+
+	p {
+		margin: 0 !important; // No idea how to overwrite it otherwise
+	}
+
 }
