@@ -1,3 +1,42 @@
+h2,
+p,
+li {
+	font-family: "tisa-pro", serif;
+	font-weight: 100;
+}
+
+h3 {
+	font-family: "relative-bold";
+}
+
+h2 {
+	@media (max-width: $bp-small) {
+		font-size: 1.6em;
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+}
+
+h3 {
+	@media (max-width: $bp-small) {
+		font-size: 1.2em;
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+}
+
+
+p {
+	@media (max-width: $bp-small) {
+		font-size: 0.9em;
+	}
+
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		font-size: 1.1em;
+	}
+}
+
+
 svg {
 	width: 100%;
 	height: 100%;
@@ -23,7 +62,6 @@ svg {
 }
 
 
-
 button,input {
     &.button--default {
         // settings van de kro
@@ -47,12 +85,17 @@ button,input {
 
         @media (min-width: $bp-med) {
             // width: auto;
-        }
+		  }
+		  
     }
     
     &:disabled {
         background: $main-gray;
-    }
+	 }
+	 
+	 &.button--full-width {
+		 width: 100%;
+	 }
 
     &.button__select {
         background: $light-gray;
@@ -92,6 +135,11 @@ body {
 					}
 				}
 
+				&.show-overflow {
+					// height: 100%;
+					// height: auto;
+					overflow-y: scroll;
+				}
 
 				// not for data visualisatie
 				&:not(.data-vis) {
@@ -142,9 +190,13 @@ body {
 					section {
 						box-sizing: border-box;
 
-						@media (min-width: $bp-small) and (max-width: $bp-med)  { // and (max-width: $bp-med)
+						@media (max-width: $bp-small) {
 							max-width: 30em;
-							margin: auto;
+							margin: $margin-small;
+						}
+
+						@media (min-width: $bp-small) { // and (max-width: $bp-med)
+							margin: 0 $margin-small;
 						}
 					
 						h2 {
@@ -651,3 +703,43 @@ article {
 
 // overlay //
 /////////////
+
+
+.title__choose {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: $bp-large) {
+		padding: 2em;
+	}
+
+	&>div {
+		display: flex;
+		flex-direction: column;
+		max-width: 45em;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	input {
+		@media (min-width: $bp-med) {
+			width: auto;
+		   align-self: center;
+	   }
+	}
+	
+	.title__info {
+		margin-top: .5em;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease-out;
+	}
+
+	.title__info--open {
+		max-height: 5em; // A high value to show the content again
+	}
+}

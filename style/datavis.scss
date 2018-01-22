@@ -1,79 +1,98 @@
-h2,
-p {
-	font-family: "tisa-pro", serif;
-	font-weight: 100;
+text {
+	pointer-events: none;
 }
 
-h3 {
-	font-family: "relative-bold";
-}
-
-h2 {
-	@media (max-width: $bp-small) {
-		font-size: 1.6em;
+.screen__wrapper {
+	margin: auto;
+	@media (min-width: $bp-med) {
+		max-width: $bp-large;
+		
 	}
 
-	@media (min-width: $bp-small) and (max-width: $bp-med) {}
-}
+	&>div {
+		@media (max-width: $bp-med) {
+			width: 100%;
+			margin: $margin-small 0;
+		}
 
-h3 {
-	@media (max-width: $bp-small) {
-		font-size: 1.2em;
-	}
-
-	@media (min-width: $bp-small) and (max-width: $bp-med) {}
-}
-
-
-p {
-	@media (max-width: $bp-small) {
-		font-size: 0.9em;
-	}
-
-	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		font-size: 1.1em;
+		@media (min-width: $bp-med) {
+			display: flex;
+			// flex-direction: column;
+			justify-content: space-between;
+			// width: 100%;
+			flex: 1 1 100%;
+			margin: $margin-small;
+			margin-top: $margin-large;
+			// margin: $margin-small auto;
+		}
 	}
 }
-
 
 #bubble-con {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	// display: flex;
+	// flex-direction: column;
+	// // justify-content: center;
+	// align-items: center;
 
 	color: $main-black;
 
 	img {
-		height: 1.3em;
-		max-height: 26px;
-		margin: 0.5em 0;
+		@media (max-width: $bp-med) {
+			height: 1.3em;
+			margin: 0.5em 0;
+		}
+		@media (min-width: $bp-med) {
+			height: 2em;
+			// max-height: 26px;
+			margin: 0.5em 0;
+			margin-bottom: 2em;
+		}
 	}
 
-	section {
-		// margin: 0 $margin-small;
-		margin: $margin-small;
+	&> section {
+		// @media (max-width: $bp-med) {
+			margin: $margin-small;
+		// }
+
+		// @media (min-width: $bp-med) {
+		// 	margin: 0;
+		// }
+	}
+
+	.button--default {
+		width: 100%;
 	}
 }
 
 #bubble-chart {
-	//   width: 300px;
-	// padding: $margin-small 0;
-	// margin: auto 0;
-	
 	@media (max-width: $bp-med) {
 		height: 350px;
-		// max-height: 300px;
 		max-width: 90vw;
-		margin: $margin-small;
+	}
+
+	@media (max-width: $bp-small) {
+		margin-left: calc(#{$margin-small}/2);		
 	}
 	
-	@media (max-width: $bp-med) {
-		height: 350px;
-		// max-height: 300px;
-		max-width: 90vw;
-		margin: $margin-small 0;
+	@media (min-width: $bp-small) and (max-width: $bp-med) {
+		margin-left: $margin-small;
+		// margin-left: calc(#{$margin-small}/2);
 	}
+
+	@media (min-width: $bp-med) {
+		height: 400px;
+		width: 400px;
+	}	
+	
+	@media (min-width: $bp-large) {
+		height: 500px;
+		width: 500px;
+	}	
+	
+	// @media (min-width: $bp-med) and (max-width: $bp-large) {
+	// 	height: 400px;
+	// 	width: 400px;
+	// }	
 
 	&>img {
 		@media (max-width: $bp-med) {
@@ -110,9 +129,15 @@ p {
 
 	div {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-content: center;
+		@media (max-width: $bp-med) {
+			flex-wrap: wrap;
+			align-content: center;
+			justify-content: space-between;
+		}
+		@media (min-width: $bp-med) {
+			flex-direction: column;
+			flex: 1;
+		}
 	}
 
 	ul {
@@ -123,8 +148,25 @@ p {
 		margin-top: 1em;
 		border-top: 1px solid $main-black;
 		padding-top: 1em;
-		color: red;
-		text-align: center;
+		// color: red;
+		// text-align: center;
+	}
+
+	li {
+		padding: .5em 0;
+	}
+}
+
+.data__info--group {
+	@media (max-width: $bp-med) {
+		flex: 1;
+		// width: 100%;
+		margin: $margin-small 0;
+	}
+
+	@media (min-width: $bp-med) {
+		flex: 1;
+		margin-left: $margin-large;
 	}
 }
 

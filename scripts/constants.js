@@ -1,4 +1,4 @@
-var data;
+var vlogData;
 var keys;
 
 var width = document.body.clientWidth;
