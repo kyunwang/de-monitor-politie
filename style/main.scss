@@ -62,7 +62,6 @@ svg {
 }
 
 
-
 button,input {
     &.button--default {
         // settings van de kro
@@ -88,9 +87,6 @@ button,input {
             // width: auto;
 		  }
 		  
-        @media (max-width: $bp-med) {
-            width: 100%;
-        }
     }
     
     &:disabled {
@@ -191,25 +187,6 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
-
-					&>div {
-						@media (max-width: $bp-med) {
-							width: 100%;
-							margin: $margin-small 0;
-						}
-
-						@media (min-width: $bp-med) {
-							display: flex;
-							// flex-direction: column;
-							justify-content: space-between;
-							// width: 100%;
-							flex: 1 1 100%;
-							margin: $margin-small;
-							margin-top: $margin-large;
-							// margin: $margin-small auto;
-						}
-					}
-
 					section {
 						box-sizing: border-box;
 
@@ -218,7 +195,7 @@ body {
 							margin: $margin-small;
 						}
 
-						@media (min-width: $bp-small) and (max-width: $bp-med)  { // and (max-width: $bp-med)
+						@media (min-width: $bp-small) { // and (max-width: $bp-med)
 							margin: 0 $margin-small;
 						}
 					
