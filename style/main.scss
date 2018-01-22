@@ -36,6 +36,11 @@ p {
 	}
 }
 
+b {
+	font-family: "relative-bold";
+	font-weight: 700;
+}
+
 
 svg {
 	width: 100%;
@@ -83,8 +88,8 @@ button,input {
         font-size: 1em;
         font-weight: 100;
 
-        @media (min-width: $bp-med) {
-            // width: auto;
+        @media (max-width: $bp-med) {
+            width: 100%;
 		  }
 		  
     }
@@ -120,6 +125,39 @@ body {
 
 			&.animation-active {
 				transition: left 1s;
+			}
+
+			&>#website-intro,
+			&>#end-note {
+				&:not(.data-vis) {
+					&>svg {
+						position: absolute;
+						height: auto;
+						z-index: -10;
+						
+						&:nth-of-type(1) {
+							@media (min-width: $bp-med) {
+								transform: scale(.7);
+							}
+						}
+						
+						&:nth-of-type(2) {
+							bottom: 0;
+							top: unset;
+							@media (max-width: $bp-med) {
+								transform: scale(1.5);
+							}
+						}
+					}
+				}
+			}
+
+			&>#blur-info {
+				&>.text-field {
+					@media (max-width: $bp-small) {
+						padding: 1em;
+					}
+				}
 			}
 		
 			> article {
@@ -168,11 +206,24 @@ body {
 							padding: 25px 50px;
 							max-width: 30em;
 							margin: 1em;
+
 							.button--go-to-next-article {
 								&:hover {
 									opacity: .8;
 								}
 							}
+						}
+
+						&.text-field {
+							@media (max-width: $bp-med) {
+								margin: calc(#{$margin-small} / 2);
+							}
+							@media (min-width: $bp-med) {
+								// margin: $margin-small;
+								margin: $margin-large auto;
+							}
+							// max-width: 100%;
+							// width: 100%;
 						}
 					}
 
@@ -768,6 +819,12 @@ article {
 /////////////
 
 
+
+// .text-field {
+// 	margin: auto;
+// }
+
+// For the title choose page
 .title__choose {
 	display: flex;
 	flex-direction: column;
@@ -805,4 +862,23 @@ article {
 	.title__info--open {
 		max-height: 5em; // A high value to show the content again
 	}
+}
+
+.card__blur {
+	display: flex;
+	margin-bottom: 2em;
+	// &:not(:first-of-type) {
+	// 	margin-top: $margin-small;
+	// }
+
+	img {
+		width: 5em;
+		height: 5em;
+		margin-right: $margin-small;
+	}
+
+	p {
+		margin: 0 !important; // No idea how to overwrite it otherwise
+	}
+
 }
