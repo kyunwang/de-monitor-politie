@@ -38,6 +38,7 @@ async function getData(data) {
 
 // Start bubblechart
 var bubbleChart = d3.select("#bubble-chart");
+var bubbleInfoHead = document.querySelector(".data__info h3");
 var bubbleInfoLi = document.querySelectorAll(".data__info li span");
 
 async function createBubble() {
@@ -133,7 +134,8 @@ async function createBubble() {
       .rollup(item => item.length)
       .entries(filteredData);
 
-    // Update the number using getValue
+	 // Update the number using getValue
+	 bubbleInfoHead.textContent = `Betrokkenen bij categorie: ${d.data.key}`;
     bubbleInfoLi[0].textContent = getValue("Verdachte", filteredRollup);
     bubbleInfoLi[1].textContent = getValue("Slachtoffer", filteredRollup);
     bubbleInfoLi[2].textContent = getValue("beide", filteredRollup);
@@ -142,6 +144,7 @@ async function createBubble() {
 
   // Setting the initial unfiltered info
   function getInitialInfo() {
+	 	bubbleInfoHead.textContent = 'Betrokkenen';
 		bubbleInfoLi[0].textContent = getValue("Verdachte");
 		bubbleInfoLi[1].textContent = getValue("Slachtoffer");
 		bubbleInfoLi[2].textContent = getValue("Beide");
