@@ -307,7 +307,203 @@ body {
 				}
 			}
 		}
-	}
+    }
+    footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @media (max-width: $bp-small) {
+            width: 100%;
+            // height: 100%;
+            #item-menu {
+
+                &.closed {
+                    #item-menu__overlay, #item-menu__form {
+                        display: none;
+                        visibility: hidden;
+                    }
+                }
+                &:not(.closed) {
+                    #item-menu__overlay {
+                        width: 100vw;
+                        height: 100vh;
+                        position: absolute;
+                        bottom: 0;
+                        background-color: rgba(0,0,0,0.5);
+                    }
+                    #item-menu__form {
+                        bottom: calc(5vmin + 3rem);
+                        
+                        width: 80vw;
+                        max-height: 75vh;
+                        padding: 5vmin;
+
+
+                        overflow-y: scroll;
+
+
+
+                        fieldset {
+                            width: 100%;
+                            legend {
+                                padding: 0 0 5vmin 0;
+                            }
+                            > div {
+                                
+
+                                flex-wrap: wrap;
+                                justify-content: space-between;
+
+                                span {
+                                    margin-bottom: 5vmin;
+                                }
+                                span, label {
+                                    display: block;
+                                    height: 35vmin;
+                                    width: 35vmin;
+                                }
+                                label {
+
+                                }
+                                input:checked + label {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #item-menu__form {
+            position: absolute;
+            bottom: 3rem;
+            left: 5vmin;
+            fieldset {
+                legend {
+                    color: white;
+                    font-family: "relative-medium";
+                    
+                }
+                > div {
+                    display: flex;
+                    span {
+                        input {
+                            display: none;
+                            visibility: hidden;
+                        }
+
+                        input:focus {
+                            outline: none;
+                        }
+
+
+                        
+                        border-radius: $border-radius;
+                        
+                        border: 2px solid white;
+                        overflow: hidden;
+
+                        label {
+                            transform: scale(1.1); // fixing blur edges
+                        }
+
+                        span, label {
+                            display: block;
+                        }
+
+                        input:disabled + label {
+                            
+                            background-color:$main-blue;
+                            
+                        }
+
+                        input.blur + label {
+                            filter: blur(3px);
+                            
+                        }
+
+                        label {
+                            background-color: white;
+                        }
+
+                        input[value="license-plate"] + label {
+                            background: rgba(0,0,0,0) url("../assets/items/nummerbord.png") no-repeat; 
+                            background-position: center center;
+                            background-size: cover;
+                        }
+
+                        input[value="open-door"] + label {
+                            background: rgba(0,0,0,0) url("../assets/items/verdachte.png") no-repeat; 
+                            background-position: center center;
+                            background-size: cover;
+                        }
+
+                        input[value="house-num"] + label {
+                            background: rgba(0,0,0,0) url("../assets/items/huisnummer.png") no-repeat; 
+                            background-position: center center;
+                            background-size: cover;
+                        }
+
+                        input[value="route-2"] + label {
+                            background: rgba(0,0,0,0) url("../assets/items/bord.png") no-repeat; 
+                            background-position: center center;
+                            background-size: cover;
+                        }
+
+                        input[value="house"] + label {
+                            background: rgba(0,0,0,0) url("../assets/items/huis.png") no-repeat; 
+                            background-position: center center;
+                            background-size: cover;
+                        }
+
+                        input[value="neighbor"] + label {
+                            background: rgba(0,0,0,0) url("../assets/items/huis.png") no-repeat; 
+                            background-position: center center;
+                            background-size: cover;
+                        }
+
+                        // input:checked + label {
+                        //     background-color: orange;
+                        // }
+                    }
+                }
+            }
+            @media (max-width: $bp-small) {
+                margin: auto;
+                background-color: $main-blue;
+                border-radius: $border-radius;
+
+            }
+            @media (min-width: $bp-small) {
+                display: flex;
+                label {
+                    height: 3rem;
+                    width: 3rem;
+                }
+            }
+        }
+
+
+
+
+        #item-menu__button {
+            @media (max-width: $bp-small) {
+                background: rgba(0,0,0,0) url("../assets/icons/reselect.svg") no-repeat; 
+                background-position: center center;
+                height: 3em;
+                width: 3em;
+                border: none;
+                position: absolute;
+                bottom: 5vmin;
+                left: 5vmin;
+            }
+            @media (min-width: $bp-small) {
+                display: none;
+                visibility: hidden;
+            }
+        }
+    }
 }
 
 

@@ -196,11 +196,42 @@ for (let index = 0; index < buttonDeExpanders.length; index++) {
 
 var items = []; // order of the items.
 var itemsById = {}; // item by id.
+var itemsByElement = {};
+
+var blurPoints = 4;
+var maxBlurPoints = blurPoints;
+
+
+
 
 var recognizableButtons = document.getElementsByClassName("recognizable");
 var unrecognizableButtons = document.getElementsByClassName("unrecognizable");
+var itemMenuForm = document.getElementById("item-menu__form");
 
 
+/////////////////////////
+// set the legend text //
+var legendSpans = itemMenuForm.querySelectorAll("legend span");
+
+legendSpans[0].textContent = maxBlurPoints;
+legendSpans[1].textContent = maxBlurPoints;
+/////////////////////////
+
+function setBlurPoints (points) {
+	var currentArticle = articles[articleIndex];
+	blurPoints = points;
+	legendSpans[0].textContent = points;
+	return true;
+}
+
+function getBlurPoints () {
+	return blurPoints;
+}
+
+
+function setBlurButtonStatus () {
+
+}
 
 function fillOverlay () {
 	var currentArticle = articles[articleIndex];
@@ -217,31 +248,54 @@ function makeRecognizable () {
 	fillOverlay ();
 
 	var newItem = { // propertisch
-		unrecognizable : false
+		// unrecognizable : false
 	};
-	items[items.length] = newItem;
+
+	var newIndex = items.length;
+	items[newIndex] = newItem;
 	itemsById[id] = newItem;
+	// console.log("items", items);
+
+	var itemSlots = itemMenuForm.querySelectorAll("input");
+	var itemSlot = itemSlots[newIndex];
+	itemSlot.setAttribute("value", id);
+	itemSlot.removeAttribute("disabled");
 
 	setTimeout(goToNextArticle, 1500);
-
-	console.log("items", items);
 }
 
 function makeUnrecognizable () {
-	var currentArticle = articles[articleIndex];
-	var id = currentArticle.id;
-	
-	fillOverlay ();
 
-	var newItem = { // propertisch
-		unrecognizable : true
-	};
-	items[items.length] = newItem;
-	itemsById[id] = newItem;
+	var blurPoints = getBlurPoints();
+	if (blurPoints > 0) {
 
-	setTimeout(goToNextArticle, 1500);
+		var currentArticle = articles[articleIndex];
+		var id = currentArticle.id;
+		
+		fillOverlay ();
 
-	console.log("items", items);
+		var newItem = { // propertisch
+			// unrecognizable : true
+		};
+
+		var newIndex = items.length;
+		items[newIndex] = newItem;
+		itemsById[id] = newItem;
+		// console.log("items", items);
+
+
+		var itemSlots = itemMenuForm.querySelectorAll("input");
+		var itemSlot = itemSlots[newIndex];
+		itemSlot.setAttribute("value", id);
+		itemSlot.removeAttribute("disabled");
+		itemSlot.classList.add("blur");
+
+		setBlurPoints(blurPoints - 1);
+
+		setTimeout(goToNextArticle, 1500);
+	} else {
+		// shouldn't be activated, unless developer hack.
+	}
 }
 
 
@@ -254,6 +308,33 @@ for (let index = 0; index < unrecognizableButtons.length; index++) {
 	const unrecognizableButton = unrecognizableButtons[index];
 	unrecognizableButton.addEventListener("click", makeUnrecognizable);
 }
+
+
+var itemMenuButton = document.getElementById("item-menu__button");
+var itemMenu = document.getElementById("item-menu");
+// var itemMenuOverlay = document.getElementById("item-menu__overlay");
+
+
+itemMenuButton.addEventListener("click", function () {
+	itemMenu.classList.toggle("closed");
+});
+
+
+itemMenuForm.addEventListener("change", function (e) {
+	var source = e.target;
+	if (!source.classList.contains("blur")) {
+		var blurPoints = getBlurPoints();
+		if (blurPoints > 0) {
+			source.classList.add("blur");
+			setBlurPoints(blurPoints - 1);
+		} else {
+			// feedback! Can't add blur!
+		}
+	} else {
+		source.classList.remove("blur");
+		setBlurPoints(getBlurPoints() + 1);
+	}
+});
 
 // overlay //
 /////////////
