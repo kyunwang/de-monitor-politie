@@ -1,5 +1,6 @@
 h2,
-p {
+p,
+li {
 	font-family: "tisa-pro", serif;
 	font-weight: 100;
 }
@@ -39,7 +40,7 @@ p {
 #bubble-con {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	// justify-content: center;
 	align-items: center;
 
 	color: $main-black;
@@ -123,8 +124,12 @@ p {
 		margin-top: 1em;
 		border-top: 1px solid $main-black;
 		padding-top: 1em;
-		color: red;
-		text-align: center;
+		// color: red;
+		// text-align: center;
+	}
+
+	li {
+		padding: .5em 0;
 	}
 }
 
