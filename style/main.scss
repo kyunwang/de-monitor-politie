@@ -139,6 +139,9 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
+					&>div {
+						width: 100%;
+					}
 					section {
 						box-sizing: border-box;
 
@@ -455,3 +458,43 @@ article {
 
 // overlay //
 /////////////
+
+
+.title__choose {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: $bp-large) {
+		padding: 2em;
+	}
+
+	&>div {
+		display: flex;
+		flex-direction: column;
+		max-width: 45em;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	input {
+		@media (min-width: $bp-med) {
+			width: auto;
+		   align-self: center;
+	   }
+	}
+	
+	.title__info {
+		margin-top: .5em;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease-out;
+	}
+
+	.title__info--open {
+		max-height: 5em; // A high value to show the content again
+	}
+}
