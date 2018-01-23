@@ -14,49 +14,38 @@ async function createHer() {
 	function capitalize(str) {
 		return str[0].toUpperCase() + str.substr(1);
 	}
-	// var width = document.getElementsByClassName('container')[0].clientWidth;
-	// var height = 1000;
+
 	var color = d3.scaleOrdinal(d3.schemeCategory10);
 	var delayScale = d3.scaleLinear().domain([0, 400]).range([0, 300]);
 
-	// var data = d3.range(0, 50).map(function(i) {
-	// 	return {
-	// 		index: i,
-	// 		prop1: randomPick(['a', 'b', 'c']),
-	// 		prop2: randomPick(['a', 'b', 'c', 'd', 'e']),
-	// 		x: random(width / 2 - 100, width / 2 + 100),
-	// 		y: random(height / 2 - 100, height / 2 + 100),
-	// 		color: color(i),
-	// 		// shape: randomPick(['circle', 'square', 'ellipse']),
-	// 		shape: 'circle',
-	// 		size: random(20, 40)
-	// 	};
-	// });
-
-	var data = vlogData.map(function(d, i) {
-		if(i == 1) {
-			console.log(d);
-		}
-		
+	var dataa = await vlogData.map(function(d, i) {
 		return {
 			...d,
 			index: i,
-			// prop1: randomPick(['a', 'b', 'c']),
-			// prop2: randomPick(['a', 'b', 'c', 'd', 'e']),
 			x: random(width / 2 - 100, width / 2 + 100),
 			y: random(height / 2 - 100, height / 2 + 100),
-			color: color(i),
+			color: getColor(d),
 			shape: 'circle',
-			size: random(20, 40)
+			size: 25,
 		};
 	});
 
-	console.log(data);
+  	var data = dataa.sort(function(a,b) {
+		return herOrder.indexOf( a.color ) > herOrder.indexOf( b.color );
+	});
 	
+	function getColor(d) {
+		var available = checkHer(d);
+		// console.log(herColor[available]);
+		return herColor[available];
+	}
 
-	// var svg = d3.select('svg')
-	// 	.attr('width', width)
-	// 	.attr('height', height);
+	function checkHer(d) {
+		var keys = herKeys.filter(key => (d[key] != '' && d[key].length > 0));
+		if (keys.length) return keys[0];
+		return 'none';
+	}
+
 	var svg = d3.select('#data-her svg')
 		.attr('width', width)
 		.attr('height', height);
@@ -93,7 +82,8 @@ async function createHer() {
 		.rowHeight(50)
 		.marginTop(75)
 		.marginLeft(50)
-		.sectionPadding(100)
+		.sectionPadding(50)
+		// .sectionPadding(100)
 		.data(data);
 
 	function transition() {
@@ -106,7 +96,7 @@ async function createHer() {
 			.attr('transform', function(d) {
 				return 'translate(' + d.x + ',' + d.y + ')';
 			});
-		updateLabels();
+		// updateLabels();
 	}
 
 	function updateLabels() {
@@ -155,7 +145,6 @@ async function createHer() {
 		grid.groupBy('shape');
 		transition();
 	}
-
 
 	groupByShape();
 	// groupByColor();
