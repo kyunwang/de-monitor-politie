@@ -42,9 +42,33 @@ b {
 }
 
 
+
 svg {
 	width: 100%;
-	height: 100%;
+    height: 100%;
+    // height: 100vh;
+    // width: 200vw;
+}
+
+#article-container {
+    > article {
+        // &:not(&.data-vis) {
+            position: relative;
+            > div {
+                position: absolute;
+                left: -150vw;
+                bottom: 0;
+                width: 400vw;
+                z-index: -10;
+                > svg {
+                    margin: auto;
+                    display: block;
+                    height: 100vh;
+                    width: initial;
+                }
+            }
+        // }
+    }
 }
 
 .hidden {
@@ -358,6 +382,7 @@ body {
         position: absolute;
         bottom: 0;
         left: 0;
+        z-index: 20;
         @media (max-width: $bp-small) {
             &.disabled {
                 visibility: hidden;
@@ -584,10 +609,13 @@ article {
         article {
             position: absolute;
             z-index: 10;
+            border-radius: $border-radius;
+            background-color: white;
+            padding: 1em;
             p {
                 
-                background-color: white;
-                padding: 1em;
+                
+                
 
             }
 
@@ -704,17 +732,18 @@ article {
             &.overlay-effect--focus {
                 @media (max-width: $bp-small) {
                     left: calc(-200vmax + 50vw - 30vmin);
-                    top: calc(-200vmax + 90vh - 60vmin);
+                    top: calc(-200vmax + 90vh - 40vh);
                 }
 
                 @media (min-width: $bp-small) and (max-width: $bp-med) {
-                    left: calc(-200vmax + 50vw - 25vmin);
+                    left: calc(-200vmax + 50vw - 25vmin + 3vh);
                     top: calc(-200vmax + 90vh - 50vmin);
                 }
                 @media (min-width: $bp-med) {
-                    left: calc(-200vmax + 100vw - 70vh);
+                    left: calc(-200vmax + 70vw - 20vh);
                     top: calc(-200vmax + 100vh - 44vh);
                 }
+                
             } 
         }
     }
@@ -731,8 +760,8 @@ article {
                     top: calc(-200vmax + 80vh - 50vmin);
                 }
                 @media (min-width: $bp-med) {
-                    left: calc(-200vmax + 100vw - 50vh);
-                    top: calc(-200vmax + 80vh - 40vh);
+                    left: calc(-200vmax + 50vw + 10vh);
+                    top: calc(-200vmax + 80vh - 44vh);
                 }                
             }
         }       
@@ -741,17 +770,17 @@ article {
         .overlay-effect {
             &.overlay-effect--focus {
                 @media (max-width: $bp-small) {
-                    left: calc(-200vmax + 48vw - 30vmin);
+                    left: calc(-200vmax + 67vw - 30vmin);
                     top: calc(-200vmax + 18vh - 30vmin);
                 }
 
                 @media (min-width: $bp-small) and (max-width: $bp-med) {
                     left: calc(-200vmax + 52vw - 25vmin);
-                    top: calc(-200vmax + 50vh - 50vmin);
+                    top: calc(-200vmax + 48vh - 50vmin);
                 }
                 @media (min-width: $bp-med) {
-                    left: calc(-200vmax + 58vw - 20vh);
-                    top: calc(-200vmax + 20vh - 20vh);
+                    left: calc(-200vmax + 51vw - 20vh);
+                    top: calc(-200vmax + 5vh);
                 }                
             }
         }       
@@ -769,8 +798,8 @@ article {
                     top: calc(-200vmax + 50vh - 50vmin);
                 }
                 @media (min-width: $bp-med) {
-                    left: calc(-200vmax + 85vw - 20vh);
-                    top: calc(-200vmax + 20vh - 20vh);
+                    left: calc(-200vmax + 64vw - 20vh);
+                    top: calc(-200vmax + 45vh - 20vh);
                 }                
             }
         }  
@@ -788,8 +817,8 @@ article {
                     top: calc(-200vmax + 40vh - 25vmin);
                 }
                 @media (min-width: $bp-med) {
-                    left: calc(-200vmax + 43vw - 20vh);
-                    top: calc(-200vmax + 60vh - 20vh);
+                    left: calc(-200vmax + 45vw - 20vh);
+                    top: calc(-200vmax + 45vh - 20vh);
                 }                
             }
         }  
