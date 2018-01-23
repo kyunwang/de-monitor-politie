@@ -1,20 +1,10 @@
 // Start herleidbaarheid chart
+// Grid based on example from d3.layout.grid
 async function createHer() {
 	var width = document.getElementById('her-chart').getBoundingClientRect().width;
-
-	function random(start, end) {
-		var range = end - start;
-		return start + Math.floor(Math.random() * range);
-	}
-
-	function capitalize(str) {
-		return str[0].toUpperCase() + str.substr(1);
-	}
-
-	var color = d3.scaleOrdinal(d3.schemeCategory10);
 	var delayScale = d3.scaleLinear().domain([0, 400]).range([0, 300]);
 
-	var dataa = await vlogData.map(function(d, i) {
+	var setData = await vlogData.map(function(d, i) {
 		return {
 			...d,
 			index: i,
@@ -26,65 +16,40 @@ async function createHer() {
 		};
 	});
 
-  	var data = dataa.sort(function(a,b) {
+	var data = setData.sort(function(a,b) {
 		return herOrder.indexOf( a.color ) > herOrder.indexOf( b.color );
-	});
-	
-	function getColor(d) {
-		var available = checkHer(d);
-		// console.log(herColor[available]);
-		return herColor[available];
-	}
+ 	});
 
-	function checkHer(d) {
-		var keys = herKeys.filter(key => (d[key] != '' && d[key].length > 0));
-		if (keys.length) return keys[0];
-		return 'none';
-	}
-
-	var svg = d3.select('#data-her svg')
+	var herSvg = d3.select('#data-her svg')
 		.attr('width', width)
 		.attr('height', height);
 
-	var shapes = svg.selectAll('.shape').data(data)
+	var shapes = herSvg.selectAll('.shape').data(data)
 		.enter()
 		.append('g')
-		.attr('transform', function(d) {
-			return 'translate(' + d.x + ',' + d.y + ')';
-		})
-		.attr('data-size', function(d) {
-			return d.size;
-		})
-		.attr('data-shape', function(d) {
-			return d.shape;
-		});
+		.attr('transform', d => 'translate(' + d.x + ',' + d.y + ')')
+		.attr('data-size', d => d.size)
+		.attr('data-shape', d => d.shape)
+		.on('mouseenter', updateInfo);
 
-	var circles = shapes.filter(function(d) {
-			return d.shape === 'circle';
-		})
+	var circles = shapes.filter(d => d.shape === 'circle')
 		.append('circle')
-		.attr('r', function(d) {
-			return d.size / 2;
-		})
-		.attr('fill', function(d) {
-			return d.color;
-		});
-
+		.attr('r', d => d.size / 2)
+		.attr('fill', d => d.color);
 
 	var grid = d3.layoutGrid()
 		.width(width)
 		.height(height)
 		.colWidth(50)
 		.rowHeight(50)
-		.marginTop(25)
-		// .marginLeft(25)
+		// .marginTop(25)
+		.marginTop(75)
 		.marginLeft(31.125)
 		.sectionPadding(50)
-		// .sectionPadding(100)
 		.data(data);
 
 	function transition() {
-		svg.attr('height', grid.height());
+		herSvg.attr('height', grid.height());
 		shapes.transition()
 			.duration(750)
 			.delay(function(d) {
@@ -93,7 +58,7 @@ async function createHer() {
 			.attr('transform', function(d) {
 				return 'translate(' + d.x + ',' + d.y + ')';
 			});
-		// updateLabels();
+		updateLabels();
 	}
 
 	function updateLabels() {
@@ -101,7 +66,7 @@ async function createHer() {
 
 		// Provide d3 a key function so that labels are animated correctly
 		// http://bost.ocks.org/mike/constancy/
-		var labels = svg.selectAll('text').data(groups, function(d) {
+		var labels = herSvg.selectAll('text').data(groups, function(d) {
 			return d.name;
 		});
 
@@ -116,7 +81,7 @@ async function createHer() {
 			.style('opacity', 0)
 			.remove();
 
-		labels = svg.selectAll('text').data(groups, function(d) {
+		labels = herSvg.selectAll('text').data(groups, function(d) {
 			return d.name;
 		});
 
@@ -142,6 +107,60 @@ async function createHer() {
 		grid.groupBy('shape');
 		transition();
 	}
+
+	function random(start, end) {
+		var range = end - start;
+		return start + Math.floor(Math.random() * range);
+	}
+
+	function capitalize(str) {
+		return str[0].toUpperCase() + str.substr(1);
+	}
+
+	function getColor(d) {
+		var available = checkHer(d);
+		// console.log(herColor[available]);
+		return herColor[available];
+	}
+
+	function checkHer(d) {
+		var keys = herKeys.filter(key => (d[key] != '' && d[key].length > 0));
+		if (keys.length) return keys[0];
+		return 'none';
+	}
+
+	var herInfo = document.querySelectorAll('.data__cat--her li');
+	var inciInfo = document.querySelectorAll('.data__cat--inci li');
+	var involInfo = document.querySelectorAll('.data__cat--invol li');
+	
+	function updateInfo(d) {
+		updateHerInfo(d);
+		updateInciInfo(d);
+		updateInvolInfo(d);
+	}
+
+	function updateHerInfo(d) {
+		console.log(d);
+		herInfo[0].textContent = d.routeShowed;
+		herInfo[1].textContent = d.recognisable;
+		herInfo[2].textContent = d.otherRecognisable;
+	}
+
+	function updateInciInfo(d) {
+		inciInfo[0].textContent = checkData(d.inciCat);
+		inciInfo[1].textContent = checkData(d.inci);
+	}
+
+	function updateInvolInfo(d) {
+		involInfo[0].textContent = checkData(d.involvedPeople);
+	}
+
+	function checkData(d) {
+		// if (d == 'x') return getHerText(d);
+		if (d.length > 0 && d != '') return d;
+	}
+
+
 
 	groupByShape();
 	// groupByColor();

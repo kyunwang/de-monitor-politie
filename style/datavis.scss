@@ -148,17 +148,19 @@ text {
 		margin-top: 1em;
 	}
 
+	li {
+		padding: .5em 0;
+		width: 8em;
+	}
+}
+
+.data__info--bubble {
 	ul >:last-child {
 		margin-top: 1em;
 		border-top: 1px solid $main-black;
 		padding-top: 1em;
 		// color: red;
 		// text-align: center;
-	}
-
-	li {
-		padding: .5em 0;
-		width: 8em;
 	}
 }
 
@@ -175,3 +177,8 @@ text {
 	}
 }
 
+.data__cat {
+	display: flex;
+	flex-direction: column;
+	border: none;
+}

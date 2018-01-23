@@ -34,13 +34,17 @@ async function getData(data) {
   // data = await vlogData.slice(0, 40);
   console.log("The Data", vlogData);
   await createHer();
-//   await createBubble();
+  //   await createBubble();
 }
 
 // Start bubblechart
 var bubbleChart = d3.select("#bubble-chart");
-var bubbleInfoHead = document.querySelector(".data__info.data__info--bubble h3");
-var bubbleInfoLi = document.querySelectorAll(".data__info.data__info--bubble li span");
+var bubbleInfoHead = document.querySelector(
+  ".data__info.data__info--bubble h3"
+);
+var bubbleInfoLi = document.querySelectorAll(
+  ".data__info.data__info--bubble li span"
+);
 
 async function createBubble() {
   console.log("create", width);
@@ -104,13 +108,12 @@ async function createBubble() {
     .on("mouseleave", leaveBubble);
 
   bubbleNodes
-	 .append("text")
-	//  .classed('svg-text')
+    .append("text")
+    //  .classed('svg-text')
     .attr("dy", d => getY(d) + 5)
     .attr("dx", d => getX(d) - 20) // trying to center the labels
     .text(d => (d.children === undefined ? d.data.key : ""));
 
-	 
   getInitialInfo();
 
   function enterBubble(d, i) {
@@ -119,13 +122,13 @@ async function createBubble() {
   }
 
   function leaveBubble(d) {
-	 d3.select(this).attr("fill", bubbleColor(d.data.value));
-	 getInitialInfo();
+    d3.select(this).attr("fill", bubbleColor(d.data.value));
+    getInitialInfo();
   }
 
   function updateInfo(d) {
-	 if (!d.data.key || d.data.key == undefined) return;
-	 
+    if (!d.data.key || d.data.key == undefined) return;
+
     var filteredData = vlogData.filter(item => item.inciCat === d.data.key);
 
     // roll up the data of involved people
@@ -135,8 +138,8 @@ async function createBubble() {
       .rollup(item => item.length)
       .entries(filteredData);
 
-	 // Update the number using getValue
-	 bubbleInfoHead.textContent = `Betrokkenen bij categorie: ${d.data.key}`;
+    // Update the number using getValue
+    bubbleInfoHead.textContent = `Betrokkenen bij categorie: ${d.data.key}`;
     bubbleInfoLi[0].textContent = getValue("Verdachte", filteredRollup);
     bubbleInfoLi[1].textContent = getValue("Slachtoffer", filteredRollup);
     bubbleInfoLi[2].textContent = getValue("beide", filteredRollup);
@@ -145,19 +148,19 @@ async function createBubble() {
 
   // Setting the initial unfiltered info
   function getInitialInfo() {
-	 	bubbleInfoHead.textContent = 'Betrokkenen';
-		bubbleInfoLi[0].textContent = getValue("Verdachte");
-		bubbleInfoLi[1].textContent = getValue("Slachtoffer");
-		bubbleInfoLi[2].textContent = getValue("Beide");
-		bubbleInfoLi[3].textContent = d3.sum(rollupInvolved, item => item.value);
+    bubbleInfoHead.textContent = "Betrokkenen";
+    bubbleInfoLi[0].textContent = getValue("Verdachte");
+    bubbleInfoLi[1].textContent = getValue("Slachtoffer");
+    bubbleInfoLi[2].textContent = getValue("Beide");
+    bubbleInfoLi[3].textContent = d3.sum(rollupInvolved, item => item.value);
   }
 
-   // Get the requested data and return the value if there is any
-	function getValue(name, data = rollupInvolved) {
-      var involvedValue = data.filter(item => item.key == name);
-      if (involvedValue.length === 0) return 0;
-      return involvedValue[0].value;
-    }
+  // Get the requested data and return the value if there is any
+  function getValue(name, data = rollupInvolved) {
+    var involvedValue = data.filter(item => item.key == name);
+    if (involvedValue.length === 0) return 0;
+    return involvedValue[0].value;
+  }
 
   function getX(d) {
     return d.x;
