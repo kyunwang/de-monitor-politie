@@ -51,23 +51,22 @@ svg {
 }
 
 #article-container {
-    > article {
-        // &:not(&.data-vis) {
-            position: relative;
-            > div {
-                position: absolute;
-                left: -150vw;
-                bottom: 0;
-                width: 400vw;
-                z-index: -10;
-                > svg {
-                    margin: auto;
-                    display: block;
-                    height: 100vh;
-                    width: initial;
-                }
+
+
+    > article:not(.data-vis) {
+        > div {
+            position: absolute;
+            left: -150vw;
+            bottom: 0;
+            width: 400vw;
+            z-index: -10;
+            > svg {
+                margin: auto;
+                display: block;
+                height: 100vh;
+                width: initial;
             }
-        // }
+        }
     }
 }
 
