@@ -2,6 +2,9 @@
 // Grid based on example from d3.layout.grid
 async function createHer() {
 	var width = document.getElementById('her-chart').getBoundingClientRect().width;
+	console.log(width);
+	console.log(width < 4000 ? 40 : 25)
+	
 	var delayScale = d3.scaleLinear().domain([0, 400]).range([0, 300]);
 
 	var setData = await vlogData.map(function(d, i) {
@@ -12,7 +15,7 @@ async function createHer() {
 			y: random(height / 2 - 100, height / 2 + 100),
 			color: getColor(d),
 			shape: 'circle',
-			size: 25,
+			size: width < 450 ? 30 : 25,
 		};
 	});
 
@@ -23,7 +26,7 @@ async function createHer() {
 	var herSvg = d3.select('#data-her svg')
 		.attr('width', width)
 		.attr('height', height);
-
+	
 	var shapes = herSvg.selectAll('.shape').data(data)
 		.enter()
 		.append('g')
@@ -32,6 +35,7 @@ async function createHer() {
 		.attr('data-size', d => d.size)
 		.attr('data-shape', d => d.shape)
 		.on('mouseenter', updateInfo);
+
 
 	var circles = shapes.filter(d => d.shape === 'circle')
 		.append('circle')
