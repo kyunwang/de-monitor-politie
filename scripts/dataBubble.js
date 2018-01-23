@@ -39,8 +39,8 @@ async function getData(data) {
 
 // Start bubblechart
 var bubbleChart = d3.select("#bubble-chart");
-var bubbleInfoHead = document.querySelector(".data__info h3");
-var bubbleInfoLi = document.querySelectorAll(".data__info li span");
+var bubbleInfoHead = document.querySelector(".data__info.data__info--bubble h3");
+var bubbleInfoLi = document.querySelectorAll(".data__info.data__info--bubble li span");
 
 async function createBubble() {
   console.log("create", width);

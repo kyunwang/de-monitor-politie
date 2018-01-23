@@ -28,7 +28,7 @@ text {
 	}
 }
 
-#bubble-con {
+#data-incident, #data-her {
 	// display: flex;
 	// flex-direction: column;
 	// // justify-content: center;
@@ -64,7 +64,8 @@ text {
 	}
 }
 
-#bubble-chart {
+#bubble-chart,
+#her-chart {
 	@media (max-width: $bp-med) {
 		height: 350px;
 		max-width: 90vw;
@@ -94,6 +95,9 @@ text {
 	// 	width: 400px;
 	// }	
 
+}
+
+#bubble-chart {
 	&>img {
 		@media (max-width: $bp-med) {
 			height: 32px;
@@ -171,9 +175,3 @@ text {
 	}
 }
 
-
-
-
-.button__link {
-	color: $main-blue;
-}

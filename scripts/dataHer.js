@@ -80,8 +80,9 @@ async function createHer() {
 		.height(height)
 		.colWidth(50)
 		.rowHeight(50)
-		.marginTop(75)
-		.marginLeft(50)
+		.marginTop(25)
+		// .marginLeft(25)
+		.marginLeft(31.125)
 		.sectionPadding(50)
 		// .sectionPadding(100)
 		.data(data);
