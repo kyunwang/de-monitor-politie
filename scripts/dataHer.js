@@ -1,14 +1,10 @@
 // Start herleidbaarheid chart
 async function createHer() {
+	var width = document.getElementById('her-chart').getBoundingClientRect().width;
+
 	function random(start, end) {
 		var range = end - start;
 		return start + Math.floor(Math.random() * range);
-	}
-
-	function randomPick(array) {
-		var length = array.length;
-		var index = random(0, array.length);
-		return array[index];
 	}
 
 	function capitalize(str) {
