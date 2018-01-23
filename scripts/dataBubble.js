@@ -30,12 +30,15 @@ function cleanData(data, index) {
 }
 
 async function getData(data) {
-  vlogData = data;
-  // data = await vlogData.slice(0, 40);
-  console.log("The Data", vlogData);
-  await createHer();
-  //   await createBubble();
+	if (!vlogData) {
+		vlogData = data;
+	}
+ 	 // data = await vlogData.slice(0, 40);
+  	console.log("The Data", vlogData);
+  	await createHer();
+	await createBubble();
 }
+// window.addEventListener('resize', getData);
 
 // Start bubblechart
 var bubbleChart = d3.select("#bubble-chart");
