@@ -140,10 +140,9 @@ async function createHer() {
 	}
 
 	function updateHerInfo(d) {
-		console.log(d);
-		herInfo[0].textContent = d.routeShowed;
-		herInfo[1].textContent = d.recognisable;
-		herInfo[2].textContent = d.otherRecognisable;
+		herInfo[0].textContent = checkData(d.routeShowed) ? herText.route : '';
+		herInfo[1].textContent = checkData(d.recognisable) ? herText.recognisable : '';
+		herInfo[2].textContent = checkData(d.otherRecognisable) ? herText.other : '';
 	}
 
 	function updateInciInfo(d) {
@@ -155,13 +154,14 @@ async function createHer() {
 		involInfo[0].textContent = checkData(d.involvedPeople);
 	}
 
-	function checkData(d) {
-		// if (d == 'x') return getHerText(d);
+	function checkData(d) {		
+		if (d == 'X') return true;
 		if (d.length > 0 && d != '') return d;
+		return;
 	}
 
-
-
-	groupByShape();
+	
+	await groupByShape();
+	await updateInfo(data[0]);
 	// groupByColor();
 }

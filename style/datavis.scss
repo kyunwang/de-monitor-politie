@@ -181,4 +181,30 @@ text {
 	display: flex;
 	flex-direction: column;
 	border: none;
+
+	h5 {
+		margin: 1em 0;
+		// margin-bottom: .5em;
+	}
+
+	li {
+		// list-style-type: '-';
+		// list-style-type: initial;
+		width: auto;
+		padding: 0;
+		padding-bottom: .5em;
+
+		&:before {
+			// content: "\2014\a0";
+			content: "- ";
+ 			text-indent: -5px;
+		}
+	}
+
+	li:empty {
+		padding: 0;
+		&:before {
+			content: '';
+		}
+	}
 }

@@ -9,6 +9,10 @@ h3 {
 	font-family: "relative-bold";
 }
 
+h5 {
+	font-family: 'relative-medium';
+}
+
 h2 {
 	@media (max-width: $bp-small) {
 		font-size: 1.6em;
@@ -18,11 +22,12 @@ h2 {
 }
 
 h3 {
-	@media (max-width: $bp-small) {
+	// @media (max-width: $bp-small) {
+	// @media (max-width: $bp-small) {
 		font-size: 1.2em;
-	}
+	// }
 
-	@media (min-width: $bp-small) and (max-width: $bp-med) {}
+	// @media (min-width: $bp-small) and (max-width: $bp-med) {}
 }
 
 
