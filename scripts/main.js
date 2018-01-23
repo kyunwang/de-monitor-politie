@@ -3,8 +3,9 @@ var mainElement = document.getElementsByTagName("main")[0];
 
 var articleContainer = document.getElementById("article-container");
 
-var articles = articleContainer.querySelectorAll("article");
+var articles = articleContainer.querySelectorAll("#article-container > article");
 
+var mainFooter = document.querySelector("main footer");
 
 // 
 
@@ -31,9 +32,16 @@ function goToNextArticle() {
 	articleIndex++;
 	if (articles[articleIndex] != undefined) {
 		articleContainer.style.left = (-100 * articleIndex) + "vw";
+		checkAndSetBlurButtonStatus();
 		setTimeout(function () {
 			articleContainer.classList.remove("animation-active");
-			setFocusPoint(articles[articleIndex]);
+			if (setFocusPoint(articles[articleIndex]) ) {
+				
+				mainFooter.classList.remove("disabled");
+				
+			} else {
+				mainFooter.classList.add("disabled");
+			}
 		}, 1000);
 		return articles[articleIndex];
 	} else {
@@ -48,7 +56,8 @@ function goToArticleById (id) {
     if (index != undefined) {
         articleIndex = index;
         if (articles[articleIndex] != undefined) {
-            articleContainer.style.left = (-100 * articleIndex) + "vw";
+			articleContainer.style.left = (-100 * articleIndex) + "vw";
+			checkAndSetBlurButtonStatus();
             setTimeout(function () {
                 articleContainer.classList.remove("animation-active");
                 setFocusPoint(articles[articleIndex]);
@@ -68,6 +77,7 @@ function goToPreviousArticle() {
 	articleIndex--;
 	if (articles[articleIndex] != undefined) {
 		articleContainer.style.left = (-100 * articleIndex) + "vw";
+		checkAndSetBlurButtonStatus();
 		setTimeout(function () {
 			articleContainer.classList.remove("animation-active");
 		}, 1000);
@@ -82,7 +92,9 @@ function goToPreviousArticle() {
 
 
 function setFocusPoint(article, x, y) {
+
 	if (article != undefined) {
+		
 		// var overlayElement = article.querySelector(".overlay");
 		// if (overlayElement) {
 		// 	var focusPoint_svg = overlayElement.querySelector("svg");
@@ -119,9 +131,6 @@ function setFocusPoint(article, x, y) {
 /////////////////
 //  test stuff //
 
-for (let index = 0; index < 16; index++) {
-	// goToNextArticle();
-}
 
 setTimeout(function () {
     // goToArticleById("license-plate");
@@ -194,6 +203,9 @@ for (let index = 0; index < buttonDeExpanders.length; index++) {
 // overlay //
 
 
+
+
+
 var items = []; // order of the items.
 var itemsById = {}; // item by id.
 var itemsByElement = {};
@@ -221,6 +233,7 @@ function setBlurPoints (points) {
 	var currentArticle = articles[articleIndex];
 	blurPoints = points;
 	legendSpans[0].textContent = points;
+	checkAndSetBlurButtonStatus ();
 	return true;
 }
 
@@ -229,8 +242,16 @@ function getBlurPoints () {
 }
 
 
-function setBlurButtonStatus () {
-
+function checkAndSetBlurButtonStatus () {
+	var currentArticle = articles[articleIndex];
+	var unrecognizableButton = currentArticle.querySelector(".overlay .unrecognizable");
+	if (unrecognizableButton) {
+		if (getBlurPoints() > 0) {
+			unrecognizableButton.removeAttribute("disabled");
+		} else {
+			unrecognizableButton.setAttribute("disabled", true);
+		}
+	}
 }
 
 function fillOverlay () {
