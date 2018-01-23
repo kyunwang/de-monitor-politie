@@ -237,6 +237,10 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
+					&>:first-child {
+						margin-top: $margin-small; // Margin to the text field
+					}
+
 					section {
 						box-sizing: border-box;
 

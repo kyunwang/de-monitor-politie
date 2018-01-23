@@ -27,6 +27,7 @@ async function createHer() {
 	var shapes = herSvg.selectAll('.shape').data(data)
 		.enter()
 		.append('g')
+		.classed('her-node', true)
 		.attr('transform', d => 'translate(' + d.x + ',' + d.y + ')')
 		.attr('data-size', d => d.size)
 		.attr('data-shape', d => d.shape)
@@ -62,46 +63,36 @@ async function createHer() {
 	}
 
 	function updateLabels() {
-		var groups = grid.groups();
+		var groups = herLegend;
 
 		// Provide d3 a key function so that labels are animated correctly
 		// http://bost.ocks.org/mike/constancy/
-		var labels = herSvg.selectAll('text').data(groups, function(d) {
-			return d.name;
-		});
 
-		labels.enter()
-			.append('text')
-			.attr('y', function(d) {
-				return d.y - 40;
-			})
-			.style('opacity', 0);
-		labels.exit()
-			.transition()
-			.style('opacity', 0)
-			.remove();
+		var legend = herSvg.append('g')
+			.selectAll('g')
+			.data(groups)
+			.enter()
+			.append('g')
+			.attr('y', 20)
+			.attr("transform", (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
+			// .attr("transform", (d, i) =>  `translate(${1%i ? 31.125 : 150}, ${1%i ? i * 20 : i * 20})`);
+			// .attr("transform", (d, i) =>  `translate(${i * 25}, ${20})`);
 
-		labels = herSvg.selectAll('text').data(groups, function(d) {
-			return d.name;
-		});
+		legend.append('circle')
+			.attr('r', 25/2)
+			.attr('fill', 'red')
 
-		labels
-			.text(function(d) {
-				return capitalize(d.name) + ': (' + d.data.length + ')';
-			})
-			.transition()
-			.duration(750)
-			.attr('x', 30)
-			.attr('y', function(d) {
-				return d.y - 40;
-			})
-			.style('opacity', 1);
+		legend.append("text")
+			.attr("x", 24)
+			.attr("y", 9.5)
+			.attr("dy", "0.32em")
+			.text(d => d);
 	}
 
-	function groupByColor() {
-		grid.groupBy('color');
-		transition();
-	}
+	// function groupByColor() {
+	// 	grid.groupBy('color');
+	// 	transition();
+	// }
 
 	function groupByShape() {
 		grid.groupBy('shape');
@@ -130,6 +121,7 @@ async function createHer() {
 	}
 
 	var herInfo = document.querySelectorAll('.data__cat--her li');
+	var herInfoDot = document.querySelectorAll('.data__cat--dot');
 	var inciInfo = document.querySelectorAll('.data__cat--inci li');
 	var involInfo = document.querySelectorAll('.data__cat--invol li');
 	
@@ -137,12 +129,24 @@ async function createHer() {
 		updateHerInfo(d);
 		updateInciInfo(d);
 		updateInvolInfo(d);
+	
+		highlightNode(d);
+	}
+
+	function highlightNode(d) {
+		d3.selectAll('.her-node')
+			.style('opacity', item => (item == d) ? 1 : .5);
 	}
 
 	function updateHerInfo(d) {
 		herInfo[0].textContent = checkData(d.routeShowed) ? herText.route : '';
 		herInfo[1].textContent = checkData(d.recognisable) ? herText.recognisable : '';
 		herInfo[2].textContent = checkData(d.otherRecognisable) ? herText.other : '';
+		
+		herInfoDot[0].style.background = checkData(d.routeShowed) ? herColor.routeShowed : 'none';
+		herInfoDot[1].style.background = checkData(d.recognisable) ? herColor.recognisable : 'none';
+		herInfoDot[2].style.background = checkData(d.otherRecognisable) ? herColor.otherRecognisable : 'none';
+
 	}
 
 	function updateInciInfo(d) {
@@ -160,8 +164,11 @@ async function createHer() {
 		return;
 	}
 
-	
+	// Initial render of the graph
 	await groupByShape();
+
+	// Initial render detail
 	await updateInfo(data[0]);
-	// groupByColor();
+	console.log(data);
+	
 }

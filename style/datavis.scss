@@ -5,8 +5,8 @@ text {
 .screen__wrapper {
 	margin: auto;
 	@media (min-width: $bp-med) {
-		max-width: $bp-large;
-		
+		// max-width: $bp-large;
+		max-width: 60em;
 	}
 
 	&>div {
@@ -178,16 +178,18 @@ text {
 }
 
 .data__cat {
-	display: flex;
-	flex-direction: column;
-	border: none;
+	// display: flex;
+	// flex-direction: column;
+	// border: none;
 
 	h5 {
+		display: inline-block;
 		margin: 1em 0;
 		// margin-bottom: .5em;
 	}
 
 	li {
+		font-family: "tisa-pro";
 		// list-style-type: '-';
 		// list-style-type: initial;
 		width: auto;
@@ -204,7 +206,25 @@ text {
 	li:empty {
 		padding: 0;
 		&:before {
-			content: '';
+			content: "";
 		}
 	}
+}
+
+.data__cat--her {
+	div {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.data__cat--dot {
+	max-height: 25px;
+	max-width: 25px;
+	height: 25px;
+	width: 25px;
+	border-radius: 10em;
+	// background: #000;
 }
