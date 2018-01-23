@@ -28,19 +28,19 @@ var articleIndex = 0;
 
 
 function goToNextArticle() {
+	setSelectionPanelStatus(false);
 	articleContainer.classList.add("animation-active");
 	articleIndex++;
 	if (articles[articleIndex] != undefined) {
 		articleContainer.style.left = (-100 * articleIndex) + "vw";
 		checkAndSetBlurButtonStatus();
+		onSwitchArticle(articles[articleIndex]);
+		var testArticle = articles[articleIndex];
 		setTimeout(function () {
+			
 			articleContainer.classList.remove("animation-active");
 			if (setFocusPoint(articles[articleIndex]) ) {
-				
-				mainFooter.classList.remove("disabled");
-				
-			} else {
-				mainFooter.classList.add("disabled");
+
 			}
 		}, 1000);
 		return articles[articleIndex];
@@ -58,9 +58,12 @@ function goToArticleById (id) {
         if (articles[articleIndex] != undefined) {
 			articleContainer.style.left = (-100 * articleIndex) + "vw";
 			checkAndSetBlurButtonStatus();
+			onSwitchArticle(articles[articleIndex]);
             setTimeout(function () {
                 articleContainer.classList.remove("animation-active");
-                setFocusPoint(articles[articleIndex]);
+				if (setFocusPoint(articles[articleIndex]) ) {
+
+				}
             }, 1000);
 
             
@@ -78,8 +81,12 @@ function goToPreviousArticle() {
 	if (articles[articleIndex] != undefined) {
 		articleContainer.style.left = (-100 * articleIndex) + "vw";
 		checkAndSetBlurButtonStatus();
+		onSwitchArticle(articles[articleIndex]);
 		setTimeout(function () {
 			articleContainer.classList.remove("animation-active");
+			if (setFocusPoint(articles[articleIndex]) ) {
+				
+			}
 		}, 1000);
 		return articles[articleIndex];
 	} else {
@@ -94,20 +101,6 @@ function goToPreviousArticle() {
 function setFocusPoint(article, x, y) {
 
 	if (article != undefined) {
-		
-		// var overlayElement = article.querySelector(".overlay");
-		// if (overlayElement) {
-		// 	var focusPoint_svg = overlayElement.querySelector("svg");
-		// 	if (x == undefined) {
-		// 		x = 0;
-		// 	}
-		// 	if (y == undefined) {
-		// 		y = 0;
-		// 	}
-		// 	focusPoint_svg.style.transform = "translate(" + x + "px, " + y + "px) scale(2)";
-		// 	return true;
-        // }
-       
         
         var overlayElement = article.querySelector(".overlay");
 		if (overlayElement) {
@@ -118,9 +111,15 @@ function setFocusPoint(article, x, y) {
 			}
 			if (y != undefined) {
 				overlayEffect.style.top = y + "vw";
-            }
-            
-            overlayEffect.classList.add("overlay-effect--focus");
+			}
+			
+			
+			
+            setTimeout(function (){
+				overlayEffect.classList.add("overlay-effect--focus");
+				setSelectionPanelStatus(true);
+			}, 2000);
+           
             
 			return true;
 		}
@@ -128,36 +127,19 @@ function setFocusPoint(article, x, y) {
 	return false;
 }
 
-/////////////////
-//  test stuff //
-
-
-setTimeout(function () {
-    // goToArticleById("license-plate");
-}, 300);
 
 
 
-//  test stuff //
-/////////////////
-
-
-/////////////////////////////
-// switch between articles //
-
-
-var buttonsToNextArticle = document.getElementsByClassName("button--go-to-next-article");
-
-
-
-for (let index = 0; index < buttonsToNextArticle.length; index++) {
-	const button = buttonsToNextArticle[index];
-	button.addEventListener("click", goToNextArticle);
+function setSelectionPanelStatus (status) {
+	if (status) {
+		mainFooter.classList.remove("disabled");
+	} else {
+		mainFooter.classList.add("disabled");
+	}
 }
 
 
-// switch between articles //
-/////////////////////////////
+
 
 /////////////////////////////
 // show more and less text //
