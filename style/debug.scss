@@ -1,0 +1,25 @@
+
+#debug-viewport {
+    text-align: center;
+    width: 100vw;
+    color: red;
+    position: absolute;
+    z-index: 100;
+    pointer-events: none;
+    @media (max-width: $bp-small) {
+        &:after {
+            content: "Viewport: small";
+        }
+    }
+
+    @media (min-width: $bp-small) and (max-width: $bp-med) {
+        &:after {
+            content: "Viewport: med";
+        }
+    }
+    @media (min-width: $bp-med) {
+        &:after {
+            content: "Viewport: large";
+        }
+    }  
+}
