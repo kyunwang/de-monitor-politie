@@ -33,7 +33,8 @@ async function getData(data) {
   vlogData = data;
   // data = await vlogData.slice(0, 40);
   console.log("The Data", vlogData);
-  await createBubble();
+  await createHer();
+//   await createBubble();
 }
 
 // Start bubblechart

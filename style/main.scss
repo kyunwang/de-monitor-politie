@@ -152,7 +152,8 @@ body {
 			}
 
 			&>#website-intro,
-			&>#end-note {
+			&>#end-note,
+			&>#blur-info {
 				&:not(.data-vis) {
 					&>svg {
 						position: absolute;
