@@ -66,13 +66,8 @@ text {
 
 #bubble-chart,
 #her-chart {
-	@media (max-width: $bp-med) {
-		height: 375px;
-		max-width: 100vw;
-	}
-
 	@media (max-width: $bp-small) {
-		margin-left: calc(#{$margin-small}/2);		
+		margin-left: calc(#{$margin-small}/1.2);		
 	}
 	
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
@@ -98,6 +93,11 @@ text {
 }
 
 #bubble-chart {
+	@media (max-width: $bp-med) {
+		height: 375px;
+		max-width: 95vw;
+	}
+
 	&>img {
 		@media (max-width: $bp-med) {
 			height: 32px;
@@ -118,6 +118,13 @@ text {
 		circle {
 			fill: #fff;
 		}
+	}
+}
+
+#her-chart {
+	@media (max-width: $bp-med) {
+		height: 375px;
+		max-width: 100vw;
 	}
 }
 
@@ -233,4 +240,50 @@ text {
 	margin-bottom: .5em;
 	border-radius: 10em;
 	// background: #000;
+}
+
+.data__legend {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	border-bottom: 2px solid $main-black;
+	// margin: 0 35px;
+
+	// @media (min-width: $margin-small)  {
+	@media (max-width: $bp-med) {
+		margin: 0 2em;
+	}
+	
+	// Statically for the legend of herleidbaarheid graph
+	& span {
+		// display: inline-block;
+		max-height: 25px;
+		max-width: 25px;
+		height: 25px;
+		width: 25px;
+		margin-right: .5em;
+		// margin-bottom: .5em;
+		border-radius: 10em;
+	}
+
+	div {
+		&:nth-child(1) span {
+			background: $main-blue;
+		}
+		&:nth-child(2) span {
+			background: $main-orange;
+		}
+		&:nth-child(3) span {
+			background: $main-gray;
+		}
+		&:nth-child(4) span {
+			background: $main-black;
+		}
+	}
+	
+}
+.data__cat--label {
+	display: flex;
+	min-width: 5em;
+	margin-bottom: .5em;
 }

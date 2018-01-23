@@ -31,9 +31,7 @@ async function createHer() {
 		.enter()
 		.append('g')
 		.classed('her-node', true)
-		.attr('transform', d => 'translate(' + d.x + ',' + d.y + ')')
-		.attr('data-size', d => d.size)
-		.attr('data-shape', d => d.shape)
+		.attr('transform', d => `translate(${d.x}, ${d.y})`)
 		.on('mouseenter', updateInfo);
 
 
@@ -47,8 +45,9 @@ async function createHer() {
 		.height(height)
 		.colWidth(50)
 		.rowHeight(50)
-		// .marginTop(25)
-		.marginTop(75)
+		// .marginTop(0)
+		.marginTop(40)
+		// .marginTop(110)
 		.marginLeft(31.125)
 		.sectionPadding(50)
 		.data(data);
@@ -60,12 +59,11 @@ async function createHer() {
 			.delay(function(d) {
 				return delayScale(d.groupIndex * 150 + d.index * 1);
 			})
-			.attr('transform', function(d) {
-				return 'translate(' + d.x + ',' + d.y + ')';
-			});
-		updateLabels();
+			.attr('transform', d => `translate(${d.x}, ${d.y})`);
+		// updateLabels();
 	}
 
+	// testing out labeling using d3 (made using html atm)
 	function updateLabels() {
 		var groups = herLegend;
 
@@ -78,7 +76,8 @@ async function createHer() {
 			.enter()
 			.append('g')
 			.attr('y', 20)
-			.attr("transform", (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
+			.attr("transform", (d, i) =>  `translate(${1%i ? 200 : 31.125}, ${2%i < 2 ? 60 : 20})`);
+			// .attr("transform", (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
 			// .attr("transform", (d, i) =>  `translate(${1%i ? 31.125 : 150}, ${1%i ? i * 20 : i * 20})`);
 			// .attr("transform", (d, i) =>  `translate(${i * 25}, ${20})`);
 
