@@ -834,6 +834,20 @@ article {
             }
         }
     }
+    .wrapper--info-balloon  {
+        transition: left 0.3s, top 0.3s, width 0.3s, max-width 0.3s;
+    }
+
+    .overlay-effect--fill + .wrapper--info-balloon {
+        left: 0 !important;
+        top: 0 !important;
+        article {
+            left: calc(50vw - 15em) !important;
+            top: 30vh  !important;
+            width: 30em !important;
+            max-width: 30em !important;
+        }
+    } 
 
     &#route-2 {
         .overlay-effect {
@@ -933,13 +947,16 @@ article {
                 top: calc(60vh - 5vmin);
             }
 
-            @media (min-width: $bp-small) and (max-width: $bp-med) {
+            @media (min-width: $bp-small) and (max-width: $bp-med)  {
                 left: 0;
                 top: calc(70vh - 5vmin);
                 article {
                     left: calc(50vw - 15em);
                 }
             }
+
+            
+            
             @media (min-width: $bp-med) {
                 left: calc(50vw - 15em);
                 top: calc(70vh - 5vmin);
@@ -970,13 +987,22 @@ article {
                 top: calc(60vh - 5vmin);
             }
 
-            @media (min-width: $bp-small) and (max-width: $bp-med) {
+            @media (min-width: $bp-small) and (max-width: $bp-med) and (orientation:landscape)  {
                 left: 5vmin;
                 top: 5vmin;
                 article {
-                    max-width: 10em;
+                    max-width: 15em;
                 }
             }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) and (orientation:portrait)  {
+                left: 5vmin;
+                top: calc(70vh - 5vmin);
+                article {
+                    left: calc(50vw - 15em);
+                }
+            }
+
             @media (min-width: $bp-med) {
                 left: 5vmin;
                 top: 5vmin;
@@ -1010,13 +1036,19 @@ article {
                 top: 0;
             }
 
-            @media (min-width: $bp-small) and (max-width: $bp-med) {
-                left: 0;
-                top: 0;
+            @media (min-width: $bp-small) and (max-width: $bp-med + 7em) {
+                top: 5vmin;
+                article {
+                    left: calc(50vw - 15em);
+                }
             }
-            @media (min-width: $bp-med) {
+            @media (min-width: $bp-med + 7em) {
                 left: 0;
-                top: 0;
+                top: 5vmin;
+                article {
+                    left: calc(100vw - 20em - 5vmin);
+                    max-width: 20em;
+                }
             }
         }     
     }
@@ -1046,13 +1078,20 @@ article {
 
             @media (min-width: $bp-small) and (max-width: $bp-med) {
                 left: 0;
-                top: 0;
+                top: 5vmin;
+                article {
+                    left: calc(50vw - 15em);
+                }
             }
             @media (min-width: $bp-med) {
                 left: 0;
-                top: 0;
+                top: 5vmin;
+                article {
+                    left: calc(100vw - 20em - 5vmin);
+                    max-width: 20em;
+                }
             }
-        }     
+        }   
     }
 }
 
