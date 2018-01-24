@@ -751,9 +751,83 @@
 				</section>
 			</article>
 
-			<article id="data-her" class="data-vis">
-				<p>datavis 1 over herleidbaarheid</p>
-				<svg></svg>
+			<article id="data-her" class="data-vis show-overflow">
+				<div class="screen__wrapper">
+					<section>
+						<h2>Herleidbaarheid</h2>
+						<div class="wrapper wrapper--not-expand">
+							<p><b>De monitor heeft een onderzoek gedaan over de vlogs van de politievloggers en hieruit 40 videofragmenten gevonden waarin mogelijk herleidbareinformatie wordt vrijgegeven, zoals de locatie en identiteit van betrokkenen.</b></p>
+							<p>Uit het onderzoek blijkt dat van de 40 videofragmenten er 53 gevallen van herleidbaarheid voorkomen. 25 van de 53 gevallen maken de locatie herleidbaar omdat de route getoond wordt. De route is het meest voorkomende categorie dat in de vlogs getoond wordt, dat maakt het vinden van de locatie ook makkelijker.</p>
+							<div class="hide-text-gradient"></div>
+							<button class="button--expander">Lees verder</button>
+							<button class="button--de-expander"></button>
+						</div>
+					</section>
+
+				<div>
+					<div>
+						<div class="data__legend">
+							<div class="data__cat--label">
+								<span></span>
+								<p>route</p>
+							</div>
+							<div class="data__cat--label">
+								<span></span>
+								<p>betrokkenen</p>
+							</div>
+							<div class="data__cat--label">
+								<span></span>
+								<p>overig</p>
+							</div>
+							<div class="data__cat--label">
+								<span></span>
+								<p>geen</p>
+							</div>
+						</div>
+						<svg id="her-chart"></svg>
+					</div>
+					
+					<div class="data__info--group">
+						<section class="data__info">
+							<div>
+								<h3>Details</h3>
+								<p>Link naar video</p>
+								<p>aangepast of niet</p>
+							</div>
+
+							<ul>
+								<div class="data__cat data__cat--her">
+									<div>
+										<h5>Categorie herleidbaarheid:</h5>
+										<div class="data__cat--dot"></div>
+										<div class="data__cat--dot"></div>
+										<div class="data__cat--dot"></div>
+									</div>
+									<li></li>
+									<li></li>
+									<li></li>
+								</div>
+
+								<div class="data__cat data__cat--inci">
+									<h5>Categorie incident</h5>
+									<li></li>
+									<li></li>
+								</div>
+								
+								<div class="data__cat data__cat--invol">
+									<h5>Betrokkenen</h5>
+									<li></li>
+								</div>
+
+							</ul>
+						</section>
+						
+						<section>
+							<button class="button--default button--go-to-next-article">Ga verder met je vlog</button>
+						</section>
+					</div>
+				</div>
+			</div>
 			</article>
 			
 			<article id="house">
@@ -1094,13 +1168,13 @@
 				</div>
 			</article>
 
-			<article id="bubble-con" class="data-vis show-overflow">
+			<article id="data-incident" class="data-vis show-overflow">
 				<img src="./assets/moviestrip.svg" alt="A horizontal moviestrip">
 				<div class="screen__wrapper">
 					<section>
 						<h2>Incidenten &amp; Betrokkenen</h2>
 						<div class="wrapper wrapper--not-expand">
-							<p>Deze datavisualisatie is een weergave van de verschillende soorten betrokkenen in de videofragmenten. Deze betrokkenen worden onderverdeeld over alle 40 videofragmenten en over de verschillende incident categorieën, namelijk overlast, geweld, medisch, verkeer en overig.</p>
+							<p>Deze datavisualisatie is een weergave van de verschillende betrokkenen in de videofragmenten. De betrokkenen worden uit de 40 videofragmenten worden onderverdeeld in verschillende incidentcategorieën.</p>
 							<div class="hide-text-gradient"></div>
 							<button class="button--expander">Lees verder</button>
 							<button class="button--de-expander"></button>
@@ -1112,7 +1186,7 @@
 						<svg id="bubble-chart"></svg>
 						
 						<div class="data__info--group">
-							<section class="data__info">
+							<section class="data__info data__info--bubble">
 								<h3>Betrokkenen</h3>
 								<ul>
 									<div>
