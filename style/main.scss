@@ -134,7 +134,11 @@ button,input {
     }
     
     &:disabled {
-        background: $main-gray;
+		 pointer-events: none;
+		  background: $main-gray;
+		  &:hover {
+			   // background: $main-gray;
+		  }
 	 }
 	 
 	 &.button--full-width {
@@ -143,7 +147,11 @@ button,input {
 
     &.button__select {
         background: $light-gray;
-        color: $main-black;
+		  color: $main-black;
+		  &:hover {
+				background: $main-orange;
+				color: $main-white;
+		  }
     }
     &.button__select--selected {
         background: $main-orange;
@@ -192,7 +200,10 @@ body {
 				}
 			}
 
-			&>#blur-info {
+			&>
+			#website-intro,
+			#blur-info,
+			#end-note {
 				padding: 1em;
 				&>.text-field {
 					@media (max-width: $bp-small) {
@@ -1103,9 +1114,6 @@ article {
 	.title__info--open {
 		max-height: 5em; // A high value to show the content again
 	}
-}
-
-.card--info {
 }
 
 .card__blur {
