@@ -69,17 +69,6 @@ text {
 	// 	height: 400px;
 	// 	width: 400px;
 	// }	
-	
-	// @media (min-width: $bp-large) {
-	// 	// height: 500px;
-	// 	// width: 500px;
-	// }	
-	
-	// @media (min-width: $bp-med) and (max-width: $bp-large) {
-	// 	height: 400px;
-	// 	width: 400px;
-	// }	
-
 }
 
 #bubble-chart {
@@ -122,9 +111,15 @@ text {
 }
 
 #her-chart {
+	height: auto;
 	@media (max-width: $bp-med) {
 		// height: 375px;
 		max-width: 100vw;
+	}
+
+	@media (min-width: $bp-med) {
+		// height: 375px;
+		// max-width: 55vw;
 	}
 }
 
@@ -185,6 +180,7 @@ text {
 	@media (min-width: $bp-med) {
 		flex: 1;
 		margin-left: $margin-large;
+		min-width: 16em;
 	}
 }
 
