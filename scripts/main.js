@@ -52,6 +52,10 @@ function goToNextArticle() {
 
 // goToArticleById('data-her');
 // goToArticleById('data-incident');
+<<<<<<< HEAD
+=======
+goToArticleById('choose-title');
+>>>>>>> fixing
 
 function goToArticleById (id) {
     var index = indexByArticleId[id];
