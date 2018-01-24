@@ -41,6 +41,18 @@ p {
 	}
 }
 
+a, a:visited, a:hover, a:active {
+	// color: inherit;
+	font-family: 'tisa-pro', serif;
+	color: $main-blue;
+	text-decoration: none;
+}
+
+a.disabled {
+	color: $main-gray;
+	pointer-events: none;
+}
+ 
 b {
 	font-family: "relative-bold";
 	font-weight: 700;

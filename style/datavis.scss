@@ -129,9 +129,7 @@ text {
 	}
 
 	@media (min-width: $bp-med) {
-		// width: 100%;
 		margin: 0;
-		// margin: $margin-small;
 	}
 
 	ul {
@@ -177,6 +175,19 @@ text {
 	@media (min-width: $bp-med) {
 		flex: 1;
 		margin-left: $margin-large;
+	}
+}
+
+.data__info--details {
+	display: flex;
+	justify-content: space-between;
+	div {
+		font-weight: 300;
+		font-size: 0.8em;
+		a {
+			display: inline-block;
+			margin-bottom: .3em;
+		}
 	}
 }
 

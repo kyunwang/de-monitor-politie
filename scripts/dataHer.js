@@ -2,8 +2,6 @@
 // Grid based on example from d3.layout.grid
 async function createHer() {
 	var width = document.getElementById('her-chart').getBoundingClientRect().width;
-	console.log(width);
-	console.log(width < 4000 ? 40 : 25)
 	
 	var delayScale = d3.scaleLinear().domain([0, 400]).range([0, 300]);
 
@@ -127,11 +125,15 @@ async function createHer() {
 	var herInfoDot = document.querySelectorAll('.data__cat--dot');
 	var inciInfo = document.querySelectorAll('.data__cat--inci li');
 	var involInfo = document.querySelectorAll('.data__cat--invol li');
-	
+
+	var herLink = document.querySelector('.data__info--details div a');
+	var herLinkInfo = document.querySelector('.data__info--details div p');
+
 	function updateInfo(d) {
 		updateHerInfo(d);
 		updateInciInfo(d);
 		updateInvolInfo(d);
+		updateHerLink(d);
 	
 		highlightNode(d);
 	}
@@ -161,8 +163,28 @@ async function createHer() {
 		involInfo[0].textContent = checkData(d.involvedPeople);
 	}
 
+	function updateHerLink(d) {
+		checkVideo(d);
+		// if ()
+		// if (!checkVideo) {
+		// herLink.setAttribute('disabled', !checkVideo(d));
+	
+		// } else {
+			herLink.classList.toggle('disabled', !checkVideo(d));
+		// }
+		herLink.setAttribute('href', d.link);
+		
+		herLinkInfo.textContent = d.vidChanges;
+	}
+
+	function checkVideo(d) {
+		var change = d.vidChanges.toLowerCase();
+		if (change == 'verwijderd') return false;
+		return true;
+	}
+
 	function checkData(d) {		
-		if (d == 'X') return true;
+		if (d == 'X') return true;k
 		if (d.length > 0 && d != '') return d;
 		return;
 	}
