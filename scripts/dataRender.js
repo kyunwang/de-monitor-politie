@@ -1,7 +1,7 @@
 // @ts-check
 // Used https://www.zamzar.com/convert/xlsx-to-csv/ to convert the data
 
-d3.csv("../data/data.csv", cleanData, getData);
+d3.csv("data/data.csv", cleanData, getData);
 
 function cleanData(data, index) {
   // Get all the keys at the start
