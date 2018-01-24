@@ -1,10 +1,10 @@
-h2,
 p,
 li {
 	font-family: "tisa-pro", serif;
 	font-weight: 100;
 }
 
+h2,
 h3 {
 	font-family: "relative-bold";
 }
@@ -22,14 +22,8 @@ h2 {
 }
 
 h3 {
-	// @media (max-width: $bp-small) {
-	// @media (max-width: $bp-small) {
-		font-size: 1.2em;
-	// }
-
-	// @media (min-width: $bp-small) and (max-width: $bp-med) {}
+	font-size: 1.2em;
 }
-
 
 p {
 	@media (max-width: $bp-small) {
@@ -37,7 +31,7 @@ p {
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		font-size: 1.1em;
+		// font-size: 1em;
 	}
 }
 
@@ -54,7 +48,8 @@ a.disabled {
 }
  
 b {
-	font-family: "relative-bold";
+	font-family: "tisa-pro";
+	// font-family: "tisa-pro-bold";
 	font-weight: 700;
 }
 

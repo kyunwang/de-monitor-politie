@@ -232,7 +232,7 @@ text {
 	div {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		// justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
 		// margin-bottom: 1em;
@@ -245,6 +245,7 @@ text {
 	height: 25px;
 	width: 25px;
 	margin-bottom: .5em;
+	margin-left: .5em;
 	border-radius: 10em;
 	// background: #000;
 }
@@ -258,7 +259,7 @@ text {
 
 	// @media (min-width: $margin-small)  {
 	@media (max-width: $bp-med) {
-		margin: 0 2em;
+		margin: 0 $margin-small;
 	}
 	
 	// Statically for the legend of herleidbaarheid graph
@@ -291,6 +292,7 @@ text {
 }
 .data__cat--label {
 	display: flex;
-	min-width: 5em;
+	min-width: 6em;
 	margin-bottom: .5em;
+	padding-right: 1em;
 }

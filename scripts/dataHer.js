@@ -74,19 +74,19 @@ async function createHer() {
 			.enter()
 			.append('g')
 			.attr('y', 20)
-			.attr("transform", (d, i) =>  `translate(${1%i ? 200 : 31.125}, ${2%i < 2 ? 60 : 20})`);
-			// .attr("transform", (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
-			// .attr("transform", (d, i) =>  `translate(${1%i ? 31.125 : 150}, ${1%i ? i * 20 : i * 20})`);
-			// .attr("transform", (d, i) =>  `translate(${i * 25}, ${20})`);
+			.attr('transform', (d, i) =>  `translate(${1%i ? 200 : 31.125}, ${2%i < 2 ? 60 : 20})`);
+			// .attr('transform', (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
+			// .attr('transform', (d, i) =>  `translate(${1%i ? 31.125 : 150}, ${1%i ? i * 20 : i * 20})`);
+			// .attr('transform', (d, i) =>  `translate(${i * 25}, ${20})`);
 
 		legend.append('circle')
 			.attr('r', 25/2)
 			.attr('fill', 'red')
 
-		legend.append("text")
-			.attr("x", 24)
-			.attr("y", 9.5)
-			.attr("dy", "0.32em")
+		legend.append('text')
+			.attr('x', 24)
+			.attr('y', 6)
+			.attr('dy', '0.0em')
 			.text(d => d);
 	}
 
