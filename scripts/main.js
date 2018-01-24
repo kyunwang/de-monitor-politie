@@ -50,7 +50,7 @@ function goToNextArticle() {
 	return false;
 }
 
-goToArticleById('data-her');
+// goToArticleById('data-her');
 // goToArticleById('data-incident');
 
 function goToArticleById (id) {

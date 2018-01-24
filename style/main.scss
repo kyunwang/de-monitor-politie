@@ -272,7 +272,7 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
-					&>:first-child { // The screen wrapper
+					&>:first-of-type { // The screen wrapper
 						margin-top: $margin-small; // Margin to the text field
 						& > section {
 							margin: $margin-small;
