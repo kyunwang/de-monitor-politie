@@ -39,9 +39,9 @@ function goToNextArticle() {
 		setTimeout(function () {
 			
 			articleContainer.classList.remove("animation-active");
-			if (setFocusPoint(articles[articleIndex]) ) {
+			// if (setFocusPoint(articles[articleIndex]) ) {
 
-			}
+			// }
 		}, 1000);
 		return articles[articleIndex];
 	} else {
@@ -115,10 +115,10 @@ function setFocusPoint(article, x, y) {
 			
 			
 			
-            setTimeout(function (){
+            // setTimeout(function (){
 				overlayEffect.classList.add("overlay-effect--focus");
 				setSelectionPanelStatus(true);
-			}, 2000);
+			// }, 2000);
            
             
 			return true;
@@ -244,6 +244,50 @@ function fillOverlay () {
 	}
 }
 
+function showFeedback (article, unrecognizable) {
+	var infoBalloonWrapper = article.getElementsByClassName("wrapper--info-balloon")[0];
+	if (infoBalloonWrapper != undefined) {
+		var instruction = infoBalloonWrapper.getElementsByClassName("instruction")[0];
+		if (instruction) {
+			instruction.classList.add("disabled");
+		}
+		var feedback = infoBalloonWrapper.getElementsByClassName("feedback")[0];
+		if (feedback) {
+			feedback.classList.remove("disabled");
+			if (unrecognizable) {
+				feedback.classList.add("unrecognizable");
+			} else {
+				feedback.classList.remove("unrecognizable");
+			}
+		}
+	}
+	var goToNextStep = document.getElementById("go-to-next-step");
+        
+	goToNextStep.classList.remove("hidden");
+	var nextArticle
+	nextArticle = function (e) {
+
+		// reset
+		var infoBalloonWrapper = article.getElementsByClassName("wrapper--info-balloon")[0];
+		if (infoBalloonWrapper != undefined) {
+			var feedback = infoBalloonWrapper.getElementsByClassName("feedback")[0];
+			if (feedback) {
+				feedback.classList.add("disabled");
+			}
+		}
+
+		goToNextStep.classList.add("hidden");
+		e.target.removeEventListener("click", nextArticle);
+		
+		//
+
+		
+
+		goToNextArticle();
+	};
+	goToNextStep.addEventListener("click", nextArticle);
+}
+
 function makeRecognizable () {
 	var currentArticle = articles[articleIndex];
 	var id = currentArticle.id;
@@ -264,7 +308,7 @@ function makeRecognizable () {
 	itemSlot.setAttribute("value", id);
 	itemSlot.removeAttribute("disabled");
 
-	setTimeout(goToNextArticle, 1500);
+	showFeedback (currentArticle, false);
 }
 
 function makeUnrecognizable () {
@@ -295,9 +339,9 @@ function makeUnrecognizable () {
 
 		setBlurPoints(blurPoints - 1);
 
-		setTimeout(goToNextArticle, 1500);
-	} else {
+	//} else {
 		// shouldn't be activated, unless developer hack.
+		showFeedback (currentArticle, true);
 	}
 }
 
