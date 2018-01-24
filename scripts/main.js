@@ -51,7 +51,7 @@ function goToNextArticle() {
 }
 
 // goToArticleById('data-her');
-// goToArticleById('data-incident');
+goToArticleById('data-incident');
 
 function goToArticleById (id) {
     var index = indexByArticleId[id];

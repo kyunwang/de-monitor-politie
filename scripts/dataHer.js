@@ -1,9 +1,18 @@
-// Start herleidbaarheid chart
 // Grid based on example from d3.layout.grid
 async function createHer() {
+	var herInfo = document.querySelectorAll('.data__cat--her li');
+	var herInfoDot = document.querySelectorAll('.data__cat--dot');
+	var inciInfo = document.querySelectorAll('.data__cat--inci li');
+	var involInfo = document.querySelectorAll('.data__cat--invol li');
+
+	var herLink = document.querySelector('.data__info--details div a');
+	var herLinkInfo = document.querySelector('.data__info--details div p');
+
 	var width = document.getElementById('her-chart').getBoundingClientRect().width;
 	
-	var delayScale = d3.scaleLinear().domain([0, 400]).range([0, 300]);
+	var delayScale = d3.scaleLinear()
+		.domain([0, 400])
+		.range([0, 300]);
 
 	var setData = await vlogData.map(function(d, i) {
 		return {
@@ -25,7 +34,8 @@ async function createHer() {
 		.attr('width', width)
 		.attr('height', height);
 	
-	var shapes = herSvg.selectAll('.shape').data(data)
+	var shapes = herSvg.selectAll('.shape')
+		.data(data)
 		.enter()
 		.append('g')
 		.classed('her-node', true)
@@ -54,9 +64,7 @@ async function createHer() {
 		herSvg.attr('height', grid.height());
 		shapes.transition()
 			.duration(750)
-			.delay(function(d) {
-				return delayScale(d.groupIndex * 150 + d.index * 1);
-			})
+			.delay(d => delayScale(d.groupIndex * 150 + d.index * 1))
 			.attr('transform', d => `translate(${d.x}, ${d.y})`);
 		// updateLabels();
 	}
@@ -121,14 +129,6 @@ async function createHer() {
 		return 'none';
 	}
 
-	var herInfo = document.querySelectorAll('.data__cat--her li');
-	var herInfoDot = document.querySelectorAll('.data__cat--dot');
-	var inciInfo = document.querySelectorAll('.data__cat--inci li');
-	var involInfo = document.querySelectorAll('.data__cat--invol li');
-
-	var herLink = document.querySelector('.data__info--details div a');
-	var herLinkInfo = document.querySelector('.data__info--details div p');
-
 	function updateInfo(d) {
 		updateHerInfo(d);
 		updateInciInfo(d);
@@ -151,7 +151,6 @@ async function createHer() {
 		herInfoDot[0].style.background = checkData(d.routeShowed) ? herColor.routeShowed : 'none';
 		herInfoDot[1].style.background = checkData(d.recognisable) ? herColor.recognisable : 'none';
 		herInfoDot[2].style.background = checkData(d.otherRecognisable) ? herColor.otherRecognisable : 'none';
-
 	}
 
 	function updateInciInfo(d) {
@@ -186,6 +185,4 @@ async function createHer() {
 
 	// Initial render detail
 	await updateInfo(data[0]);
-	console.log(data);
-	
 }
