@@ -160,14 +160,14 @@ button,input {
 }
 
 html {
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 body {
 	width: 100vw;
 	height: 100vh;
-	// overflow: hidden;
-	overflow-x: hidden;
+	overflow: hidden;
+	// overflow-x: hidden;
 	main {
 		#article-container {
 			position: relative;

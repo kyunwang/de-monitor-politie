@@ -303,7 +303,8 @@ text {
 }
 .data__cat--label {
 	display: flex;
-	min-width: 6em;
+	// min-width: 6em;
+	width: 8em;
 	margin-bottom: .5em;
 	padding-right: 1em;
 }
