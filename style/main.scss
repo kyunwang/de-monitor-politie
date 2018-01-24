@@ -244,9 +244,13 @@ body {
 						&:not(.overlay) {
 							border-radius: $border-radius;
 							background-color: rgb(240, 241, 241);
-							padding: 25px 50px;
-							max-width: 30em;
 							margin: 1em;
+							padding: 25px 50px;
+							
+							@media (min-width: $bp-med) { 
+								max-width: 20em;
+								margin-left: auto;
+							}
 
 							.button--go-to-next-article {
 								&:hover {
