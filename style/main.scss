@@ -121,7 +121,7 @@ button,input {
         margin-top: $margin-article-text-elements;
         font-family: "relative-medium";
         font-size: 1em;
-        font-weight: 100;
+      //   font-weight: 100;
 
         @media (max-width: $bp-med) {
             width: 100%;
