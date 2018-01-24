@@ -131,6 +131,10 @@ button,input {
         @media (max-width: $bp-med) {
             width: 100%;
 		  }
+
+		  &:hover {
+			  background: $light-blue;
+		  }
 		  
     }
     
@@ -194,6 +198,7 @@ body {
 			}
 
 			&>#blur-info {
+				padding: 1em;
 				&>.text-field {
 					@media (max-width: $bp-small) {
 						padding: 1em;
@@ -256,6 +261,19 @@ body {
 								&:hover {
 									opacity: .8;
 								}
+							}
+
+							&.card--info {
+								max-width: 45em;
+								margin: 0;
+
+								@media (max-width: $bp-med) {
+									padding: 1em 2em;
+								}
+								@media (min-width: $bp-med) {
+									margin: 0 auto;
+								}
+								
 							}
 						}
 
@@ -741,22 +759,24 @@ article {
             }
             
             button.button--default {
-
-                background-color: #ffa101;
-                &:disabled {
-                  background-color: $main-gray; 
-                  color: white;
-                }
-                display: block;
-                margin: 0;
-                text-align: center;
-                font-size: 80%;
-                &:not(:last-of-type) {
-                    margin-right: 1em;
-                    
-                }
-                flex-grow: 1;
-                padding: 0;
+					display: block;
+					flex-grow: 1;
+					background: #ffa101;
+					text-align: center;
+					font-size: 80%;
+					margin: 0;
+					padding: 0;
+					transition: background .4s ease;
+					&:disabled {
+						background: $main-gray; 
+						color: white;
+					}
+					&:not(:last-of-type) {
+						margin-right: 1em;
+					}
+					&:hover {
+						background: $light-orange;
+					}
             }
         }
         transition: left 0.5s, right 0.5s, height 0.5s, width 0.5s, transform 0.5s;
@@ -969,6 +989,9 @@ article {
 	.title__info--open {
 		max-height: 5em; // A high value to show the content again
 	}
+}
+
+.card--info {
 }
 
 .card__blur {
