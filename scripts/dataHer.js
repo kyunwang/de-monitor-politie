@@ -2,8 +2,6 @@
 // Grid based on example from d3.layout.grid
 async function createHer() {
 	var width = document.getElementById('her-chart').getBoundingClientRect().width;
-	console.log(width);
-	console.log(width < 4000 ? 40 : 25)
 	
 	var delayScale = d3.scaleLinear().domain([0, 400]).range([0, 300]);
 
@@ -76,19 +74,19 @@ async function createHer() {
 			.enter()
 			.append('g')
 			.attr('y', 20)
-			.attr("transform", (d, i) =>  `translate(${1%i ? 200 : 31.125}, ${2%i < 2 ? 60 : 20})`);
-			// .attr("transform", (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
-			// .attr("transform", (d, i) =>  `translate(${1%i ? 31.125 : 150}, ${1%i ? i * 20 : i * 20})`);
-			// .attr("transform", (d, i) =>  `translate(${i * 25}, ${20})`);
+			.attr('transform', (d, i) =>  `translate(${1%i ? 200 : 31.125}, ${2%i < 2 ? 60 : 20})`);
+			// .attr('transform', (d, i) =>  `translate(${1%i ? 250 : 31.125}, ${1%i ? i * 40 : i * 40})`);
+			// .attr('transform', (d, i) =>  `translate(${1%i ? 31.125 : 150}, ${1%i ? i * 20 : i * 20})`);
+			// .attr('transform', (d, i) =>  `translate(${i * 25}, ${20})`);
 
 		legend.append('circle')
 			.attr('r', 25/2)
 			.attr('fill', 'red')
 
-		legend.append("text")
-			.attr("x", 24)
-			.attr("y", 9.5)
-			.attr("dy", "0.32em")
+		legend.append('text')
+			.attr('x', 24)
+			.attr('y', 6)
+			.attr('dy', '0.0em')
 			.text(d => d);
 	}
 
@@ -127,18 +125,22 @@ async function createHer() {
 	var herInfoDot = document.querySelectorAll('.data__cat--dot');
 	var inciInfo = document.querySelectorAll('.data__cat--inci li');
 	var involInfo = document.querySelectorAll('.data__cat--invol li');
-	
+
+	var herLink = document.querySelector('.data__info--details div a');
+	var herLinkInfo = document.querySelector('.data__info--details div p');
+
 	function updateInfo(d) {
 		updateHerInfo(d);
 		updateInciInfo(d);
 		updateInvolInfo(d);
+		updateHerLink(d);
 	
 		highlightNode(d);
 	}
 
 	function highlightNode(d) {
 		d3.selectAll('.her-node')
-			.style('opacity', item => (item == d) ? 1 : .5);
+			.style('opacity', item => (item == d) ? 1 : .2);
 	}
 
 	function updateHerInfo(d) {
@@ -161,8 +163,20 @@ async function createHer() {
 		involInfo[0].textContent = checkData(d.involvedPeople);
 	}
 
+	function updateHerLink(d) {
+		herLink.classList.toggle('disabled', !checkVideo(d));
+		herLink.setAttribute('href', d.link);
+		herLinkInfo.textContent = d.vidChanges;
+	}
+
+	function checkVideo(d) {
+		var change = d.vidChanges.toLowerCase();
+		if (change == 'verwijderd') return false;
+		return true;
+	}
+
 	function checkData(d) {		
-		if (d == 'X') return true;
+		if (d == 'X') return true;k
 		if (d.length > 0 && d != '') return d;
 		return;
 	}

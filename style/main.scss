@@ -1,10 +1,10 @@
-h2,
 p,
 li {
 	font-family: "tisa-pro", serif;
 	font-weight: 100;
 }
 
+h2,
 h3 {
 	font-family: "relative-bold";
 }
@@ -22,14 +22,8 @@ h2 {
 }
 
 h3 {
-	// @media (max-width: $bp-small) {
-	// @media (max-width: $bp-small) {
-		font-size: 1.2em;
-	// }
-
-	// @media (min-width: $bp-small) and (max-width: $bp-med) {}
+	font-size: 1.2em;
 }
-
 
 p {
 	@media (max-width: $bp-small) {
@@ -37,12 +31,25 @@ p {
 	}
 
 	@media (min-width: $bp-small) and (max-width: $bp-med) {
-		font-size: 1.1em;
+		// font-size: 1em;
 	}
 }
 
+a, a:visited, a:hover, a:active {
+	// color: inherit;
+	font-family: 'tisa-pro', serif;
+	color: $main-blue;
+	text-decoration: none;
+}
+
+a.disabled {
+	color: $main-gray;
+	pointer-events: none;
+}
+ 
 b {
-	font-family: "relative-bold";
+	font-family: "tisa-pro";
+	// font-family: "tisa-pro-bold";
 	font-weight: 700;
 }
 
@@ -114,10 +121,14 @@ button,input {
         margin-top: $margin-article-text-elements;
         font-family: "relative-medium";
         font-size: 1em;
-        font-weight: 100;
+      //   font-weight: 100;
 
         @media (max-width: $bp-med) {
             width: 100%;
+		  }
+
+		  &:hover {
+			  background: $light-blue;
 		  }
 		  
     }
@@ -182,6 +193,7 @@ body {
 			}
 
 			&>#blur-info {
+				padding: 1em;
 				&>.text-field {
 					@media (max-width: $bp-small) {
 						padding: 1em;
@@ -232,14 +244,31 @@ body {
 						&:not(.overlay) {
 							border-radius: $border-radius;
 							background-color: rgb(240, 241, 241);
-							padding: 25px 50px;
-							max-width: 30em;
 							margin: 1em;
+							padding: 25px 50px;
+							
+							@media (min-width: $bp-med) { 
+								max-width: 20em;
+								margin-left: auto;
+							}
 
 							.button--go-to-next-article {
 								&:hover {
 									opacity: .8;
 								}
+							}
+
+							&.card--info {
+								max-width: 45em;
+								margin: 0;
+
+								@media (max-width: $bp-med) {
+									padding: 1em 2em;
+								}
+								@media (min-width: $bp-med) {
+									margin: 0 auto;
+								}
+								
 							}
 						}
 
@@ -260,8 +289,11 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
-					&>:first-child {
+					&>:first-of-type { // The screen wrapper
 						margin-top: $margin-small; // Margin to the text field
+						& > section {
+							margin: $margin-small;
+						}
 					}
 
 					section {
@@ -272,8 +304,12 @@ body {
 							margin: $margin-small;
 						}
 
-						@media (min-width: $bp-small) { // and (max-width: $bp-med)
+						@media (min-width: $bp-small) and (max-width: $bp-med) {
 							margin: 0 $margin-small;
+						}
+
+						@media (min-width: $bp-med) {
+							// margin: 0;
 						}
 					
 						h2 {
@@ -733,22 +769,24 @@ article {
             }
             
             button.button--default {
-
-                background-color: #ffa101;
-                &:disabled {
-                  background-color: $main-gray; 
-                  color: white;
-                }
-                display: block;
-                margin: 0;
-                text-align: center;
-                font-size: 80%;
-                &:not(:last-of-type) {
-                    margin-right: 1em;
-                    
-                }
-                flex-grow: 1;
-                padding: 0;
+					display: block;
+					flex-grow: 1;
+					background: #ffa101;
+					text-align: center;
+					font-size: 80%;
+					margin: 0;
+					padding: 0;
+					transition: background .4s ease;
+					&:disabled {
+						background: $main-gray; 
+						color: white;
+					}
+					&:not(:last-of-type) {
+						margin-right: 1em;
+					}
+					&:hover {
+						background: $light-orange;
+					}
             }
         }
         transition: left 0.5s, right 0.5s, height 0.5s, width 0.5s, transform 0.5s;
@@ -1065,6 +1103,9 @@ article {
 	.title__info--open {
 		max-height: 5em; // A high value to show the content again
 	}
+}
+
+.card--info {
 }
 
 .card__blur {
