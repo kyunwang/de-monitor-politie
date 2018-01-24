@@ -49,16 +49,6 @@ text {
 		}
 	}
 
-	&> section {
-		// @media (max-width: $bp-med) {
-			margin: $margin-small;
-		// }
-
-		// @media (min-width: $bp-med) {
-		// 	margin: 0;
-		// }
-	}
-
 	.button--default {
 		width: 100%;
 	}
@@ -135,6 +125,12 @@ text {
 	
 	@media (max-width: $bp-med) {
 		// width: 100%;
+		// margin: $margin-small;
+	}
+
+	@media (min-width: $bp-med) {
+		// width: 100%;
+		margin: 0;
 		// margin: $margin-small;
 	}
 

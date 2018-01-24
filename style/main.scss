@@ -260,8 +260,11 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
-					&>:first-child {
+					&>:first-child { // The screen wrapper
 						margin-top: $margin-small; // Margin to the text field
+						& > section {
+							margin: $margin-small;
+						}
 					}
 
 					section {
@@ -272,8 +275,12 @@ body {
 							margin: $margin-small;
 						}
 
-						@media (min-width: $bp-small) { // and (max-width: $bp-med)
+						@media (min-width: $bp-small) and (max-width: $bp-med) {
 							margin: 0 $margin-small;
+						}
+
+						@media (min-width: $bp-med) {
+							// margin: 0;
 						}
 					
 						h2 {

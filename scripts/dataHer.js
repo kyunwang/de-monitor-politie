@@ -138,7 +138,7 @@ async function createHer() {
 
 	function highlightNode(d) {
 		d3.selectAll('.her-node')
-			.style('opacity', item => (item == d) ? 1 : .5);
+			.style('opacity', item => (item == d) ? 1 : .2);
 	}
 
 	function updateHerInfo(d) {
