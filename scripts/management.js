@@ -111,12 +111,12 @@ var articleBehaviourData = {
     ["route-3"] : function (article) {
         setTimeout(goToNextArticle, 1500);
     },
-    // ["police-desk"] : function (article) {
-    //     setTimeout(goToNextArticle, 1500);
-    // },
-    // ["uploading"] : function (article) {
-    //     setTimeout(goToNextArticle, 1500);
-    // },
+    ["police-desk"] : function (article) {
+        setTimeout(goToNextArticle, 1500);
+    },
+    ["uploading"] : function (article) {
+        setTimeout(goToNextArticle, 1500);
+    },
 };
 
 var canUseNextButton = true;
