@@ -841,11 +841,22 @@ article {
     .overlay-effect--fill + .wrapper--info-balloon {
         left: 0 !important;
         top: 0 !important;
-        article {
-            left: calc(50vw - 15em) !important;
-            top: 30vh  !important;
-            width: 30em !important;
-            max-width: 30em !important;
+
+        @media (max-width: $bp-small) {
+            article {
+                left: 0;
+                top: 30vh  !important;
+                width: calc(100vw - 10vmin) !important;
+                max-width: unset !important;
+            }
+        }
+        @media (min-width: $bp-small) {
+            article {
+                left: calc(50vw - 15em) !important;
+                top: 30vh  !important;
+                width: 30em !important;
+                max-width: 30em !important;
+            }
         }
     } 
 
@@ -859,7 +870,7 @@ article {
 
                 @media (min-width: $bp-small) and (max-width: $bp-med) {
                     left: calc(-200vmax + 50vw - 25vmin + 3vh);
-                    top: calc(-200vmax + 90vh - 50vmin);
+                    top: calc(-200vmax + 90vh - 60vmin);
                 }
                 @media (min-width: $bp-med) {
                     left: calc(-200vmax + 70vw - 20vh);
