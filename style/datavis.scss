@@ -183,7 +183,12 @@ text {
 	justify-content: space-between;
 	div {
 		font-weight: 300;
-		font-size: 0.8em;
+		@media (max-width: $bp-med) {
+			font-size: 0.8em;
+		}
+		@media (min-width: $bp-med) {
+			font-size: 0.9em;
+		}
 		a {
 			display: inline-block;
 			margin-bottom: .3em;
