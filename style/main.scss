@@ -58,12 +58,12 @@ svg {
 #article-container {
 
 
-    > article:not(.data-vis) {
+    > article:not(.data-vis):not(.title__choose) {
         > div {
             position: absolute;
-            left: -150vw;
+            left: -350vw;
             bottom: 0;
-            width: 400vw;
+            width: 800vw;
             z-index: -10;
             > svg {
                 margin: auto;
@@ -621,6 +621,9 @@ body {
 article {
     $overlay-effect-size: 200vmax;
     position: relative;
+    
+
+
     .overlay {
         height: 100%;
         width: 100%;
@@ -643,7 +646,8 @@ article {
 
         // information / feedback
         .wrapper--info-balloon {
-            position: relative;
+            position: absolute;
+
 
             article {
                 transition: opacity 0.3s;
@@ -666,13 +670,24 @@ article {
                 border-radius: $border-radius;
                 background-color: white;
                 padding: 1em;
+                box-sizing: border-box;
 
                 @media (max-width: $bp-small) {
-                    // width: calc(100vw - 10vmin);
+                    width: calc(100vw - 10vmin);
                     margin: 5vmin;
+                    
+                }
+                @media (min-width: $bp-small) {
+                    width: 30em;
+
                 }
 
-                @media (min-width: $bp-small) {
+                @media (min-width: $bp-small) and (max-width: $bp-med) {
+                    
+                    
+                }
+
+                @media (min-width: $bp-med) {
 
                 }
 
@@ -798,9 +813,26 @@ article {
                     left: calc(-200vmax + 70vw - 20vh);
                     top: calc(-200vmax + 100vh - 44vh);
                 }
-                
             } 
         }
+        .wrapper--info-balloon {
+            @media (max-width: $bp-small) {
+                left: 0;
+                top: 0;
+            }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                left: 0;
+                top: 5vmin;
+                article {
+                    left: calc(50vw - 15em);
+                }
+            }
+            @media (min-width: $bp-med) {
+                left: 5vmin;
+                top: 5vmin;
+            }
+        }   
     }
     &#house {
         .overlay-effect {
@@ -819,7 +851,25 @@ article {
                     top: calc(-200vmax + 80vh - 44vh);
                 }                
             }
-        }       
+        }
+        .wrapper--info-balloon {
+            @media (max-width: $bp-small) {
+                left: 0;
+                top: 0;
+            }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                left: 0;
+                top: 5vmin;
+                article {
+                    left: calc(50vw - 15em);
+                }
+            }
+            @media (min-width: $bp-med) {
+                left: 5vmin;
+                top: 5vmin;
+            }
+        }   
     }
     &#house-num {
         .overlay-effect {
@@ -838,7 +888,25 @@ article {
                     top: calc(-200vmax + 5vh);
                 }                
             }
-        }       
+        }
+        .wrapper--info-balloon {
+            @media (max-width: $bp-small) {
+                left: 0;
+                top: calc(60vh - 5vmin);
+            }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                left: 0;
+                top: calc(70vh - 5vmin);
+                article {
+                    left: calc(50vw - 15em);
+                }
+            }
+            @media (min-width: $bp-med) {
+                left: calc(50vw - 15em);
+                top: calc(70vh - 5vmin);
+            }
+        }        
     }
     &#throw-beer {
         .overlay-effect {
@@ -857,7 +925,28 @@ article {
                     top: calc(-200vmax + 45vh - 20vh);
                 }                
             }
-        }  
+        }
+        .wrapper--info-balloon {
+            @media (max-width: $bp-small) {
+                left: 0;
+                top: calc(60vh - 5vmin);
+            }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                left: 5vmin;
+                top: 5vmin;
+                article {
+                    max-width: 10em;
+                }
+            }
+            @media (min-width: $bp-med) {
+                left: 5vmin;
+                top: 5vmin;
+                article {
+                    max-width: 20em;
+                }
+            }
+        }     
     }
     &#license-plate {
         .overlay-effect {
@@ -876,7 +965,22 @@ article {
                     top: calc(-200vmax + 45vh - 20vh);
                 }                
             }
-        }  
+        }
+        .wrapper--info-balloon {
+            @media (max-width: $bp-small) {
+                left: 0;
+                top: 0;
+            }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                left: 0;
+                top: 0;
+            }
+            @media (min-width: $bp-med) {
+                left: 0;
+                top: 0;
+            }
+        }     
     }
     &#neighbor {
         .overlay-effect {
@@ -895,7 +999,22 @@ article {
                     top: calc(-200vmax + 37vh - 20vh);
                 }                
             }
-        }  
+        }
+        .wrapper--info-balloon {
+            @media (max-width: $bp-small) {
+                left: 0;
+                top: 0;
+            }
+
+            @media (min-width: $bp-small) and (max-width: $bp-med) {
+                left: 0;
+                top: 0;
+            }
+            @media (min-width: $bp-med) {
+                left: 0;
+                top: 0;
+            }
+        }     
     }
 }
 
