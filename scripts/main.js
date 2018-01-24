@@ -51,7 +51,8 @@ function goToNextArticle() {
 }
 
 // goToArticleById('data-her');
-goToArticleById('data-incident');
+// goToArticleById('data-incident');
+goToArticleById('choose-title');
 
 function goToArticleById (id) {
     var index = indexByArticleId[id];
