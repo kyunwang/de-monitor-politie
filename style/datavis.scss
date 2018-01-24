@@ -49,16 +49,6 @@ text {
 		}
 	}
 
-	&> section {
-		// @media (max-width: $bp-med) {
-			margin: $margin-small;
-		// }
-
-		// @media (min-width: $bp-med) {
-		// 	margin: 0;
-		// }
-	}
-
 	.button--default {
 		width: 100%;
 	}
@@ -138,6 +128,10 @@ text {
 		// margin: $margin-small;
 	}
 
+	@media (min-width: $bp-med) {
+		margin: 0;
+	}
+
 	ul {
 		margin-top: 1em;
 	}
@@ -181,6 +175,19 @@ text {
 	@media (min-width: $bp-med) {
 		flex: 1;
 		margin-left: $margin-large;
+	}
+}
+
+.data__info--details {
+	display: flex;
+	justify-content: space-between;
+	div {
+		font-weight: 300;
+		font-size: 0.8em;
+		a {
+			display: inline-block;
+			margin-bottom: .3em;
+		}
 	}
 }
 

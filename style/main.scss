@@ -41,6 +41,18 @@ p {
 	}
 }
 
+a, a:visited, a:hover, a:active {
+	// color: inherit;
+	font-family: 'tisa-pro', serif;
+	color: $main-blue;
+	text-decoration: none;
+}
+
+a.disabled {
+	color: $main-gray;
+	pointer-events: none;
+}
+ 
 b {
 	font-family: "relative-bold";
 	font-weight: 700;
@@ -260,8 +272,11 @@ body {
 
 				// for data visualisatie
 				&.data-vis {
-					&>:first-child {
+					&>:first-child { // The screen wrapper
 						margin-top: $margin-small; // Margin to the text field
+						& > section {
+							margin: $margin-small;
+						}
 					}
 
 					section {
@@ -272,8 +287,12 @@ body {
 							margin: $margin-small;
 						}
 
-						@media (min-width: $bp-small) { // and (max-width: $bp-med)
+						@media (min-width: $bp-small) and (max-width: $bp-med) {
 							margin: 0 $margin-small;
+						}
+
+						@media (min-width: $bp-med) {
+							// margin: 0;
 						}
 					
 						h2 {

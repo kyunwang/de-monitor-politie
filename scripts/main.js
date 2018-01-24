@@ -50,6 +50,8 @@ function goToNextArticle() {
 	return false;
 }
 
+goToArticleById('data-her');
+// goToArticleById('data-incident');
 
 function goToArticleById (id) {
     var index = indexByArticleId[id];
@@ -154,6 +156,7 @@ function buttonExpanderFunction(e) {
 }
 
 var buttonExpanders = document.getElementsByClassName("button--expander");
+
 for (let index = 0; index < buttonExpanders.length; index++) {
 	const buttonExpander = buttonExpanders[index];
 	buttonExpander.addEventListener("click", buttonExpanderFunction);
