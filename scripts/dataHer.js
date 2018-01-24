@@ -164,16 +164,8 @@ async function createHer() {
 	}
 
 	function updateHerLink(d) {
-		checkVideo(d);
-		// if ()
-		// if (!checkVideo) {
-		// herLink.setAttribute('disabled', !checkVideo(d));
-	
-		// } else {
-			herLink.classList.toggle('disabled', !checkVideo(d));
-		// }
+		herLink.classList.toggle('disabled', !checkVideo(d));
 		herLink.setAttribute('href', d.link);
-		
 		herLinkInfo.textContent = d.vidChanges;
 	}
 
