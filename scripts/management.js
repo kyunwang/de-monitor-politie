@@ -1,6 +1,6 @@
 var articleBehaviourData = {
     ["route-1"] : function (article) {
-        setTimeout(goToNextArticle, 1500);
+        setTimeout(goToNextArticle, 750);
     },
     ["route-2"] : function (article) {
         setFocusPoint(article);
@@ -67,7 +67,7 @@ var articleBehaviourData = {
         setRecognizAbleButtonsStatus(article, true);
     },
     ["open-door"] : function (article) {
-        setTimeout(goToNextArticle, 1500);
+        setTimeout(goToNextArticle, 750);
     },
     ["throw-beer"] : function (article) {
         setFocusPoint(article);
@@ -109,13 +109,13 @@ var articleBehaviourData = {
         setRecognizAbleButtonsStatus(article, true);
     },
     ["route-3"] : function (article) {
-        setTimeout(goToNextArticle, 1500);
+        setTimeout(goToNextArticle, 750);
     },
     ["police-desk"] : function (article) {
-        setTimeout(goToNextArticle, 1500);
+        setTimeout(goToNextArticle, 750);
     },
     ["uploading"] : function (article) {
-        setTimeout(goToNextArticle, 1500);
+        setTimeout(goToNextArticle, 750);
     },
 };
 
