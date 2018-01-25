@@ -5,6 +5,7 @@ var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var clean = require('gulp-rimraf');
+var uglify = require('gulp-uglify');
 var del = require('del');
 
 var browserSync = require('browser-sync');
@@ -60,6 +61,7 @@ gulp.task('scripts', function() {
 			presets: ['babel-preset-es2017'],
 			plugins: ['babel-plugin-transform-object-rest-spread']
 		}))
+		.pipe(uglify())
 		.pipe(gulp.dest(bases.dist + '/scripts'));
 });
 
