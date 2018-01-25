@@ -88,9 +88,6 @@ h5 {
 h3 {
   font-size: 1.2em; }
 
-text {
-  font-family: 'relative-medium'; }
-
 @media (max-width: 30em) {
   p {
     font-size: 0.9em; } }
@@ -1495,20 +1492,3 @@ text {
   width: 8em;
   margin-bottom: .5em;
   padding-right: 1em; }
-
-#debug-viewport {
-  text-align: center;
-  width: 100vw;
-  color: red;
-  position: absolute;
-  z-index: 100;
-  pointer-events: none; }
-  @media (max-width: 30em) {
-    #debug-viewport:after {
-      content: "Viewport: small"; } }
-  @media (min-width: 30em) and (max-width: 45em) {
-    #debug-viewport:after {
-      content: "Viewport: med"; } }
-  @media (min-width: 45em) {
-    #debug-viewport:after {
-      content: "Viewport: large"; } }
