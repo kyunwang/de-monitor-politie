@@ -3,7 +3,10 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
-var concat = require("gulp-concat");
+var concat = require('gulp-concat');
+var clean = require('gulp-rimraf');
+var del = require('del');
+
 var browserSync = require('browser-sync');
 
 var bases = {
@@ -11,20 +14,23 @@ var bases = {
 };
 
 var paths = {
-	// scripts: ['scripts/local/*.js', 'scripts/*.js'],
+	// scripts: ['scripts/*.js', 'scripts/*.js'],
 	scripts: ['scripts/*.js'],
+	libs: ['scripts/local/*.js'],
 	html: ['*.html'],
 	styles: ['style/*.css'],
+	assets: ['assets/**/*'],
+	data: ['data/*']
 }
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
 	gulp
 		.src('style/style.scss') // Get the sass/scss file
 		.pipe(sass({ includePaths: ['scss'] })) // Pipe the sass/scss through the sass()
 		.pipe(gulp.dest('style')); // Output to the destination map style
 });
 
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', function() {
 	browserSync.init(['*.html', 'style/*.css', 'scripts/*.js'], {
 		// Watch all these fiel types for changes
 		server: {
@@ -34,36 +40,72 @@ gulp.task('browser-sync', function () {
 	});
 });
 
-gulp.task('build', function () {
-	// gulp.src(paths.scripts.concat(paths.html))
-	// 	.pipe(gulp.dest(paths.dist));
 
-	// gulp.src('src/**/*.js')
-	// gulp.src(paths.scripts)
-	// 	.pipe(sourcemaps.init())
-	// 	.pipe(babel({
-	// 		presets: ['@babel/env']
-	// 	}))
-	// 	// .pipe(concat('all.js'))
-	// 	.pipe(sourcemaps.write('.'))
-	// 	.pipe(gulp.dest(bases.dist))
 
-	// gulp.src(paths.scripts)
-	// 	.pipe(sourcemaps.init())
-	// 	.pipe(babel({
-	// 		presets: ['babel-preset-es2017'].map(require.resolve)
-	// 	}))
-	// 	.pipe(concat("all.js"))
-	// 	.pipe(sourcemaps.write("."))
-	// 	.pipe(gulp.dest("dist"));
+gulp.task('build', ['clean', 'scripts', 'copy']);
 
-		return gulp.src('scripts/**/*.js')
-			.pipe(babel())
-			.pipe(gulp.dest('build'));
+gulp.task('clean', function() {
+	console.log('Clean all files in build folder');
+	// return gulp.src('dist/**/*', { read: false })
+	// 	.pipe(clean());
+
+	return del([
+		'dist/**/*'
+	]);
+ });
+
+gulp.task('scripts', function() {
+	return gulp.src(paths.scripts)
+		.pipe(babel({
+			presets: ['babel-preset-es2017'],
+			plugins: ['babel-plugin-transform-object-rest-spread']
+		}))
+		.pipe(gulp.dest(bases.dist + '/scripts'));
 });
 
-// The default task
+// Copy all other files to dist directly
+gulp.task('copy', function() {
+	// Copy html
+	gulp.src(paths.html)
+		.pipe(gulp.dest(bases.dist));
+  
+	// Copy styles
+	gulp.src(paths.styles)
+		.pipe(gulp.dest(bases.dist + '/style'));
+  
+	// Copy lib scripts, maintaining the original directory structure
+	gulp.src(paths.libs)
+		.pipe(gulp.dest(bases.dist + '/scripts/local'));
+
+	// Copy the assets
+	gulp.src(paths.assets)
+		.pipe(gulp.dest(bases.dist + '/assets'));
+
+		// Copy the assets
+	gulp.src(paths.data)
+		.pipe(gulp.dest(bases.dist + '/data'));
+});
+// gulp.task('copy', function() {
+// 	// Copy html
+// 	gulp.src(paths.html)
+// 		.pipe(gulp.dest(bases.dist));
+  
+// 	// Copy styles
+// 	gulp.src(paths.styles)
+// 		.pipe(gulp.dest(bases.dist + '/style'));
+  
+// 	// Copy lib scripts, maintaining the original directory structure
+// 	gulp.src(paths.libs)
+// 		.pipe(gulp.dest(bases.dist + '/scripts/local'));
+
+// 	// Copy the assets
+// 	gulp.src(paths.assets)
+// 		.pipe(gulp.dest(bases.dist + '/assets'));
+// });
+
+
+// The default task - dev 
 // First executing the sass THEN browser-sync
-gulp.task('default', ['sass', 'browser-sync'], function () {
+gulp.task('default', ['sass', 'browser-sync'], function() {
 	gulp.watch('*/*.scss', ['sass']); // Watching all scss changes on changes in the background
 });
